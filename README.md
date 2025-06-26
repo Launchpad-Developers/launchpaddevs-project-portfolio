@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./screenshots/app-icon.png" alt="App Icon" width="120" />
+  <img src="launchpaddevs-logo.png" alt="App Icon" width="120" />
 </p>
 
 # Project Case Study Coming Soon

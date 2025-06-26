@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./screenshots/app-icon.png" alt="App Icon" width="120" />
+</p>
+
 # EM3 Admin Mobile
 
 ## 🔹 Overview
