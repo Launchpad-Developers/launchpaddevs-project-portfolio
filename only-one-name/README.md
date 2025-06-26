@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./screenshots/app-icon.png" alt="App Icon" width="120" />
+</p>
+
 # Project Case Study Coming Soon
 
 This section of the Launchpad Developers Inc portfolio is currently under construction.
