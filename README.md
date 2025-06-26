@@ -1,4 +1,4 @@
-<p align="center">Add commentMore actions
+<p align="center">
   <img src="launchpaddevs-logo.png" alt="Launchpad Developers" width="120" />
 </p>
 
