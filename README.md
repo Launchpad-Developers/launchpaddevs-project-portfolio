@@ -1,6 +1,6 @@
 # Launchpad Developers Inc – Project Portfolio
 
-This portfolio highlights select client projects delivered by **Launchpad Developers Inc**, a software consulting firm founded by [Your Name]. We specialize in full-stack, cloud-integrated web and mobile applications using Microsoft and cross-platform technologies.
+This portfolio highlights select client projects delivered by **Launchpad Developers Inc**, a software consulting firm founded by William Smith. We specialize in full-stack, cloud-integrated web and mobile applications using Microsoft and cross-platform technologies.
 
 Projects below were led or developed by our team, often in tight collaboration with stakeholders, product leaders, and other vendors.
 
