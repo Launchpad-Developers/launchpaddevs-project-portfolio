@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="launchpaddevs-logo.png" alt="Launchpad Developers" width="120" />
+</p>
+
 # Launchpad Developers Inc – Project Portfolio
 
 This repository showcases selected client projects delivered by **Launchpad Developers Inc**, a boutique software consulting firm specializing in full-stack, cloud-integrated web and mobile applications.
