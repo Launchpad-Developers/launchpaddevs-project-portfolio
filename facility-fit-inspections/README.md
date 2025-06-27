@@ -32,9 +32,9 @@ As the sole mobile engineer, I replaced the legacy Cordova implementation with a
 ## 📷 **Screenshots**
 
 <div style="display: flex; gap: 1rem;">
-  <img src="/screenshots/inspections-02.png" alt="Login screen" style="border: 2px solid #2A7AE2; border-radius: 4px;">
-  <img src="/screenshots/inspections-05.png" alt="Context menu" style="border: 2px solid #2A7AE2; border-radius: 4px;">
-  <img src="/screenshots/inspections-07.png" alt="Barcode scanner" style="border: 2px solid #2A7AE2; border-radius: 4px;">
+  <img src="./screenshots/inspections-02.png" alt="Login screen" style="border: 2px solid #2A7AE2; border-radius: 4px;">
+  <img src="./screenshots/inspections-05.png" alt="Context menu" style="border: 2px solid #2A7AE2; border-radius: 4px;">
+  <img src="./screenshots/inspections-07.png" alt="Barcode scanner" style="border: 2px solid #2A7AE2; border-radius: 4px;">
 </div>
 
 > See `/screenshots/` folder for more UI examples.

@@ -31,9 +31,9 @@ As the sole mobile engineer, I rebuilt Assignments from scratch, modernizing the
 ## 📷 **Screenshots**
 
 <div style="display: flex; gap: 1rem;">
-  <img src="/screenshots/assignments-02.png" alt="Login screen" style="border: 2px solid #2A7AE2; border-radius: 4px;">
-  <img src="/screenshots/assignments-08.png" alt="Assigned tasks list" style="border: 2px solid #2A7AE2; border-radius: 4px;">
-  <img src="/screenshots/assignments-09.png" alt="Patient room tasks" style="border: 2px solid #2A7AE2; border-radius: 4px;">
+  <img src="./screenshots/assignments-02.png" alt="Login screen" style="border: 2px solid #2A7AE2; border-radius: 4px;">
+  <img src="./screenshots/assignments-08.png" alt="Assigned tasks list" style="border: 2px solid #2A7AE2; border-radius: 4px;">
+  <img src="./screenshots/assignments-09.png" alt="Patient room tasks" style="border: 2px solid #2A7AE2; border-radius: 4px;">
 </div>
 
 > See `/screenshots/` folder for more UI examples.
