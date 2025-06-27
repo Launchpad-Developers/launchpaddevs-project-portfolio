@@ -2,9 +2,14 @@
 
 This document contains representative code snippets from the CUFI Mobile project, organized by category. Each snippet includes a short explanation of what it does and why it’s useful.
 
+---
+
 ## 🔧 Controls
 
 ### AppointmentsCollectionView.xaml.cs
+
+> ✅ A custom content view that binds to `EventContentViewModel`. It sets the local `Model` when the binding context changes, which is handy for giving the code-behind access to bound data while still supporting MVVM.
+
 ```csharp
 using cufi.mobile.Models.Em3;
 
@@ -33,86 +38,36 @@ namespace cufi.mobile.Controls
 }
 ```
 
+---
+
 ### CongressCollectionView.xaml
+
+> 🎨 A highly visual data template showing member info (like name, image, office, phone). Uses responsive `OnIdiom` layout hints and FFImageLoading for performance. Great example of rich content binding in MAUI.
+
 ```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<ContentView
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:model="clr-namespace:cufi.mobile.Models.Em3"
-    xmlns:ff="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Compat.Maui"
-    x:Class="cufi.mobile.Controls.CongressCollectionView">
-    <StackLayout
-        x:DataType="model:EventContentViewModel"
-        Padding="20,20,20,0"
-        HorizontalOptions="Center"
-        BackgroundColor="White">
-
-        <StackLayout
-            HorizontalOptions="CenterAndExpand"
-            VerticalOptions="StartAndExpand"
-            BackgroundColor="{StaticResource Primary}">
-            <Label
-                Text="{Binding FormalName}"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                TextColor="White"
-                Margin="5,5"
-                FontFamily="SSPRegular"
-                FontSize="{OnIdiom Phone=14, Tablet=22}" />
-            <Image
-                HeightRequest="{OnIdiom Phone=112, Tablet=225}"
-                WidthRequest="{OnIdiom Phone=138, Tablet=275}"
-                Aspect="AspectFit"
-                Margin="0"
-                Source="{Binding PictureUrl}"
-                BackgroundColor="{StaticResource Primary}"/>
-
-            <Label
-                x:Name="chamberLabel"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                TextColor="White"
-                Margin="5,5,5,0"
-                FontFamily="SSPRegular"
-                FontSize="{OnIdiom Phone=14, Tablet=22}" />
-            <Label
-                x:Name="stateLabel"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                TextColor="White"
-                Margin="5,0"
-                FontFamily="SSPRegular"
-                FontSize="{OnIdiom Phone=14, Tablet=22}" />
-            <Label
-                Text="{Binding Office}"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                HorizontalTextAlignment="Center"
-                TextColor="White"
-                Margin="5,0"
-                FontFamily="SSPRegular"
-                LineBreakMode="WordWrap"
-                MaxLines="0"
-                FontSize="{OnIdiom Phone=14, Tablet=22}" />
-            <Label
-                Text="{Binding Phone}"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                TextColor="White"
-                Margin="5,0,5,5"
-                FontFamily="SSPRegular"
-                FontSize="{OnIdiom Phone=14, Tablet=22}" />
-        </StackLayout>
+<ContentView ...>
+  <StackLayout x:DataType="model:EventContentViewModel" ...>
+    <StackLayout ... BackgroundColor="{StaticResource Primary}">
+      <Label Text="{Binding FormalName}" ... />
+      <Image Source="{Binding PictureUrl}" ... />
+      <Label x:Name="chamberLabel" ... />
+      <Label x:Name="stateLabel" ... />
+      <Label Text="{Binding Office}" ... />
+      <Label Text="{Binding Phone}" ... />
     </StackLayout>
+  </StackLayout>
 </ContentView>
 ```
+
+---
 
 ## 🛠️ Utilities
 
 ### StandardSettings.cs
+
+> ⚙️ A central place to manage shared app state, like current event/session/badge. It wraps the `Preferences` API in static properties, making it much easier to read and write persistent values. Great for cross-page continuity.
+
 ```csharp
-// (Truncated excerpt for brevity; see original for full code)
 public static class StandardSettings
 {
     const string CurrentEventKey = "CurrentEvent";
@@ -122,7 +77,7 @@ public static class StandardSettings
         set => Preferences.Set(CurrentEventKey, JsonConvert.SerializeObject(value));
     }
 
-    // ... other properties and methods ...
+    // ... other properties and helpers ...
 
     public static string GetBadgeIdForEventCode(string eventCode)
     {
@@ -131,92 +86,89 @@ public static class StandardSettings
 }
 ```
 
+---
+
 ## 📱 Service Utilities
 
 ### UnauthorizedTypeEnum.cs
-```csharp
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
-namespace em3.admin.mobile.Models.Services.Utilities
+> 🚫 An enum for identifying the reason a login or auth check failed. This is JSON-convertible via `StringEnumConverter`, which helps make API responses cleaner and more understandable than just using numeric codes.
+
+```csharp
+[JsonConverter(typeof(StringEnumConverter))]
+public enum UnauthorizedTypeEnum
 {
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum UnauthorizedTypeEnum
-    {
-        Unauthorized = 1,
-        Awaiting2FA = 2,
-        Failed2FA = 3,
-        Forbidden = 4,
-        InActive = 5,
-        WrongCredentials = 6
-    }
+    Unauthorized = 1,
+    Awaiting2FA = 2,
+    Failed2FA = 3,
+    Forbidden = 4,
+    InActive = 5,
+    WrongCredentials = 6
 }
 ```
+
+---
 
 ## 📦 Models
 
 ### BaseCUFIMobileViewModel.cs
+
+> 🧱 The foundational data structure for your view models. It includes core metadata (ID, title, timestamps) and is tied to SQLite storage via `[PrimaryKey]`. Interfaces allow for flexible reuse and testing.
+
 ```csharp
-using SQLite;
-
-namespace cufi.mobile.Models
+public interface IBaseCUFIMobileViewModel
 {
-    public interface IBaseCUFIMobileViewModel
-    {
-        int ParentId { get; set; }
-        int Id { get; set; }
-        string Title { get; set; }
-        DateTime? Date { get; set; }
-        DateTime Modified { get; set; }
-        DateTime ExpirationDate { get; set; }
-    }
+    int ParentId { get; set; }
+    int Id { get; set; }
+    string Title { get; set; }
+    DateTime? Date { get; set; }
+    DateTime Modified { get; set; }
+    DateTime ExpirationDate { get; set; }
+}
 
-    public class BaseCUFIMobileViewModel : IBaseCUFIMobileViewModel
-    {
-        public int ParentId { get; set; }
-        [PrimaryKey]
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public DateTime? Date { get; set; }
-        public DateTime Modified { get; set; }
-        public DateTime ExpirationDate { get; set; }
-    }
+public class BaseCUFIMobileViewModel : IBaseCUFIMobileViewModel
+{
+    public int ParentId { get; set; }
+    [PrimaryKey]
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public DateTime? Date { get; set; }
+    public DateTime Modified { get; set; }
+    public DateTime ExpirationDate { get; set; }
 }
 ```
 
+---
+
 ### ContentViewModel.cs
+
+> 🖼️ A full-featured view model for app content. Includes support for navigation (`RouteNavCommand`), rich media (images, YouTube), and layout control (priority, size, view template). Also uses `[JsonIgnore]` and `[SQLite.Ignore]` wisely.
+
 ```csharp
-using Newtonsoft.Json;
-using SQLite;
-
-namespace cufi.mobile.Models
+public class ContentViewModel : BaseCUFIMobileViewModel, IBaseCUFIMobileViewModel
 {
-    public class ContentViewModel : BaseCUFIMobileViewModel, IBaseCUFIMobileViewModel
-    {
-        public ContentViewModel() { }
+    public string ExternalResourceUrl { get; set; }
+    public string ThumbnailUrl { get; set; }
+    public string YouTubeVideoID { get; set; }
+    public string SubText { get; set; }
+    public string SubTitle { get; set; }
+    public string ActionButtonText { get; set; }
+    public string ViewTemplate { get; set; } = string.Empty;
 
-        public string ExternalResourceUrl { get; set; }
-        public string ThumbnailUrl { get; set; }
-        public string YouTubeVideoID { get; set; }
-        public string SubText { get; set; }
-        public string SubTitle { get; set; }
-        public string ActionButtonText { get; set; }
-        public string ViewTemplate { get; set; } = string.Empty;
-        public string Route { get; set; }
-        public double Width { get; set; }
-        public int Priority { get; set; }
-        public string Description { get; set; }
-        public string HiResUrl { get; set; }
-        public string Content { get; set; }
-        public string Excerpt { get; set; }
-        public string EventGuid { get; set; }
-        public string EventCode { get; set; }
+    public string Route { get; set; }
+    public double Width { get; set; }
+    public int Priority { get; set; }
+    public string Description { get; set; }
+    public string HiResUrl { get; set; }
+    public string Content { get; set; }
+    public string Excerpt { get; set; }
+    public string EventGuid { get; set; }
+    public string EventCode { get; set; }
 
-        [JsonIgnore, Ignore]
-        public string DisplayTitle => Title?.ToUpper();
-        [JsonIgnore, Ignore]
-        public Command RouteNavCommand { get; set; }
-    }
+    [JsonIgnore, Ignore]
+    public string DisplayTitle => Title?.ToUpper();
+
+    [JsonIgnore, Ignore]
+    public Command RouteNavCommand { get; set; }
 }
 ```

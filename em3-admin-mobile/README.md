@@ -54,8 +54,13 @@ As the **Lead Mobile Engineer and Architect**, I was responsible for both execut
 
 ## 📷 Screenshots
 
-> Some images have been redacted to preserve client privacy.  
-> Browse the `/screenshots/` folder for sample UI views.
+<div style="display: flex; gap: 1rem;">
+  <img src="screenshot1.png" alt="Assignments Screenshot 1" style="border: 2px solid #2A7AE2; border-radius: 4px;">
+  <img src="screenshot2.png" alt="Assignments Screenshot 2" style="border: 2px solid #2A7AE2; border-radius: 4px;">
+  <img src="screenshot3.png" alt="Assignments Screenshot 3" style="border: 2px solid #2A7AE2; border-radius: 4px;">
+</div>
+
+> See `/screenshots/` folder for more UI examples. Sensitive content has been redacted where necessary.
 
 ## 📄 Code Snippets
 

@@ -48,7 +48,13 @@ As the **Mobile Architect and Lead Developer**, I:
 
 ## 📷 Screenshots
 
-> See `/screenshots/` for UI examples. Sensitive content has been redacted where necessary.
+<div style="display: flex; gap: 1rem;">
+  <img src="screenshot1.png" alt="Assignments Screenshot 1" style="border: 2px solid #2A7AE2; border-radius: 4px;">
+  <img src="screenshot2.png" alt="Assignments Screenshot 2" style="border: 2px solid #2A7AE2; border-radius: 4px;">
+  <img src="screenshot3.png" alt="Assignments Screenshot 3" style="border: 2px solid #2A7AE2; border-radius: 4px;">
+</div>
+
+> See `/screenshots/` folder for more UI examples. Sensitive content has been redacted where necessary.
 
 ## 🔐 Notes
 
