@@ -31,7 +31,7 @@ I built eScheduler as a **net-new** app during the Facility Fit rollout. I owned
 ## 📷 **Screenshots**
 
 <div style="display: flex; gap: 1rem;">
-  <img src="./screenshots/schedules-02.png" alt="Login screen" style="border: 2px solid #2A7AE2; border-radius: 4px;">
+  <img src="./screenshots/schedules-01.png" alt="Login screen" style="border: 2px solid #2A7AE2; border-radius: 4px;">
   <img src="./screenshots/schedules-05.png" alt="Context menu" style="border: 2px solid #2A7AE2; border-radius: 4px;">
   <img src="./screenshots/schedules-07.png" alt="Barcode scanner" style="border: 2px solid #2A7AE2; border-radius: 4px;">
 </div>
