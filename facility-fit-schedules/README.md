@@ -4,42 +4,90 @@
 
 # Facility Fit: eScheduler
 
-**Facility Fit: eScheduler** is an advanced scheduling tool that extends the capabilities of Assignments by adding robust scheduling workflows and real-time coordination for patient transfers and service tasks.
-
-I built eScheduler as a **net-new** app during the Facility Fit rollout. I owned all mobile development and collaborated closely with Aramark’s design, QA, and field teams from concept to deployment.
+**Facility Fit: eScheduler** is an advanced scheduling tool that expands the Facility Fit suite by adding robust, real-time scheduling and multi-step task coordination for patient transfers and service tasks in large healthcare facilities.
 
 ---
 
-## 📌 **Key Highlights**
-- Designed as an advanced scheduling tool expanding Facility Fit’s core functionality.
-- Built dynamic, role-based workflows for multi-area monitoring, task assignment, and status tracking.
-- Implemented configurable server switching for flexible staging/testing.
-- Delivered multi-state task workflows with progress tracking, deferrals, and priority management.
-- Developed rich task controls for on-the-fly status changes, note taking, and approvals.
-- Created field-tested UX with clear visual status indicators and intuitive touch controls.
+## 🔹 Leadership & Project Overview
+
+Facility Fit: eScheduler was built as a **net-new app** during the Facility Fit rollout to address advanced scheduling demands beyond the core Assignments functionality. I owned the mobile architecture and development end-to-end, collaborating with Aramark’s design, QA, and field operations teams to ensure the app’s UX, dynamic task logic, and real-time updates matched the complexity of real hospital operations.
 
 ---
 
-## ⚙️ **Technical Details**
-- Xamarin.Forms + Prism.Forms (MVVM)
-- RESTful backend with ASP.NET 4.5
-- Azure Notification Hub for push
-- Managed with MS App Center pipelines
+## 🧑‍💼 My Role
+
+As the **Mobile Architect and Lead Developer**, I:
+- Designed and built the entire scheduling engine and dynamic workflows.
+- Developed multi-area monitoring, role-based access, and status tracking.
+- Integrated flexible server switching for staging, QA, and production.
+- Built intuitive touch controls and status updates (Begin, UV Sanitization, Delay, Complete).
+- Coordinated closely with QA and field testers to ensure real-world usability.
+- Managed secure login flows, EULA acceptance, and environment config.
 
 ---
 
-## 📷 **Screenshots**
+## 🧭 Leadership Principles in Action
 
-<div style="display: flex; gap: 1rem;">
-  <img src="./screenshots/schedules-01.png" alt="Login screen" style="border: 2px solid #2A7AE2; border-radius: 4px;">
-  <img src="./screenshots/schedules-05.png" alt="Context menu" style="border: 2px solid #2A7AE2; border-radius: 4px;">
-  <img src="./screenshots/schedules-07.png" alt="Barcode scanner" style="border: 2px solid #2A7AE2; border-radius: 4px;">
-</div>
+- **Builder Mentality:** Took the lead in building this advanced module from scratch, aligned with enterprise standards.
+- **Operational Focus:** Balanced dynamic scheduling features with practical usability for staff under time pressure.
+- **Team Integration:** Worked cross-functionally with design, QA, and ops during iterative testing.
+- **Security & Trust:** Added robust login, version checks, and multi-environment support for enterprise deployment.
 
-> See `/screenshots/` folder for more UI examples.
+---
+
+## 🚀 Key Capabilities
+
+- Dynamic scheduling logic layered on top of Facility Fit’s Assignments core.
+- Multi-step task workflows with configurable statuses.
+- Offline and online sync modes for dynamic field use.
+- Real-time updates and visual task states.
+- EULA acceptance and secure login with server switching.
+- Designed for fast onboarding by non-technical field staff.
+
+---
+
+## 🧰 Tech Stack
+
+- **Frontend:** Xamarin.Forms + Prism.Forms (MVVM)
+- **Backend:** REST API (ASP.NET 4.5)
+- **Notifications:** Azure Notification Hub
+- **Sync:** SQLite for offline caching
+- **CI/CD:** MS App Center pipelines
+
+---
+
+## 📷 Screenshots
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="./screenshots/schedules-01.png" alt="Login screen with secure fields" width="200"/>
+    </td>
+    <td align="center">
+      <img src="./screenshots/schedules-05.png" alt="Main assignments dashboard with tasks and status colors" width="200"/>
+    </td>
+    <td align="center">
+      <img src="./screenshots/schedules-16.png" alt="Create Task screen with space and equipment details" width="200"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./screenshots/schedules-19.png" alt="Task detail view with Begin UV and Complete actions" width="200"/>
+    </td>
+    <td align="center">
+      <img src="./screenshots/schedules-20.png" alt="Assignments list with multi-status task flow" width="200"/>
+    </td>
+    <td align="center">
+      <img src="./screenshots/schedules-21.png" alt="Location selector for task targeting" width="200"/>
+    </td>
+  </tr>
+</table>
+
+> See the [screenshots folder](./screenshots/) for more UI examples.
+
+---
 
 ## 🔐 Notes
-
 
 FacilityFit eScheduler is a privately listed enterprise app and cannot be downloaded by the general public.
 
@@ -49,4 +97,4 @@ All work was performed by **Launchpad Developers Inc** under contract with Arama
 
 ---
 
-_© Launchpad Developers Inc. All rights reserved._
+_© 2025 Launchpad Developers Inc. All rights reserved._

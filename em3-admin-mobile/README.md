@@ -32,19 +32,22 @@ As the **Lead Mobile Engineer and Architect**, I was responsible for both execut
 
 ## 🚀 Key Capabilities
 
-- Badge scanning, patron lookup, and incident reporting for staff
-- Self-service kiosk mode with auto-refresh and PIN-locked access
-- Offline data capture with conflict-resilient sync
-- Biometric login support
-- Push notifications scoped by role or geo-location
+- Secure admin login with biometric authentication
+- Live event dashboards with attendee counts and status breakdowns
+- Real-time session check-ins and seat/table assignments
+- Badge scanning and manual entry for attendee verification
+- Appointment lookups and itineraries for on-site staff
+- Hardware integrations with external scanners and mobile device cameras
 
 ## 🧰 Tech Stack
 
-- **Frontend:** .NET MAUI (originally Xamarin.Forms), C#
-- **Backend:** Client-owned REST API (ASP.NET Core)
-- **Auth:** Azure AD B2C with refresh token support
-- **Storage:** SQLite + EF Core for disconnected operation
-- **CI/CD:** Azure DevOps + App Center
+- **Frontend:** Xamarin.Forms (iOS & Android)
+- **Backend:** RESTful API (client-hosted)
+- **Authentication:** Secure credential storage + biometric login
+- **Hardware:** Barcode scanning with device camera + external reader support
+- **Storage:** Local caching for offline lookups
+- **CI/CD:** Managed builds and deployments via App Center
+
 
 ## 🧪 Testing & QA Delivery
 
@@ -54,13 +57,33 @@ As the **Lead Mobile Engineer and Architect**, I was responsible for both execut
 
 ## 📷 Screenshots
 
-<div style="display: flex; gap: 1rem;">
-  <img src="screenshot1.png" alt="Assignments Screenshot 1" style="border: 2px solid #2A7AE2; border-radius: 4px;">
-  <img src="screenshot2.png" alt="Assignments Screenshot 2" style="border: 2px solid #2A7AE2; border-radius: 4px;">
-  <img src="screenshot3.png" alt="Assignments Screenshot 3" style="border: 2px solid #2A7AE2; border-radius: 4px;">
-</div>
+<table>
+  <tr>
+    <td align="center">
+      <img src="./screenshots/em3-admin-mobile-00.png" alt="Secure login screen with biometric prompt" width="200"/>
+    </td>
+    <td align="center">
+      <img src="./screenshots/em3-admin-mobile-01.png" alt="Dashboard showing active events with attendees" width="200"/>
+    </td>
+    <td align="center">
+      <img src="./screenshots/em3-admin-mobile-02.png" alt="Attendee breakdown by state and status" width="200"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./screenshots/em3-admin-mobile-05.png" alt="Session check-in list for event management" width="200"/>
+    </td>
+    <td align="center">
+      <img src="./screenshots/em3-admin-mobile-11.png" alt="Badge scan or manual entry screen" width="200"/>
+    </td>
+    <td align="center">
+      <img src="./screenshots/em3-admin-mobile-13.png" alt="Attendee itinerary and appointment lookup" width="200"/>
+    </td>
+  </tr>
+</table>
 
-> See `/screenshots/` folder for more UI examples. Sensitive content has been redacted where necessary.
+
+> See the [screenshots folder](./screenshots/) for more UI examples. Sensitive content has been redacted where necessary.
 
 ## 📄 Code Snippets
 
@@ -79,5 +102,5 @@ All work was performed under contract by **Launchpad Developers Inc**.
 
 ---
 
-_© Launchpad Developers Inc. All rights reserved._
+_© 2025 Launchpad Developers Inc. All rights reserved._
 

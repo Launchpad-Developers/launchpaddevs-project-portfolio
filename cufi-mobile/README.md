@@ -32,29 +32,51 @@ As the **Mobile Architect and Lead Developer**, I:
 
 ## 🚀 Key Capabilities
 
-- News feeds, media libraries, and video playback
-- Personalized schedules for CUFI event attendees
-- Interactive maps, speaker bios, hotel details, and FAQ
-- Push notifications and schedule reminders
-- Embedded CUFI TV with offline fallback
+- News feeds, devotionals, and dynamic content libraries
+- Embedded **CUFI TV** video streaming with offline fallback
+- Social sharing integrations for news and campaigns
+- Personalized push notifications with topic opt-ins (Summit, Alerts)
+- Real-time action prompts for contacting legislators and local reps
+- In-app inbox for notification history and reminders
 
 ## 🧰 Tech Stack
 
 - **Frontend:** Xamarin.Forms (iOS & Android)
-- **Backend:** REST API (client-hosted)
-- **Media:** Embedded video, with fallback to hosted content
-- **Storage:** SQLite for itinerary and offline asset caching
-- **CI/CD:** Manual test builds with App Center support
+- **Backend:** RESTful API (CUFI-hosted)
+- **Media:** Native embedded video player with fallback streams
+- **Push:** Segmented push notifications (Firebase / Azure)
+- **Storage:** SQLite for offline content caching and user preferences
+- **CI/CD:** Managed builds and deployments via App Center
+
 
 ## 📷 Screenshots
 
-<div style="display: flex; gap: 1rem;">
-  <img src="screenshot1.png" alt="Assignments Screenshot 1" style="border: 2px solid #2A7AE2; border-radius: 4px;">
-  <img src="screenshot2.png" alt="Assignments Screenshot 2" style="border: 2px solid #2A7AE2; border-radius: 4px;">
-  <img src="screenshot3.png" alt="Assignments Screenshot 3" style="border: 2px solid #2A7AE2; border-radius: 4px;">
-</div>
+<table>
+  <tr>
+    <td align="center">
+      <img src="./screenshots/cufi-mobile-5.png" alt="CUFI TV native embedded video player" width="200"/>
+    </td>
+    <td align="center">
+      <img src="./screenshots/cufi-mobile-2.png" alt="Coffee Break dynamic lesson feed" width="200"/>
+    </td>
+    <td align="center">
+      <img src="./screenshots/cufi-mobile-4.png" alt="Coffee Break sign-up form for new subscribers" width="200"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./screenshots/cufi-mobile-11.png" alt="Push notification preferences segmented by topic" width="200"/>
+    </td>
+    <td align="center">
+      <img src="./screenshots/cufi-mobile-12.png" alt="Real-time legislative action prompt to contact reps" width="200"/>
+    </td>
+    <td align="center">
+      <img src="./screenshots/cufi-mobile-6.png" alt="Weekly Devotionals feed with sign-up and article list" width="200"/>
+    </td>
+  </tr>
+</table>
 
-> See `/screenshots/` folder for more UI examples. Sensitive content has been redacted where necessary.
+> See the [screenshots folder](./screenshots/) for more UI examples. Sensitive content has been redacted where necessary.
 
 ## 🔐 Notes
 
@@ -70,4 +92,4 @@ All work was performed by **Launchpad Developers Inc** under contract with CUFI 
 
 ---
 
-_© Launchpad Developers Inc. All rights reserved._
+_© 2025 Launchpad Developers Inc. All rights reserved._
