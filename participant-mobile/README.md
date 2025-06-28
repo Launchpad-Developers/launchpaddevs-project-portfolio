@@ -87,6 +87,8 @@ As the lead mobile developer, I:
 </table>
 
 > See the [screenshots folder](./screenshots/) for more UI examples.
+> See the [snippets file](./snippets/snippets.md) for selected technical highlights.
+
 
 ---
 
