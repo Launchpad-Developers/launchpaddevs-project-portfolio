@@ -4,15 +4,17 @@
 
 # Launchpad Developers Inc – Project Portfolio
 
-Founded in 2017, **Launchpad Developers Inc** is a small but elite team of developers across the U.S. and Europe, led by **[Your Name]**. We deliver scalable .NET, Azure, and cross-platform mobile solutions. Our team partners with startups, enterprises, and mission-driven organizations to bring ideas to life — quickly and with impact.
+Founded by **William Smith** in 2017, **Launchpad Developers** is a small but elite team of developers. We deliver scalable .NET, Azure, and cross-platform mobile solutions. Our team partners with startups, enterprises, and mission-driven organizations to bring ideas to life — quickly and with impact.
 
 📫 Visit [launchpaddevs.com](https://launchpaddevs.com) or reach out at **william@launchpaddevs.com**
+
+---
 
 This repository showcases selected client projects delivered by Launchpad Developers Inc, a boutique software consulting firm specializing in full-stack, cloud-integrated web and mobile applications.
 
 Each folder contains a detailed case study highlighting architecture, key features, and my engineering contributions — spanning industries such as healthcare, logistics, nonprofit, retail, and event management.
 
-> ⚠️ **Note:** This portfolio is under active construction. Additional writeups and screenshots are added incrementally.
+> ⚠️ **Note:** This portfolio is under active construction. Additional writeups and screenshots are being added incrementally.
 
 ---
 
