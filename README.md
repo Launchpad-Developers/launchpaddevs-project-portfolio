@@ -2,7 +2,7 @@
   <img src="launchpaddevs-logo.png" alt="Launchpad Developers" width="120" />
 </p>
 
-# Launchpad Developers Inc – Project Portfolio
+# Launchpad Developers - Project Portfolio
 
 Founded by **William Smith** in 2017, **Launchpad Developers** is a small but elite team of developers. We deliver scalable .NET, Azure, and cross-platform mobile solutions. Our team partners with startups, enterprises, and mission-driven organizations to bring ideas to life — quickly and with impact.
 
