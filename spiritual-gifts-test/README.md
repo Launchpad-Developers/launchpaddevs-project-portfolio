@@ -1,5 +1,7 @@
 # Spiritual Gifts Test Mobile
 
+**This project is currently in development**
+
 **Spiritual Gifts Test Mobile** is a simple, user-friendly mobile app built with **.NET MAUI**. It helps individuals discover and reflect on their spiritual gifts through a guided, self-reported assessment — with no login required.
 
 The app presents a multi-language question flow, stores content dynamically in **Firebase Realtime Database**, and instantly calculates and displays personalized insights. It was created to support faith-based communities, workshops, and individual study.
