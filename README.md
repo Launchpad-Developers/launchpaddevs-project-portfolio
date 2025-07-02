@@ -27,6 +27,7 @@ Each folder contains a detailed case study highlighting architecture, key featur
 - [`only-one-name`](./only-one-name) – Church ministry & community outreach app
 - [`participant-mobile`](./participant-mobile) – Clinical trials & participant tracking
 - [`pioneer-trials`](./pioneer-trials) – Research trials mobile tool
+- [`spiritual-gifts-test`](./spiritual-gifts-test) – Based on the classic Wagner-Houts Spiritual Gifts paper test. Under development.
 
 ### Facility Fit (Aramark Healthcare)
 - [`facility-fit-assignments`](./facility-fit-assignments) – Patient transfers and cleaning task management
@@ -38,7 +39,6 @@ Each folder contains a detailed case study highlighting architecture, key featur
 - [`metlife-pets`](./metlife-pets) – Pet insurance mobile experience
 - [`leslies-pools`](./leslies-pools) – In-store retail experience enhancer
 - [`motortrend-on-demand`](./motortrend-on-demand) – Auto entertainment streaming support
-- [`build-pro`](./build-pro) – Construction coordination and safety
 
 ---
 
