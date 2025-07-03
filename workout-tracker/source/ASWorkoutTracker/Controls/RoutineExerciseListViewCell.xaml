@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:c="clr-namespace:AS.Forms.Controls.BaseControls;assembly=AS.Forms.Controls"
+          xmlns:effects="clr-namespace:AS.Forms.Controls.Effects;assembly=AS.Forms.Controls"
+          xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+          xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+          x:Class="ASWorkoutTracker.Controls.RoutineExerciseListViewCell">
+     <ViewCell.View>
+            <Frame x:Name="Border" Padding="1" HasShadow="true" Margin="10,12" CornerRadius="3"> 
+                <Frame x:Name="Body" Margin="1" CornerRadius="3" HasShadow="False" Padding="0">
+                    <Grid Margin="0" Padding="0" RowSpacing="0" ColumnSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="54" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="54" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="70" />
+                        </Grid.ColumnDefinitions>
+
+                        <!--Left-->
+                        <border:SfBorder x:Name="TypeBorder"
+                                         Grid.Row="0" Grid.Column="0" Grid.RowSpan="3"
+                                         BackgroundColor="{StaticResource GrayDarkest}"
+                                         Margin="0,0,0,-1" BorderWidth="0" 
+                                         HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" >
+                            <Label x:Name="TypeLabel"
+                                    Text="{Binding Exercise.ExerciseType.VmNameLabel}"
+                                    Rotation="90" Margin="-35,0"
+                                    HorizontalOptions="Center" VerticalOptions="Center"
+                                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                    FontSize="Medium" LineBreakMode="MiddleTruncation"
+                                    TextColor="{StaticResource GrayLightest}" />
+                        </border:SfBorder>
+
+                        <!--Center-->
+                        <StackLayout x:Name="SummaryLayout"
+                                     Grid.Row="0" Grid.Column="1"
+                                     Orientation="Vertical"
+                                     HorizontalOptions="StartAndExpand">
+
+                            <Label Text="{Binding Exercise.Name}"
+                                   HorizontalOptions="StartAndExpand"
+                                   Margin="10,5,0,0"
+                                   effects:AutoFitFontSizeEffectParameters.MaxFontSize="Large"
+                                   effects:AutoFitFontSizeEffectParameters.MinFontSize="Micro"
+                                   LineBreakMode="TailTruncation"
+                                   TextColor="{StaticResource GrayDarkest}">
+                                <Label.Effects>
+                                    <effects:ASAutoFitFontSizeEffect />
+                                </Label.Effects>
+                            </Label>
+                            
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="10,-5,10,5"
+                                         IsVisible="{Binding Exercise.IsNew, Converter={StaticResource NegatedConverter}}">
+                                <Label Text="Last Set: "
+                                       HorizontalOptions="Start"
+                                       FontAttributes="Bold"
+                                       FontSize="Small"
+                                       TextColor="{StaticResource PrimaryDarkest}" />
+                                <Label Text="{Binding Exercise.LastSetDate, Converter={StaticResource RelativeDateTimeConverter}}"
+                                       HorizontalOptions="StartAndExpand"
+                                       FontSize="Small"
+                                       TextColor="{StaticResource Important}" />
+                            </StackLayout>
+
+                            <Label Text="New"
+                                   Margin="10,-5,0,5"
+                                   FontSize="Small"
+                                   HorizontalOptions="Fill"
+                                   IsVisible="{Binding Exercise.IsNew}"
+                                   TextColor="{StaticResource Important}" />
+
+                        </StackLayout>
+
+                        <BoxView Grid.Row="1" Grid.Column="1"
+                                 HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                 BackgroundColor="{StaticResource RedAccent}"
+                                 Margin="0,0,10,0" />
+
+                        <Grid Grid.Row="2"
+                              Grid.Column="1"
+                              RowSpacing="0" ColumnSpacing="0"
+                              IsVisible="{Binding Exercise.IsNew, Converter={StaticResource NegatedConverter}}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*" />
+                                <RowDefinition Height="5*" />
+                            </Grid.RowDefinitions>
+                            
+                            <Label Text="{Binding Exercise.LastSetDetail}"
+                                   Grid.Row="0"
+                                   LineBreakMode="WordWrap"
+                                   Margin="10,0,0,0"
+                                   MaxLines="0"
+                                   HorizontalOptions="StartAndExpand"  VerticalOptions="FillAndExpand"
+                                   HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                   FontSize="Medium"
+                                   TextColor="{StaticResource PrimaryDark}" />
+                            
+                            <Label Text="{Binding Exercise.TotalSets}"
+                                   Grid.Row="1"
+                                   LineBreakMode="WordWrap"
+                                   Margin="0,0,10,0"
+                                   MaxLines="0"
+                                   HorizontalOptions="EndAndExpand"  VerticalOptions="FillAndExpand"
+                                   HorizontalTextAlignment="End" VerticalTextAlignment="Center"
+                                   FontSize="Small"
+                                   TextColor="{StaticResource PrimaryDark}" />
+
+                        </Grid>
+
+                        <Label Text="No Historical Data"
+                               Grid.Row="2" Grid.Column="1"
+                               HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand"
+                               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                               FontSize="Large"
+                               IsVisible="{Binding Exercise.IsNew}"
+                               TextColor="{StaticResource Gray}" />
+
+                        <Frame x:Name="Tapper"
+                               BackgroundColor="Transparent"
+                               Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="2"
+                               VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+
+                        <!--Right-->
+                        <border:SfBorder x:Name="ButtonsContainer"
+                                         CornerRadius="0,3,0,3"
+                                         Grid.Row="0" Grid.Column="2" Grid.RowSpan="3"
+                                         Margin="0,0,0,-1"
+                                         BorderWidth="0"
+                                         HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0">
+                            <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.5*"/>
+                                    <RowDefinition Height="0.5*"/>
+                                </Grid.RowDefinitions>
+                                                    
+                                <gradient:SfGradientView Grid.Row="0" Grid.RowSpan="2">
+                                    <gradient:SfGradientView.BackgroundBrush>           
+                                        <gradient:SfLinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">                
+                                            <gradient:SfLinearGradientBrush.GradientStops>
+                                                <gradient:SfGradientStop Color="White" Offset="0.0" />
+                                                <gradient:SfGradientStop x:Name="EndBrush" Color="White" Offset="1.0" />
+                                            </gradient:SfLinearGradientBrush.GradientStops>                
+                                        </gradient:SfLinearGradientBrush>            
+                                    </gradient:SfGradientView.BackgroundBrush>
+                                </gradient:SfGradientView>
+
+                                <c:ASTintedImage x:Name="MoveUpIcon"
+                                                 Grid.Row="0"
+                                                 Source="{StaticResource MoveExerciseUpIcon_Active}"
+                                                 TintColor="{StaticResource GreenAccent}"
+                                                 HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <c:ASTintedImage x:Name="MoveDownIcon"
+                                                 Grid.Row="1"
+                                                 Source="{StaticResource MoveExerciseDownIcon_Active}"
+                                                 TintColor="{StaticResource GreenAccent}"
+                                                 HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            </Grid>
+                        </border:SfBorder>
+
+                        <Label x:Name="Details"
+                               Text="{Binding Exercise.Notes}"
+                               Margin="5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+                               LineBreakMode="WordWrap"
+                               FontSize="Medium"
+                               Opacity="0.0"
+                               IsVisible="false"
+                               TextColor="{StaticResource PrimaryDarkest}" />
+                    </Grid>
+                </Frame>
+            </Frame>
+            </ViewCell.View>
+                
+            <ViewCell.ContextActions>
+                <MenuItem x:Name="RemoveAction"
+                          Clicked="RemoveAction_Clicked"
+                          CommandParameter="{Binding .}"
+                          IconImageSource="{StaticResource DeleteIcon}"
+                          Text="Remove"
+                          IsDestructive="true"  />
+            </ViewCell.ContextActions>
+</ViewCell>

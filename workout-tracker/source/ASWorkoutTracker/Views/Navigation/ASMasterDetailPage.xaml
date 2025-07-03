@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" 
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                  xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                  prism:ViewModelLocator.AutowireViewModel="True"
+                  xmlns:cc="clr-namespace:AS.Forms.Controls.CompoundControls;assembly=AS.Forms.Controls"
+                  xmlns:c="clr-namespace:AS.Forms.Controls.BaseControls;assembly=AS.Forms.Controls"
+                  xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"                 
+                  x:Class="ASWorkoutTracker.Views.Navigation.ASMasterDetailPage">
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Default" Icon="menu">
+            <AbsoluteLayout>
+                                                    
+                <gradient:SfGradientView AbsoluteLayout.LayoutFlags="All"
+                                         AbsoluteLayout.LayoutBounds="0,0,1,1">
+                    <gradient:SfGradientView.BackgroundBrush>           
+                        <gradient:SfLinearGradientBrush StartPoint="0, 1" EndPoint="1, 0">                
+                            <gradient:SfLinearGradientBrush.GradientStops>
+                                <gradient:SfGradientStop Color="{StaticResource PrimaryDark}" Offset="0.0" />
+                                <gradient:SfGradientStop Color="{StaticResource PrimaryDarkest}" Offset="1.0" />
+                            </gradient:SfLinearGradientBrush.GradientStops>                
+                        </gradient:SfLinearGradientBrush>            
+                    </gradient:SfGradientView.BackgroundBrush>
+                </gradient:SfGradientView>
+
+                <Grid AbsoluteLayout.LayoutFlags="SizeProportional"
+                      AbsoluteLayout.LayoutBounds="0,11.5,1,1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="90*" />
+                    </Grid.ColumnDefinitions>
+
+                    <BoxView IsVisible="{Binding ShowProfile, Converter={StaticResource NegatedConverter}}" HeightRequest="50" BackgroundColor="Transparent" />
+
+                    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" RowSpacing="0" IsVisible="{Binding ShowProfile}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="30*" />
+                            <ColumnDefinition Width="30*" />
+                            <ColumnDefinition Width="30*" />
+                            <ColumnDefinition Width="5*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!--<RelativeLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Margin="0,50,0,10">                            
+                            <c:ASTintedImage x:Name="ProfileImage"
+                                             TintColor="{StaticResource OrangeAccent}"
+                                             Source="{StaticResource ProfileIcon}"
+                                             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.25}"
+                                             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5}"
+                                             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5}" />
+                            <cc:ASTintedImageButton x:Name="AddImage_Button"
+                                                    Image="{StaticResource ProfileCameraIcon}"
+                                                    Style="{StaticResource TakePhotoButtonStyle}"
+                                                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ProfileImage, Property=Width, Factor=1.25}"
+                                                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ProfileImage, Property=Height, Factor=0.70}"                                                  
+                                                    Command="{Binding TakePhoto}" />
+                        </RelativeLayout>-->
+
+                        <Label Text="{Binding Username}" Style="{StaticResource UsernameLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Margin="0,20,0,0"  />
+
+                        <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="1" Spacing="0">
+                            <Label Text="{Binding GoldMedals}" TextColor="{StaticResource GrayLightest}" FontSize="30" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <c:ASTintedImage VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                                             TintColor="Gold"
+                                             Source="{StaticResource GoldMedalIcon}"
+                                             WidthRequest="30"
+                                             HeightRequest="30"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="2" Spacing="0">
+                            <Label Text="{Binding SilverMedals}" TextColor="{StaticResource GrayLightest}" FontSize="30" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <c:ASTintedImage VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                                             TintColor="Silver"
+                                             Source="{StaticResource SilverMedalIcon}"
+                                             WidthRequest="30"
+                                             HeightRequest="30"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="3" Spacing="0">
+                            <Label Text="{Binding BronzeMedals}" TextColor="{StaticResource GrayLightest}" FontSize="30" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />                            
+                            <c:ASTintedImage VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                                             TintColor="#CD7F32"
+                                             Source="{StaticResource BronzeMedalIcon}"
+                                             WidthRequest="30"
+                                             HeightRequest="30"/>
+                        </StackLayout>
+                    </Grid>
+
+                    <BoxView Style="{StaticResource MenuBoxViewStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" />
+
+                    <ScrollView Style="{StaticResource MenuItemContainerStyle}" Grid.Row="2" Grid.Column="1" HorizontalOptions="FillAndExpand">
+                        <StackLayout x:Name="MenuItems">
+                            <cc:ASMenuItemView Title="Exercises" Image="{StaticResource ExercisesIcon}" Command="{Binding DetailNav}" CommandParameter="Exercises" Style="{StaticResource ActionItemStyle}" />
+                            <cc:ASMenuItemView Title="Routines" HorizontalOptions="FillAndExpand" Image="{StaticResource RoutinesIcon}" Command="{Binding DetailNav}" CommandParameter="Routines" Style="{StaticResource ActionItemStyle}" />
+                            <cc:ASMenuItemView Title="Settings" Image="{StaticResource SettingsIcon}"  Command="{Binding DetailNav}" CommandParameter="Settings" Style="{StaticResource SettingsItemStyle}" />
+                            
+                            <!--<cc:ASMenuItemView Title="Debug Functions" Image="{StaticResource DebugIcon}" Command="{Binding DetailNav}" CommandParameter="DebugFunctions" Style="{StaticResource ActionItemStyle}" IsVisible="{Binding ShowDebugFunctions}" />-->
+                        </StackLayout>
+                    </ScrollView>
+                </Grid>
+                                  
+                <StackLayout Style="{StaticResource MenuBottomItemsStyle}">
+                    <cc:ASMenuItemView Title="Logout" HorizontalOptions="FillAndExpand" Image="{StaticResource LogoutIcon}" Command="{Binding Logout}" Style="{StaticResource ActionItemStyle}" />
+                    <cc:ASMenuItemView Title="{Binding AppVersion}" Style="{StaticResource AppVersionItemStyle}" HideDivider="True" />
+                </StackLayout>
+                
+            </AbsoluteLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+</MasterDetailPage>

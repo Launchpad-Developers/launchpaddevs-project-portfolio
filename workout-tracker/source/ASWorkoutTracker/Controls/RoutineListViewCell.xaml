@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:c="clr-namespace:AS.Forms.Controls.BaseControls;assembly=AS.Forms.Controls"
+          xmlns:effects="clr-namespace:AS.Forms.Controls.Effects;assembly=AS.Forms.Controls"
+          xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+          xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+          x:Class="ASWorkoutTracker.Controls.RoutineListViewCell">
+     <ViewCell.View>
+            <Frame x:Name="Border" Padding="1" HasShadow="true" Margin="10,12" CornerRadius="3"> 
+                <Frame x:Name="Body" Margin="1" CornerRadius="3" HasShadow="False" Padding="0">
+                    <Grid Margin="0" Padding="0" RowSpacing="0" ColumnSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="75" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <!--Left-->
+                        <border:SfBorder x:Name="TypeBorder"
+                                         CornerRadius="3,0,3,0"
+                                         Grid.Row="0" Grid.Column="0"
+                                         Margin="0,0,0,-1" BorderWidth="0" 
+                                         HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" >
+                            <StackLayout>
+                                <c:ASTintedImage x:Name="DetailsIcon"
+                                                 TintColor="{StaticResource Gray}"
+                                                 Margin="15,0,0,0"
+                                                 IsVisible="{Binding Description, Converter={StaticResource ContentToVisibilityConverter}}"
+                                                 HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                    <c:ASTintedImage.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="DetailsTapGestureRecognizer_Tapped" />
+                                    </c:ASTintedImage.GestureRecognizers>
+                                    <c:ASTintedImage.Source>
+                                       <OnPlatform x:TypeArguments="FileImageSource" iOS="{StaticResource InfoIcon}" Android="{StaticResource DetailsIcon}" />
+                                    </c:ASTintedImage.Source>
+                                </c:ASTintedImage>
+                            </StackLayout>
+                        </border:SfBorder>
+
+                        <StackLayout Grid.Column="1"
+                                     Orientation="Vertical"
+                                     HorizontalOptions="StartAndExpand">
+
+                            <Label Text="{Binding Name}"
+                                   HorizontalOptions="StartAndExpand"
+                                   Margin="10,5,0,0"
+                                   effects:AutoFitFontSizeEffectParameters.MaxFontSize="Large"
+                                   effects:AutoFitFontSizeEffectParameters.MinFontSize="Micro"
+                                   LineBreakMode="TailTruncation"
+                                   TextColor="{StaticResource GrayDarkest}">
+                                <Label.Effects>
+                                    <effects:ASAutoFitFontSizeEffect />
+                                </Label.Effects>
+                            </Label>
+
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="10,-5,10,5"
+                                         IsVisible="{Binding IsNew, Converter={StaticResource NegatedConverter}}">
+                                <Label Text="Last Workout:"
+                                       HorizontalOptions="Start"
+                                       FontAttributes="Bold"
+                                       FontSize="Small"
+                                       TextColor="{StaticResource PrimaryDarkest}" />
+                                <Label Text="{Binding LastSetDate, Converter={StaticResource RelativeDateTimeConverter}}"
+                                       HorizontalOptions="StartAndExpand"
+                                       FontSize="Small"
+                                       TextColor="{StaticResource Important}" />
+                            </StackLayout>
+
+                            <Label Text="* New *"
+                                   Margin="10,-5,10,5"
+                                   FontSize="Medium"
+                                   HorizontalOptions="StartAndExpand"
+                                   IsVisible="{Binding IsNew}"
+                                   TextColor="{StaticResource Important}" />
+
+                        </StackLayout>
+
+                        <Frame x:Name="Tapper" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+                                  
+                        <border:SfBorder x:Name="ButtonsContainer"
+                                         CornerRadius="0,3,0,0"
+                                         Grid.Row="0" Grid.Column="2"
+                                         Margin="0,0,0,-1"
+                                         BorderWidth="0"
+                                         HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0">
+                            <Grid RowSpacing="0">
+                                <gradient:SfGradientView Grid.Row="0" Grid.Column="0">
+                                    <gradient:SfGradientView.BackgroundBrush>           
+                                        <gradient:SfLinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">                
+                                            <gradient:SfLinearGradientBrush.GradientStops>
+                                                <gradient:SfGradientStop Color="White" Offset="0.0" />
+                                                <gradient:SfGradientStop x:Name="EndBrush" Color="White" Offset="1.0" />
+                                            </gradient:SfLinearGradientBrush.GradientStops>                
+                                        </gradient:SfLinearGradientBrush>            
+                                    </gradient:SfGradientView.BackgroundBrush>
+                                </gradient:SfGradientView>
+
+                                <c:ASTintedImage x:Name="FavoriteIcon"
+                                                 Source="{StaticResource FavoriteIcon_Unselected}"
+                                                 Grid.Row="0" Grid.Column="0"
+                                                 Margin="0,-1,15,0"
+                                                 HorizontalOptions="EndAndExpand"
+                                                 VerticalOptions="CenterAndExpand"/>
+                            </Grid>
+                        </border:SfBorder>
+
+                        <Label x:Name="Details"
+                               Text="{Binding Notes}"
+                               Margin="5" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                               LineBreakMode="WordWrap"
+                               FontSize="Medium"
+                               Opacity="0.0"
+                               IsVisible="false"
+                               TextColor="{StaticResource Key=PrimaryDarkest}" />
+                    </Grid>
+                </Frame>
+            </Frame>
+            </ViewCell.View>
+                
+            <ViewCell.ContextActions>
+                <MenuItem x:Name="DeleteAction"
+                          Clicked="DeleteAction_Clicked"
+                          CommandParameter="{Binding .}"
+                          IconImageSource="{StaticResource DeleteIcon}"
+                          Text="Delete" 
+                          IsDestructive="true" />
+                <MenuItem x:Name="EditAction"
+                          Clicked="EditAction_Clicked"
+                          CommandParameter="{Binding .}"
+                          IconImageSource="{StaticResource EditIcon}"
+                          Text="Edit" />
+            </ViewCell.ContextActions>
+</ViewCell>

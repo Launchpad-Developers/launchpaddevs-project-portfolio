@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Xamarin.Forms.4.7.0.1142\build\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.4.7.0.1142\build\Xamarin.Forms.props')" />
+  <Import Project="..\packages\Xamarin.Build.Download.0.10.0\build\Xamarin.Build.Download.props" Condition="Exists('..\packages\Xamarin.Build.Download.0.10.0\build\Xamarin.Build.Download.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F015D684-BD0F-46AE-B1D8-4721EEF9F610}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ASWorkoutTracker.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>ASWorkoutTracker.iOS</AssemblyName>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchExtraArgs>-v -v -v -v</MtouchExtraArgs>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignKey>Apple Development: William Smith (39B8XTX72V)</CodesignKey>
+    <MtouchFastDev>true</MtouchFastDev>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <CodesignProvision>WorkoutTracker_AdHoc_Profile</CodesignProvision>
+    <CodesignKey>Apple Distribution: William Smith (4A4PH6653Y)</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>Apple Development: William Smith (39B8XTX72V)</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>None</MtouchLink>
+    <MtouchInterpreter>-all</MtouchInterpreter>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <MtouchFastDev>true</MtouchFastDev>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>Apple Distribution: William Smith (4A4PH6653Y)</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>WorkoutTracker_AdHoc_Profile</CodesignProvision>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <None Include="Entitlements.plist" />
+    <None Include="Info.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="packages.config" />
+    <Compile Include="Auth\FirebaseAuthentication.cs" />
+    <Compile Include="Renderers\BorderlessEntryRenderer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\iosbackarrow.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\iosbackarrow.imageset\iosbackarrow.png" />
+    <ImageAsset Include="Assets.xcassets\iosbackarrow.imageset\iosbackarrow%402x.png" />
+    <ImageAsset Include="Assets.xcassets\iosbackarrow.imageset\iosbackarrow%403x.png" />
+    <ImageAsset Include="Assets.xcassets\menu.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\menu.imageset\menu.png" />
+    <ImageAsset Include="Assets.xcassets\menu.imageset\menu%402x.png" />
+    <ImageAsset Include="Assets.xcassets\menu.imageset\menu%403x.png" />
+    <ImageAsset Include="Assets.xcassets\pool.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\gym.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\dumbbells_round.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\dumbbells_round.imageset\dumbbells_round.png" />
+    <ImageAsset Include="Assets.xcassets\dumbbells_round.imageset\dumbbells_round%402x.png" />
+    <ImageAsset Include="Assets.xcassets\dumbbells_round.imageset\dumbbells_round%403x.png" />
+    <ImageAsset Include="Assets.xcassets\pool.imageset\pool%403x.png" />
+    <ImageAsset Include="Assets.xcassets\pool.imageset\pool%402x.png" />
+    <ImageAsset Include="Assets.xcassets\pool.imageset\pool.png" />
+    <ImageAsset Include="Assets.xcassets\gym.imageset\gym%403x.png" />
+    <ImageAsset Include="Assets.xcassets\gym.imageset\gym%402x.png" />
+    <ImageAsset Include="Assets.xcassets\gym.imageset\gym.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\60.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\87.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\20.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\40-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\29.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\58-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\40-2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\80-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\76.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\152.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\167.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1024.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120-2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\180-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\48.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\55.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\58-2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\87-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\80-2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\88.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\100.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\172.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\196.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\216.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1024-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\16.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\32.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\32-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\64.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\128.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\256.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\256-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\512.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\512-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1024-2.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\LoginBackground.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\LoginBackground%402x.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\LoginBackground-1.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\LoginBackground%402x-1.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\LoginBackground%403x.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\LoginBackground%404x.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\LoginBackground%403x-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+    <Reference Include="Plugin.Toast.Abstractions">
+      <HintPath>..\packages\Plugin.Toast.2.1.2\lib\Xamarin.iOS10\Plugin.Toast.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Toast">
+      <HintPath>..\packages\Plugin.Toast.2.1.2\lib\Xamarin.iOS10\Plugin.Toast.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\packages\Xamarin.Forms.4.7.0.1142\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>..\packages\Xamarin.Forms.4.7.0.1142\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\packages\Xamarin.Forms.4.7.0.1142\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core">
+      <HintPath>..\packages\SQLitePCLRaw.core.1.1.13\lib\Xamarin.iOS10\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.sqlite3">
+      <HintPath>..\packages\SQLitePCLRaw.provider.sqlite3.ios_unified.1.1.13\lib\Xamarin.iOS10\SQLitePCLRaw.provider.sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_green">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.13\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_green.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.13\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite-net">
+      <HintPath>..\packages\sqlite-net-pcl.1.6.292\lib\netstandard1.1\SQLite-net.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing">
+      <HintPath>..\packages\Syncfusion.Licensing.18.1.0.57\lib\Xamarin.iOS10\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Essentials">
+      <HintPath>..\packages\Xamarin.Essentials.1.5.3.2\lib\xamarinios10\Xamarin.Essentials.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK-1.0" />
+    <Reference Include="Prism">
+      <HintPath>..\packages\Prism.Core.7.2.0.1422\lib\netstandard2.0\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Abstractions">
+      <HintPath>..\packages\Unity.Abstractions.5.11.1\lib\netstandard2.0\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container">
+      <HintPath>..\packages\Unity.Container.5.11.1\lib\netstandard2.0\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Forms">
+      <HintPath>..\packages\Prism.Forms.7.2.0.1422\lib\netstandard2.0\Prism.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Unity.Forms">
+      <HintPath>..\packages\Prism.Unity.Forms.7.2.0.1422\lib\netstandard2.0\Prism.Unity.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter">
+      <HintPath>..\packages\Microsoft.AppCenter.3.1.0\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter.iOS.Bindings">
+      <HintPath>..\packages\Microsoft.AppCenter.3.1.0\lib\Xamarin.iOS10\Microsoft.AppCenter.iOS.Bindings.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter.Analytics">
+      <HintPath>..\packages\Microsoft.AppCenter.Analytics.3.0.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter.Analytics.iOS.Bindings">
+      <HintPath>..\packages\Microsoft.AppCenter.Analytics.3.0.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.iOS.Bindings.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter.Crashes">
+      <HintPath>..\packages\Microsoft.AppCenter.Crashes.3.1.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter.Crashes.iOS.Bindings">
+      <HintPath>..\packages\Microsoft.AppCenter.Crashes.3.1.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.iOS.Bindings.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Core.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.Core.18.1.0.57\lib\Xamarin.iOS10\Syncfusion.Core.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Core.XForms.iOS">
+      <HintPath>..\packages\Syncfusion.Xamarin.Core.18.1.0.57\lib\Xamarin.iOS10\Syncfusion.Core.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPicker.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfPicker.18.1.0.57\lib\Xamarin.iOS10\Syncfusion.SfPicker.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPicker.XForms.iOS">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfPicker.18.1.0.57\lib\Xamarin.iOS10\Syncfusion.SfPicker.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfChart.18.1.0.57\lib\Xamarin.iOS10\Syncfusion.SfChart.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms.iOS">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfChart.18.1.0.57\lib\Xamarin.iOS10\Syncfusion.SfChart.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Buttons.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.Buttons.18.1.0.57\lib\Xamarin.iOS10\Syncfusion.Buttons.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Buttons.XForms.iOS">
+      <HintPath>..\packages\Syncfusion.Xamarin.Buttons.18.1.0.57\lib\Xamarin.iOS10\Syncfusion.Buttons.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.StoreReview">
+      <HintPath>..\packages\Plugin.StoreReview.2.0.0.5\lib\xamarinios10\Plugin.StoreReview.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Common.dll" />
+    <Reference Include="Plugin.Media">
+      <HintPath>..\packages\Xam.Plugin.Media.5.0.1\lib\xamarinios10\Plugin.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRotator.iOS">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfRotator.18.1.0.57\lib\Xamarin.iOS10\Syncfusion.SfRotator.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRotator.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfRotator.18.1.0.57\lib\Xamarin.iOS10\Syncfusion.SfRotator.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRotator.XForms.iOS">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfRotator.18.1.0.57\lib\Xamarin.iOS10\Syncfusion.SfRotator.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Core">
+      <HintPath>..\packages\Xamarin.Firebase.iOS.Core.6.6.6\lib\xamarinios10\Firebase.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.MobileAds">
+      <HintPath>..\packages\Xamarin.Google.iOS.MobileAds.7.57.0\lib\xamarinios10\Google.MobileAds.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPicker.iOS">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfPicker.18.1.0.57\lib\Xamarin.iOS10\Syncfusion.SfPicker.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Auth">
+      <HintPath>..\packages\Xamarin.Firebase.iOS.Auth.6.5.1\lib\xamarinios10\Firebase.Auth.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\ASWorkoutTracker\ASWorkoutTracker.csproj">
+      <Project>{EAB77217-0A5A-4D1A-9C86-C918FF032869}</Project>
+      <Name>ASWorkoutTracker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ASFormsShared\AS.iOS.CommonServices\ASCommonServices.iOS.csproj">
+      <Project>{DA42462A-7CD6-4EA7-AEE4-2DDDE672769E}</Project>
+      <Name>ASCommonServices.iOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ASFormsShared\ASCommonServices\ASCommonServices.csproj">
+      <Project>{7A1E4992-05B4-4540-8DA5-729F7B5CF667}</Project>
+      <Name>ASCommonServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ASFormsShared\AS.Forms.Controls\AS.Forms.Controls.csproj">
+      <Project>{03DC2E00-0462-48EE-9E1E-C3F1896EF01F}</Project>
+      <Name>AS.Forms.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="GoogleService-Info.plist" />
+    <BundleResource Include="Resources\FontAwesome5Pro-Light.otf" />
+    <BundleResource Include="Resources\FontAwesome5Pro-Solid.otf" />
+    <BundleResource Include="Resources\LCD14Italic.otf" />
+    <BundleResource Include="Resources\LCD14.otf" />
+    <BundleResource Include="Resources\FontAwesome5Brands-Regular.otf" />
+    <BundleResource Include="Resources\Montserrat-Bold.ttf" />
+    <BundleResource Include="Resources\Montserrat-Medium.ttf" />
+    <BundleResource Include="Resources\Montserrat-Regular.ttf" />
+    <BundleResource Include="Resources\Montserrat-SemiBold.ttf" />
+    <BundleResource Include="Resources\LoginBackground.png" />
+    <BundleResource Include="Resources\LoginBackground%402x.png" />
+    <BundleResource Include="Resources\LoginBackground%403x.png" />
+    <BundleResource Include="Resources\LoginBackground%404x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\add.imageset\" />
+    <Folder Include="Assets.xcassets\change_menu.imageset\" />
+    <Folder Include="Assets.xcassets\chevron.imageset\" />
+    <Folder Include="Assets.xcassets\delete.imageset\" />
+    <Folder Include="Assets.xcassets\dumbbells_hex.imageset\" />
+    <Folder Include="Assets.xcassets\dumbbells_round.imageset\" />
+    <Folder Include="Assets.xcassets\edit.imageset\" />
+    <Folder Include="Assets.xcassets\gym.imageset\" />
+    <Folder Include="Assets.xcassets\iosbackarrow.imageset\" />
+    <Folder Include="Assets.xcassets\logout_menu.imageset\" />
+    <Folder Include="Assets.xcassets\menu.imageset\" />
+    <Folder Include="Assets.xcassets\pool.imageset\" />
+    <Folder Include="Assets.xcassets\profile_menu.imageset\" />
+    <Folder Include="Assets.xcassets\refresh.imageset\" />
+    <Folder Include="Assets.xcassets\reset.imageset\" />
+    <Folder Include="Assets.xcassets\routines_background.imageset\" />
+    <Folder Include="Assets.xcassets\save.imageset\" />
+    <Folder Include="Assets.xcassets\selected.imageset\" />
+    <Folder Include="Assets.xcassets\settings_menu.imageset\" />
+    <Folder Include="Assets.xcassets\save.imageset\" />
+    <Folder Include="Assets.xcassets\routines_background.imageset\" />
+    <Folder Include="Assets.xcassets\delete.imageset\" />
+    <Folder Include="Assets.xcassets\edit.imageset\" />
+    <Folder Include="Assets.xcassets\pool.imageset\" />
+    <Folder Include="Assets.xcassets\gym.imageset\" />
+    <Folder Include="Assets.xcassets\dumbbells_round.imageset\" />
+    <Folder Include="Assets.xcassets\dumbbells_hex.imageset\" />
+    <Folder Include="Assets.xcassets\LaunchImage.imageset\" />
+    <Folder Include="Assets.xcassets\LaunchImage_Landscape.imageset\" />
+    <Folder Include="Assets.xcassets\LaunchImage.imageset\" />
+    <Folder Include="Auth\" />
+    <Folder Include="Renderers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
+  </ItemGroup>
+  <Import Project="..\packages\Xamarin.Build.Download.0.10.0\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.10.0\build\Xamarin.Build.Download.targets')" />
+  <Import Project="..\packages\Xamarin.Firebase.iOS.Core.6.6.6\build\Xamarin.Firebase.iOS.Core.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Core.6.6.6\build\Xamarin.Firebase.iOS.Core.targets')" />
+  <Import Project="..\packages\Xamarin.Google.iOS.MobileAds.7.57.0\build\Xamarin.Google.iOS.MobileAds.targets" Condition="Exists('..\packages\Xamarin.Google.iOS.MobileAds.7.57.0\build\Xamarin.Google.iOS.MobileAds.targets')" />
+  <Import Project="..\packages\Xamarin.Forms.4.7.0.1142\build\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.4.7.0.1142\build\Xamarin.Forms.targets')" />
+</Project>

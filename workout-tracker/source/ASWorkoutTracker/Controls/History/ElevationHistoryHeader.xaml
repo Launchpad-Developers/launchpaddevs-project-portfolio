@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASWorkoutTracker.Controls.ElevationHistoryHeader">
+    <ContentView.Content>
+        <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              HeightRequest="100"
+              RowSpacing="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="50*" />
+            </Grid.ColumnDefinitions>
+
+            <Frame Grid.Column="0" BorderColor="Transparent" BackgroundColor="Transparent" HasShadow="False" Padding="0" Margin="20,10,0,10">
+                <StackLayout Spacing="0" Padding="0" Margin="0" VerticalOptions="Center">
+                    <Label Text="{Binding HighestElevation, TargetNullValue='--'}"
+                           FontAttributes="Bold" FontSize="26" TextColor="{StaticResource YellowAccent}"
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="Start"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Start" />
+                    <Label Text="Best"
+                           FontSize="24" FontAttributes="Bold" TextColor="White"
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="Start"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Start" />
+                </StackLayout>
+            </Frame>
+            
+            <Frame Grid.Column="1" BorderColor="Transparent" BackgroundColor="Transparent" HasShadow="False" Padding="0,10,20,10">
+                <StackLayout Spacing="0" Padding="0" Margin="0" VerticalOptions="Center">
+                    <Label Text="{Binding TotalElevation, TargetNullValue='--'}"
+                           FontAttributes="Bold" FontSize="26" TextColor="{StaticResource YellowAccent}"
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="Start"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Start" />
+                    <Label Text="Total"
+                           FontSize="24" FontAttributes="Bold" TextColor="White"
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="Start"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Start" />
+                </StackLayout>
+            </Frame>
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

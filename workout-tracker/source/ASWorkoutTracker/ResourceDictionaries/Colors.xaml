@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="ASWorkoutTracker.ResourceDictionaries.Colors">
+
+    <!--Defaults-->
+    <Color x:Key="Text">#000000</Color>    
+    <Color x:Key="MenuTextColor">#FFFFFF</Color> 
+    <Color x:Key="AndroidUnfocusedMenuTextColor">#66FFFFFF</Color> 
+    <Color x:Key="MenuItemIconTintColor">#000000</Color>
+    <Color x:Key="AppBackgroundColor">#FFFFFF</Color> 
+    <Color x:Key="MenuBackgroundColor">#003F69</Color> <!--PrimaryDarker-->
+    <Color x:Key="FilterButtonBackgroundColor">#D9D9D9</Color>
+    <Color x:Key="EntryBackgroundColor">#F0F2F2</Color>
+    <Color x:Key="EditorBackgroundColor">#F0F2F2</Color>
+    <Color x:Key="LCDColor">#39FF14</Color>
+
+    <!--System Colors-->
+    <Color x:Key="Important">#EA1D2D</Color>
+    <Color x:Key="Warning">#F2501B</Color>
+    <Color x:Key="Caution">#F7AB43</Color>
+    <Color x:Key="Progress">#54BD56</Color>
+
+    <!--Workout Tracker Color Palette-->
+    <Color x:Key="PrimaryLight">#99BDD5</Color>
+    <Color x:Key="Primary">#4C8CB5</Color>
+    <Color x:Key="PrimaryDark">#005B96</Color>
+    <Color x:Key="PrimaryDarker">#003F69</Color>
+    <Color x:Key="PrimaryDarkest">#00243C</Color>
+    
+    <Color x:Key="GrayLightest">#F0F2F2</Color>
+    <Color x:Key="GrayLighter">#BAC2C6</Color>
+    <Color x:Key="Gray">#6E7F80</Color>
+    <Color x:Key="GrayDarker">#3A484F</Color>
+    <Color x:Key="GrayDarkest">#21292D</Color>
+
+    <!--Workout Tracker Accent Palette-->
+    <Color x:Key="RedAccent">#963B00</Color>
+    <Color x:Key="OrangeAccent">#E48D2F</Color>
+    <Color x:Key="YellowAccent">#F1AF29</Color>
+    <Color x:Key="GreenAccent">#1C9065</Color>
+    <Color x:Key="BeigeAccent">#E6D5BB</Color>
+
+    <!--SyncFusion Colors-->
+    <Color x:Key="EntryPlaceholderColor">#A0FFFFFF</Color>
+    <Color x:Key="BorderBackgroundColor">#20FFFFFF</Color>
+    <Color x:Key="GradientStartColor">#012E8B</Color>
+    <Color x:Key="GradientEndColor">#3F0041</Color>
+    <Color x:Key="FacebookBlue">#4267B2</Color>
+    
+    <Color x:Key="PrimaryColor">#f54e5e</Color>
+    <Color x:Key="PrimaryGradient">#e83f94</Color>
+    <Color x:Key="Secondary">#d54381</Color>
+    <Color x:Key="Green">#7ed321</Color>
+
+    <Color x:Key="Gray-100">#f6f7f8</Color>
+    <Color x:Key="Gray-300">#ced2d9</Color>
+    <Color x:Key="Gray-600">#788396</Color>
+    <Color x:Key="Gray-700">#606a7b</Color>
+    <Color x:Key="Gray-900">#333942</Color>
+    <Color x:Key="Gray-White">#ffffff</Color>
+
+</ResourceDictionary>

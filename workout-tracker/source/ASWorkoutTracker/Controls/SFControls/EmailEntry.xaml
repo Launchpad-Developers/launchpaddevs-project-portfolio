@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView x:Class="ASWorkoutTracker.Controls.SFControls.EmailEntry"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:AS.Forms.Controls.BaseControls;assembly=AS.Forms.Controls"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:control="clr-namespace:ASWorkoutTracker.Controls.SFControls">
+
+    <ContentView.Content>
+        <StackLayout>
+            <border:SfBorder BorderColor="{Binding Path=IsFocused, 
+                                                   Source={x:Reference Email}, 
+                                                   Converter={x:StaticResource ErrorValidationColorConverter}, 
+                                                   ConverterParameter={x:Reference Email}}"
+                             BackgroundColor="Transparent"
+                             Style="{StaticResource SfBorderStyle_Large}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <control:BorderlessEntry x:Name="Email"
+                                             Placeholder="Email"
+                                             Style="{StaticResource EntryStyle}"
+                                             Text="{Binding Email}" />
+                    
+                    <c:ASTintedImage Source="{StaticResource EmailErrorIcon}"
+                                     TintColor="Red"
+                                     Margin="15,0.5"
+                                     IsVisible="{Binding Path=IsVisible, Source={x:Reference ValidationLabel}}"
+                                     VerticalOptions="Center" HorizontalOptions="EndAndExpand"
+                                     HeightRequest="20" WidthRequest="20" />
+
+                </Grid>
+            </border:SfBorder>
+
+            <Label x:Name="ValidationLabel"
+                   Margin="15,-5,0,0"
+                   FontSize="15"
+                   IsVisible="{Binding Path=IsFocused, 
+                                       Source={x:Reference Email}, 
+                                       Converter={StaticResource StringToBooleanConverter}, 
+                                       ConverterParameter={x:Reference Email}}"
+                   Text="Please enter a valid e-mail"
+                   TextColor="Red"
+                   VerticalOptions="FillAndExpand" />
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

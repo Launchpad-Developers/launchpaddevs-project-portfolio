@@ -1,0 +1,107 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="Views\Exercises\" />
+    <Folder Include="Views\Navigation\" />
+    <Folder Include="Views\Routines\" />
+    <Folder Include="Datastore\" />
+    <Folder Include="Repository\" />
+    <Folder Include="ResourceDictionaries\" />
+    <Folder Include="Views\Support\" />
+    <Folder Include="ViewModels\Exercises\" />
+    <Folder Include="ViewModels\Support\" />
+    <Folder Include="ViewModels\Routines\" />
+    <Folder Include="ViewModels\Login\" />
+    <Folder Include="ViewModels\Navigation\" />
+    <Folder Include="Datastore\Models\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Validation\" />
+    <Folder Include="Controls\History\" />
+    <Folder Include="Datastore\Models\AppModels\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Datastore\Models\DataModels\" />
+    <Folder Include="ViewModels\BaseViewModels\" />
+    <Folder Include="Effects\" />
+    <Folder Include="Behaviors\" />
+    <Folder Include="Controls\SFControls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Prism.Unity.Forms" Version="7.2.0.1422" />
+    <PackageReference Include="Plugin.StoreReview" Version="2.0.0.5" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+    <PackageReference Include="Syncfusion.Licensing" Version="19.1.0.67" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.1.0.67" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.1.0.67" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="19.1.0.67" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="19.1.0.67" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="19.1.0.67" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="MainPage.xaml" />
+    <None Remove="App.xaml" />
+    <None Remove="appsettings.json" />
+    <None Remove="secrets.json" />
+    <None Remove="StringResources.json" />
+    <None Remove="Syncfusion.Licensing" />
+    <None Remove="Syncfusion.Xamarin.Core" />
+    <None Remove="Syncfusion.Xamarin.Buttons" />
+    <None Remove="Syncfusion.Xamarin.SfChart" />
+    <None Remove="Syncfusion.Xamarin.SfPicker" />
+    <None Remove="Syncfusion.Xamarin.SfRotator" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="DO_NOT_COMPILE_OR_EMBED\SecretKeys.cs" />
+    <Compile Remove="Views\Support\WalkthroughItemPage.xaml.cs" />
+    <Compile Remove="ResourceDictionaries\Colors.xaml.cs" />
+    <Compile Remove="ResourceDictionaries\Styles.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ASFormsShared\ASCommonServices\ASCommonServices.csproj" />
+    <ProjectReference Include="..\..\ASFormsShared\AS.Forms.Controls\AS.Forms.Controls.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\Support\WalkthroughItemPage.xaml" />
+    <EmbeddedResource Remove="ResourceDictionaries\Styles.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="appsettings.json" />
+    <EmbeddedResource Include="secrets.json" />
+    <EmbeddedResource Include="StringResources.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DO_NOT_COMPILE_OR_EMBED\SecretKeys.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Navigation\ASMasterDetailView.xaml.cs">
+      <DependentUpon>ASMasterDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Navigation\TabView.xaml.cs">
+      <DependentUpon>TabView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Navigation\ASTabView.xaml.cs">
+      <DependentUpon>ASTabView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\10.3.1.4\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v9.0\Mono.Android.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

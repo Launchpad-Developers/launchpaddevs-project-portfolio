@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<b:ASContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                 xmlns:local="clr-namespace:ASWorkoutTracker.Effects"
+                 xmlns:b="clr-namespace:AS.Forms.Controls.BaseControls;assembly=AS.Forms.Controls"
+                 xmlns:c="clr-namespace:AS.Forms.Controls.FauxViewCells;assembly=AS.Forms.Controls"
+                 xmlns:cc="clr-namespace:AS.Forms.Controls.CompoundControls;assembly=AS.Forms.Controls"
+                 prism:ViewModelLocator.AutowireViewModel="True" 
+                 BackgroundColor="{StaticResource GrayLightest}"
+                 BackCommand="{Binding BackCommand}"
+                 NavigationPage.BackButtonTitle=""
+                 x:Class="ASWorkoutTracker.Views.Routines.AddEditRoutineView"
+                 Title="{Binding Title}">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Save" Icon="{StaticResource SaveIcon}" Command="{Binding Save}" IsEnabled="{Binding IsReadOnly, Converter={StaticResource NegatedConverter}}" />
+    </ContentPage.ToolbarItems>
+        
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            
+            <ScrollView AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+                
+                <StackLayout>
+                    
+                    <StackLayout x:Name="Details" Orientation="Vertical" Margin="0" Spacing="0" IsVisible="{Binding IsReadOnly}">
+                                  
+                        <Grid ColumnSpacing="0" RowSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Overview"
+                                    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                    Margin="10,0,0,0" Grid.Column="0" FontSize="22" TextColor="{StaticResource GrayDarkest}"/>
+                        </Grid>
+                        <BoxView HeightRequest="1" BackgroundColor="{StaticResource RedAccent}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="10,-6,0,0" />
+
+                        <Grid RowSpacing="0" IsVisible="{Binding Model.Notes, Converter={StaticResource ContentToVisibilityConverter}}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.5" />
+                                <RowDefinition Height="125"/>
+                            </Grid.RowDefinitions>
+                            <BoxView Grid.Row="0" HeightRequest="0.5" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="End" />
+                            <WebView HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"
+                                     Source="{Binding Model.WebViewNotes}"
+                                     Grid.Row="1"
+                                     Margin="10,0" />
+                        </Grid>
+
+                        <c:ASButtonRowCell BackgroundColor="{StaticResource PrimaryLight}"
+                                           BorderColor="{StaticResource PrimaryLight}"
+                                           TextColor="{StaticResource GrayDarkest}"
+                                           Text="More Info"
+                                           IsVisible="{Binding Model.URL, Converter={StaticResource ContentToVisibilityConverter}}"
+                                           Command="{Binding OpenUrl}" />
+                                                          
+                        <Grid ColumnSpacing="0" RowSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Details"
+                                    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                    Margin="10,0,0,0" Grid.Column="0" FontSize="22" TextColor="{StaticResource GrayDarkest}"/>
+                        </Grid>
+                        <BoxView HeightRequest="1" BackgroundColor="{StaticResource RedAccent}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="10,-6,0,0" />
+
+                        <Grid RowSpacing="0" IsVisible="{Binding Model.Description, Converter={StaticResource ContentToVisibilityConverter}}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="0.5" />
+                                <RowDefinition Height="400"/>
+                            </Grid.RowDefinitions>
+                            
+                            <BoxView Grid.Row="1" HeightRequest="0.5" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="End" />
+
+                            <WebView HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"
+                                     Grid.Row="2"
+                                     Source="{Binding Model.WebViewDescription}"
+                                     Margin="10,0,10,0">
+                                <WebView.Effects>
+                                    <local:EffectTransparentBackground />
+                                </WebView.Effects>
+                            </WebView>
+                        </Grid>  
+                        
+                    </StackLayout>
+
+                    <StackLayout x:Name="AddEditDetails" Orientation="Vertical" Margin="0" Spacing="0" IsVisible="{Binding IsReadOnly, Converter={StaticResource NegatedConverter}}">
+                        
+                        <Grid ColumnSpacing="0" RowSpacing="0" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Settings"
+                                    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                    Margin="10,0,0,0" Grid.Column="0" FontSize="22" TextColor="{StaticResource GrayDarkest}"/>
+                        </Grid>
+                        <BoxView HeightRequest="1" BackgroundColor="{StaticResource RedAccent}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="10,-6,0,0" />
+                
+                        <c:ASEntryCell x:Name="RoutineName"
+                                       Title="Routine Name"
+                                       HideDivider="True"
+                                       Detail="{Binding Name.Value, Mode=TwoWay}"
+                                       Error="{Binding Name.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                       ValidateCommand="{Binding ValidateName}"
+                                       IsEnabled="{Binding CanEditName}"
+                                       IsRequired="{Binding CanEditName}" />
+                
+                                  
+                        <Grid ColumnSpacing="0" RowSpacing="0" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Details"
+                                    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                    Margin="10,0,0,0" Grid.Column="0" FontSize="22" TextColor="{StaticResource GrayDarkest}"/>
+                        </Grid>
+                        <BoxView HeightRequest="1" BackgroundColor="{StaticResource RedAccent}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="10,-6,0,0" />
+                        <!--Routine Type-->
+                        <!--<c:ASLabelPickerCell x:Name="RoutineType"
+                                             Title="Routine Type"
+                                             Detail="{Binding SelectedRoutineType.Value.Name, Mode=TwoWay}"
+                                             Error="{Binding SelectedRoutineType.Errors, Converter={StaticResource FirstValidationErrorConverter}}"                                             
+                                             ChevronImage="{StaticResource ChevronIcon}"
+                                             IsRequired="true"
+                                             SubText="Used for sorting"
+                                             LocalizedPickerTitleKey="Routines"
+                                             IsEventCell="True"
+                                             Tapped="OptionType_Tapped"
+                                             SelectedObjectProperty="{x:Static enum:PickerItemPropertyNames.SelectedRoutineType}" />
+            
+                        <syncfusion:SfPicker x:Name="RoutineTypePicker"
+                                             HeaderText="Routine Type"
+                                             ItemsSource="{Binding RoutineTypes}"
+                                             SelectedIndex="{Binding SelectedRoutineTypeIndex}"
+                                             Style="{StaticResource OptionPickerStyle}"                                             
+                                             OkButtonClicked="OptionTypePicker_OkButtonClicked" />-->
+                        
+                        <c:ASEditorCell x:Name="Notes"
+                                        Title="Notes"
+                                        ValidateCommand="{Binding ValidateBriefDescription}"
+                                        Detail="{Binding BriefDescription.Value, Mode=TwoWay}"
+                                        SubTitle="Limit 250 characters"
+                                        HideDivider="True"
+                                        Error="{Binding BriefDescription.Errors, Converter={StaticResource FirstValidationErrorConverter}}" />
+                        
+                        <c:ASEditorCell x:Name="Description"
+                                        Title="Description"
+                                        ValidateCommand="{Binding ValidateDetailedDescription}"
+                                        Detail="{Binding DetailedDescription.Value, Mode=TwoWay}"
+                                        SubTitle="Limit 2500 characters"
+                                        Error="{Binding DetailedDescription.Errors, Converter={StaticResource FirstValidationErrorConverter}}" />
+                       
+
+                    </StackLayout>
+                    
+                </StackLayout>
+                
+            </ScrollView>
+            
+            <cc:ASScreenOverlay IsVisible="{Binding IsLoading}" />
+            <cc:ASActivityIndicator Text="{Binding ActivityText}" 
+                                    IsVisible="{Binding IsLoading}"
+                                    IsEnabled="{Binding IsLoading}"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</b:ASContentPage>

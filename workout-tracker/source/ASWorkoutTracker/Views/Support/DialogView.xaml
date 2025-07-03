@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:prism="http://prismlibrary.com"
+       prism:DialogLayout.RelativeWidthRequest="0.75"
+       prism:DialogLayout.RelativeHeightRequest="0.3"
+       prism:DialogLayout.MaskStyle="{StaticResource DialogViewMaskStyle}"
+       prism:DialogLayout.CloseOnBackgroundTapped="true"
+       BackgroundColor="{StaticResource GrayLightest}"
+       CornerRadius="10" HasShadow="False" BorderColor="Transparent" Padding="0"
+       x:Class="ASWorkoutTracker.Views.Support.GenericDialogView">
+
+    <Grid RowSpacing="0" ColumnSpacing="0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+    
+        <BoxView Color="{StaticResource PrimaryDarkest}" Grid.Row="0" />
+        <Label Text="{Binding Title}"
+               Style="{StaticResource DialogTitleStyle}"
+               Grid.Row="0" />
+
+        <ScrollView Margin="10,0" Grid.Row="1" VerticalOptions="FillAndExpand">
+            <Label Text="{Binding Message}"
+                   Style="{StaticResource DialogMessageStyle}" />
+        </ScrollView>
+
+        <Button Text="OK"
+                Command="{Binding CloseDialog}"
+                HorizontalOptions="Center" VerticalOptions="End"
+                Margin="0,0,0,10"
+                Grid.Row="2"/>
+    </Grid>
+</Frame>

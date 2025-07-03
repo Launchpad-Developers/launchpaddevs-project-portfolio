@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>289624556512-22poaprcghc60eogk7ihu71tb88fvp1d.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.289624556512-22poaprcghc60eogk7ihu71tb88fvp1d</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>289624556512-u764k7jk0geher7p02qndgb03tnhkfap.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBzszR2Rdf937n4Kp9k4cKfwHMgu4JGlHo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>289624556512</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.appsmithsllc.WorkoutTracker</string>
+	<key>PROJECT_ID</key>
+	<string>as-workout-tracker</string>
+	<key>STORAGE_BUCKET</key>
+	<string>as-workout-tracker.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:289624556512:ios:0da5d98962e1d9e552e185</string>
+	<key>DATABASE_URL</key>
+	<string>https://as-workout-tracker.firebaseio.com</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-9921792637906818~2278473273</string>
+</dict>
+</plist>

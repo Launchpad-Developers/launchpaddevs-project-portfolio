@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AS.Forms.Controls.BaseControls;assembly=AS.Forms.Controls"
+             x:Class="ASWorkoutTracker.Controls.TimeHistoryGroupCell">
+    <ContentView.Content>
+        <Frame BorderColor="Black" CornerRadius="4" HasShadow="False" BackgroundColor="{StaticResource GrayDarker}" Margin="10,5" Padding="0">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="1" Padding="0" BackgroundColor="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition Width="38*" />
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition Width="30*" />
+                </Grid.ColumnDefinitions>
+
+                <Label x:Name="Date" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="25" Grid.ColumnSpan="5" TextColor="White" BackgroundColor="{StaticResource Gray}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                <Label x:Name="MinTime" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="20" TextColor="{StaticResource GreenAccent}" HorizontalOptions="CenterAndExpand" VerticalOptions="End" HorizontalTextAlignment="Center" VerticalTextAlignment="End"/>
+                <BoxView x:Name="vDivide1" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" WidthRequest="1" VerticalOptions="FillAndExpand" Margin="0,2" BackgroundColor="{StaticResource Gray}" />
+                <Label x:Name="AvgTime" Grid.Row="1" Grid.Column="2" FontAttributes="Bold" FontSize="20" TextColor="{StaticResource GreenAccent}" HorizontalOptions="CenterAndExpand" VerticalOptions="End" HorizontalTextAlignment="Center" VerticalTextAlignment="End"/>
+                <BoxView x:Name="vDivide2" Grid.Row="1" Grid.RowSpan="2" Grid.Column="3" WidthRequest="1" VerticalOptions="FillAndExpand" Margin="0,2" BackgroundColor="{StaticResource Gray}" />
+                <Label x:Name="MaxTime" Grid.Row="1" Grid.Column="4" FontAttributes="Bold" FontSize="20" TextColor="{StaticResource GreenAccent}" HorizontalOptions="CenterAndExpand" VerticalOptions="End" HorizontalTextAlignment="Center" VerticalTextAlignment="End"/>
+
+                <StackLayout Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="0,-9,0,0">                
+                    <local:ASTintedImage Source="{StaticResource TimeIcon}"
+                                         HorizontalOptions="End" VerticalOptions="Start"
+                                         TintColor="{StaticResource GreenAccent}"
+                                         WidthRequest="15" HeightRequest="15"/>
+                    <Label x:Name="MinTimeTitle" Text="Min Time" FontSize="15" Margin="0,-2,0,0" HorizontalOptions="Start" VerticalOptions="Start" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"/>
+                </StackLayout>
+                    
+                <StackLayout Grid.Row="2" Grid.Column="2" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="0,-10,0,0">                
+                    <local:ASTintedImage Source="{StaticResource TimeIcon_Solid}"
+                                         HorizontalOptions="End" VerticalOptions="Start"
+                                         TintColor="Black"
+                                         WidthRequest="18" HeightRequest="18"/>
+                    <Label x:Name="AvgTimeTitle" Text="Average Time" FontSize="18" Margin="0,-2,0,0" HorizontalOptions="Start" VerticalOptions="Start" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" />
+                </StackLayout>
+                    
+                <StackLayout Grid.Row="2" Grid.Column="4" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="0,-10,0,0">                
+                    <local:ASTintedImage Source="{StaticResource TimeIcon}"
+                                         HorizontalOptions="End" VerticalOptions="Start"
+                                         TintColor="{StaticResource RedAccent}"
+                                         WidthRequest="15" HeightRequest="15"/>
+                    <Label x:Name="MaxTimeTitle" Text="Max Time" FontSize="15" Margin="0,-2,0,0" HorizontalOptions="Start" VerticalOptions="Start" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" />
+                </StackLayout>
+                    
+                <BoxView x:Name="hDivide" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource RedAccent}" />
+
+                <StackLayout x:Name="ExerciseLogs" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="10,0,10,5">
+                    <!--Exercise Logs go here-->
+                </StackLayout>
+
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASWorkoutTracker.Controls.TimeHistoryHeader">
+    <ContentView.Content>
+        <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              HeightRequest="100"
+              RowSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="70*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="40*" />
+                <ColumnDefinition Width="30*" />
+            </Grid.ColumnDefinitions>
+
+            <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="Black" CornerRadius="4" HasShadow="False" Padding="0" Margin="20,10,0,10">
+                <StackLayout Spacing="0" Padding="0" Margin="0" VerticalOptions="Center">
+                    <Label Text="{Binding MinTime, TargetNullValue='--', Converter={StaticResource TimeSpanConverter}}"
+                           FontAttributes="Bold" FontSize="16" FontFamily="{StaticResource LCDRegular}" TextColor="{StaticResource LCDColor}"
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="Start"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Start" />
+                    <Label Text="Min Time"
+                           FontSize="14" FontAttributes="Bold" TextColor="White"
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="Start"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Start" />
+                </StackLayout>
+            </Frame>
+            
+            <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="Black" CornerRadius="4" HasShadow="False" Padding="0">
+                <StackLayout Spacing="0" Padding="0" Margin="0" VerticalOptions="Center">
+                    <Label Text="{Binding AverageTime, TargetNullValue='--', Converter={StaticResource TimeSpanConverter}}"
+                           FontAttributes="Bold" FontSize="24" FontFamily="{StaticResource LCDRegular}" TextColor="{StaticResource LCDColor}"
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="Start"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Start" />
+                    <Label Text="Avg Time"
+                           FontSize="20" FontAttributes="Bold" TextColor="White"
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="Start"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Start" />
+                </StackLayout>
+            </Frame>
+            
+            <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="Black" CornerRadius="4" HasShadow="False" Padding="0" Margin="0,10,20,10">
+                <StackLayout Spacing="0" Padding="0" Margin="0" VerticalOptions="Center">
+                    <Label Text="{Binding MaxTime, TargetNullValue='--', Converter={StaticResource TimeSpanConverter}}"
+                           FontAttributes="Bold" FontSize="16" FontFamily="{StaticResource LCDRegular}" TextColor="{StaticResource LCDColor}"
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="End"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="End" />
+                    <Label Text="Max Time"
+                           FontSize="14" FontAttributes="Bold" TextColor="White"
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="Start"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Start" />
+                </StackLayout>
+            </Frame>
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

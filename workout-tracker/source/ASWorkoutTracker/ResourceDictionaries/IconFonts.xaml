@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:res="clr-namespace:ASWorkoutTracker.ResourceDictionaries"
+                    xmlns:fonts="clr-namespace:AS.Forms.Controls.FontAwesome;assembly=AS.Forms.Controls"                    
+                    xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+                    mc:Ignorable="d"
+                    x:Class="ASWorkoutTracker.ResourceDictionaries.IconFonts">
+
+    <ResourceDictionary.MergedDictionaries>
+        <res:Colors />
+        <!-- Add more resource dictionaries here -->
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--Font File Definitions-->
+    <OnPlatform x:Key="FA5ProLight"
+                x:TypeArguments="x:String"
+                Android="FA5ProLight300.otf#Light"
+                iOS="FontAwesome5Pro-Light" />
+
+    <OnPlatform x:Key="FA5ProSolid"
+                x:TypeArguments="x:String"
+                Android="FA5ProSolid900.otf#Solid"
+                iOS="FontAwesome5Pro-Solid" />
+
+    <OnPlatform x:Key="Brands"
+                x:TypeArguments="x:String"
+                Android="FA5BrandsRegular400.otf#Regular"
+                iOS="FontAwesome5Brands-Regular" />
+
+    <OnPlatform x:Key="LCDItalic"
+                x:TypeArguments="x:String"
+                Android="LCD14Italic.otf#14Italic"
+                iOS="LCD14Italic" />
+
+    <OnPlatform x:Key="LCDRegular"
+                x:TypeArguments="x:String"
+                Android="LCD14.otf#14"
+                iOS="LCD14" />
+
+    <OnPlatform x:Key="Montserrat-SemiBold"
+                x:TypeArguments="x:String"
+                Android="Montserrat-SemiBold.ttf#Montserrat-SemiBold"
+                iOS="Montserrat-SemiBold" />
+
+    <OnPlatform x:Key="Montserrat-Regular"
+                x:TypeArguments="x:String"
+                Android="Montserrat-Regular.ttf#Montserrat-Regular"
+                iOS="Montserrat-Regular" />
+    
+    <OnPlatform x:Key="Montserrat-Medium"
+                x:TypeArguments="x:String"
+                Android="Montserrat-Medium.ttf#Montserrat-Medium"
+                iOS="Montserrat-Medium" />
+    
+    <OnPlatform x:Key="Montserrat-Bold"
+                x:TypeArguments="x:String"
+                Android="Montserrat-Bold.ttf#Montserrat-Bold"
+                iOS="Montserrat-Bold" />
+
+
+    <!--System Fonts-->
+    <Style TargetType="Label">       
+        <Setter Property="FontFamily">
+            <OnPlatform x:TypeArguments="x:String">
+                <On Platform="iOS" Value="KohinoorBangla-Regular" />
+                <On Platform="Android" Value="Montserrat-Light.ttf#Montserrat-Light" />
+            </OnPlatform>
+        </Setter>
+    </Style>
+    <Style TargetType="syncfusion:SfRadioButton">       
+        <Setter Property="FontFamily">
+            <OnPlatform x:TypeArguments="x:String">
+                <On Platform="iOS" Value="KohinoorBangla-Regular" />
+                <On Platform="Android" Value="Montserrat-Light.ttf#Montserrat-Light" />
+            </OnPlatform>
+        </Setter>
+    </Style>
+
+    <!--Shared-->
+    <FontImageSource x:Key="BackArrowIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.ChevronCircleRight}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="ChevronIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.ChevronCircleRight}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="RefreshIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.SyncAlt}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="ResetIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.PowerOff}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="SelectedIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.CheckSquare}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="FeedbackIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.CommentExclamation}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="RatingIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Smile}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="FacebookIcon" 
+                     FontFamily="{StaticResource Brands}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Facebook}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="GoogleIcon" 
+                     FontFamily="{StaticResource Brands}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Google}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="NoRecordsIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.ExclamationTriangle}"
+                     Color="Black" />
+
+    <!--Context and NavBar-->
+    <FontImageSource x:Key="AddIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.PlusCircle}"
+                     Color="White" />
+
+    <FontImageSource x:Key="FilterIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Filter}"
+                     Color="White" />
+
+    <FontImageSource x:Key="StartRoutineIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Play}"
+                     Color="White" />
+
+    <FontImageSource x:Key="EditIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Edit}"
+                     Color="White" />
+
+    <FontImageSource x:Key="DeleteIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.TrashAlt}"
+                     Color="White" />
+
+    <FontImageSource x:Key="MenuIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Bars}"
+                     Color="White" />
+
+    <FontImageSource x:Key="SaveIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Save}"
+                     Color="White" />
+
+    <FontImageSource x:Key="EmailErrorIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.ExclamationCircle}"
+                     Color="White" />
+    
+
+    <!--Master-->
+    <FontImageSource x:Key="ExercisesIcon" 
+                     FontFamily="{StaticResource FA5ProSolid}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Running}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="RoutinesIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.ClipboardList}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="DebugIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Debug}"
+                     Color="Black" />
+    
+    <FontImageSource x:Key="SettingsIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.SlidersH}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="LogoutIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.LogOut}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="ProfileIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.UserCircle}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="GoldMedalIcon" 
+                     FontFamily="{StaticResource FA5ProSolid}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Medal}"
+                     Color="Gold" />
+
+    <FontImageSource x:Key="SilverMedalIcon" 
+                     FontFamily="{StaticResource FA5ProSolid}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Medal}"
+                     Color="Silver" />
+
+    <FontImageSource x:Key="BronzeMedalIcon" 
+                     FontFamily="{StaticResource FA5ProSolid}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Medal}"
+                     Color="Brown" />
+
+    <FontImageSource x:Key="ProfileCameraIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.AltCamera}"
+                     Color="Black" />
+
+    <!--Exercises-->
+    <FontImageSource x:Key="FavoriteIcon_Selected" 
+                     FontFamily="{StaticResource FA5ProSolid}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Star}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="FavoriteIcon_Unselected" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Star}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="InfoIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.InfoCircle}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="DetailsIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.ChevronCircleUp}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="StrengthIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Dumbbell}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="EnduranceIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Endurance}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="FlexibilityIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Flexibility}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="BalanceIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Balance}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="WeightIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.WeightHanging}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="RepsIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Tally}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="DistanceIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Ruler}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="TimeIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Stopwatch}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="StepsIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.ShoePrints}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="ElevationIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Hiking}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="HeartRateIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.HeartRate}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="CaloriesIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Weight}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="MeasurementIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Ruler}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="AddSetIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.PlusHexagon}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="WeightIcon_Solid" 
+                     FontFamily="{StaticResource FA5ProSolid}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.WeightHanging}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="RepsIcon_Solid" 
+                     FontFamily="{StaticResource FA5ProSolid}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Tally}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="DistanceIcon_Solid" 
+                     FontFamily="{StaticResource FA5ProSolid}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Ruler}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="TimeIcon_Solid" 
+                     FontFamily="{StaticResource FA5ProSolid}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Stopwatch}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="StepsIcon_Solid" 
+                     FontFamily="{StaticResource FA5ProSolid}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.ShoePrints}"
+                     Color="Black" />
+
+    <!--Routines-->
+    <FontImageSource x:Key="DragIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.GripVertical}"
+                     Color="White" />
+
+    <FontImageSource x:Key="MoveExerciseUpIcon_Active" 
+                     FontFamily="{StaticResource FA5ProSolid}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.ChevronUp}"
+                     Color="White" />
+
+    <FontImageSource x:Key="MoveExerciseDownIcon_Active" 
+                     FontFamily="{StaticResource FA5ProSolid}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.ChevronDown}"
+                     Color="White" />
+
+    <FontImageSource x:Key="MoveExerciseUpIcon_Inactive" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.ChevronUp}"
+                     Color="White" />
+
+    <FontImageSource x:Key="MoveExerciseDownIcon_Inactive" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.ChevronDown}"
+                     Color="White" />
+
+    <FontImageSource x:Key="QuestionIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.QuestionCircle}"
+                     Color="White" />
+
+    <!--Tabs-->
+    <FontImageSource x:Key="TabNewIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.ClipboardCheck}"
+                     Color="White" />
+
+    <FontImageSource x:Key="TabHistoryIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Clock}"
+                     Color="White" />
+
+    <FontImageSource x:Key="TabGraphIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.ChartLine}"
+                     Color="White" />
+
+    <FontImageSource x:Key="TabDetailsIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.InfoCircle}"
+                     Color="White" />
+
+    <!--Timer-->
+    <FontImageSource x:Key="StartIcon_NotActive" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Play}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="PauseIcon_NotActive" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Pause}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="StopIcon_NotActive" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Stop}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="ResetIcon_NotActive" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Undo}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="StartIcon_Active" 
+                     FontFamily="{StaticResource FA5ProSolid}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Play}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="PauseIcon_Active" 
+                     FontFamily="{StaticResource FA5ProSolid}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Pause}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="StopIcon_Active" 
+                     FontFamily="{StaticResource FA5ProSolid}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Stop}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="ResetIcon_Active" 
+                     FontFamily="{StaticResource FA5ProSolid}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Undo}"
+                     Color="Black" />
+
+    <!--Routine-->
+
+    <FontImageSource x:Key="Routine_Time" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Stopwatch}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="Routine_Sets" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Sets}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="Routine_Break" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.CoffeeToGo}"
+                     Color="Black" />
+
+    <FontImageSource x:Key="ResetSetIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.Undo}"
+                     Color="White" />
+
+    <FontImageSource x:Key="NextExerciseIcon" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.FastForward}"
+                     Color="White" />
+
+
+    <!--Exercise Types-->
+    <FontImageSource x:Key="Balance" 
+                     FontFamily="{StaticResource FA5ProLight}"
+                     Glyph="{x:Static fonts:IconFontGlyphs.BalanceScale}"
+                     Color="Black" />       
+
+</ResourceDictionary>

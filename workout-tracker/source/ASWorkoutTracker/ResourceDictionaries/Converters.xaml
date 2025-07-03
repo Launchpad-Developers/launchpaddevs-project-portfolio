@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:converters="clr-namespace:AS.Forms.Controls.Converters;assembly=AS.Forms.Controls"
+                    xmlns:converter="clr-namespace:ASWorkoutTracker.Converters"
+                    x:Class="ASWorkoutTracker.ResourceDictionaries.Converters">
+
+    <converters:EnumToStringConverter x:Key="EnumToStringConverter" />
+    <converters:NegatedConverter x:Key="NegatedConverter" />
+    <converters:CountToBoolConverter x:Key="CountToBoolConverter" />
+    <converters:InverseCountToBoolConverter x:Key="InverseCountToBoolConverter" />
+    <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+    <converters:RelativeDateTimeConverter x:Key="RelativeDateTimeConverter" />
+    <converters:TimeSpanConverter x:Key="TimeSpanConverter" />
+    <converters:ContentToVisibilityConverter x:Key="ContentToVisibilityConverter" />
+    <converters:IntToVisibilityConverter x:Key="IntToVisibilityConverter" />
+    <converter:BooleanToColorConverter x:Key="BooleanToColorConverter" />
+    <converter:StringToBooleanConverter x:Key="StringToBooleanConverter" />
+    <converter:ErrorValidationColorConverter x:Key="ErrorValidationColorConverter" PageVariantParameter="0" />
+</ResourceDictionary>

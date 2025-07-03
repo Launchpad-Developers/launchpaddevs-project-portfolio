@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="ASWorkoutTracker.Views.Support.DebugFunctionsView">
+    <ScrollView>
+        <StackLayout>
+            <StackLayout>
+                <Button Text="Test Firebase Connection"
+                        Margin="0,50,0,0"
+                        HorizontalOptions="Center"
+                        Command="{Binding FirebaseTestCommand}"
+                        CommandParameter="Test" />
+                <Button Text="Firebase Database Info"
+                        HorizontalOptions="Center"
+                        Command="{Binding FirebaseTestCommand}"
+                        CommandParameter="DatabaseInfo" />
+                <Button Text="Test Exercise Types"
+                        HorizontalOptions="Center"
+                        Command="{Binding FirebaseTestCommand}"
+                        CommandParameter="ExerciseTypes" />
+                <Button Text="Test Exercises"
+                        HorizontalOptions="Center"
+                        Command="{Binding FirebaseTestCommand}"
+                        CommandParameter="Exercises" />
+                <Button Text="Test Routines"
+                        HorizontalOptions="Center"
+                        Command="{Binding FirebaseTestCommand}"
+                        CommandParameter="Routines" />
+                <Button Text="Test Body Areas"
+                        HorizontalOptions="Center"
+                        Command="{Binding FirebaseTestCommand}"
+                        CommandParameter="BodyAreaTypes" />
+                <Button Text="Test Routine Exercises"
+                        HorizontalOptions="Center"
+                        Command="{Binding FirebaseTestCommand}"
+                        CommandParameter="RoutineExercises" />
+            </StackLayout>
+            <StackLayout>
+                <Button Text="Test SQLite Connection"
+                        Margin="0,50,0,0"
+                        HorizontalOptions="Center"
+                        Command="{Binding SQLiteTestCommand}"
+                        CommandParameter="Test" />
+                <Button Text="Test Create Database"
+                        HorizontalOptions="Center"
+                        Command="{Binding SQLiteTestCommand}"
+                        CommandParameter="CreateDatabase" />
+                <Button Text="Test Check For Updates"
+                        HorizontalOptions="Center"
+                        Command="{Binding SQLiteTestCommand}"
+                        CommandParameter="CheckForUpdates" />
+                <Button Text="Test Login"
+                        HorizontalOptions="Center"
+                        Command="{Binding SQLiteTestCommand}"
+                        CommandParameter="Login" />
+                <Button Text="Test Logout"
+                        HorizontalOptions="Center"
+                        Command="{Binding SQLiteTestCommand}"
+                        CommandParameter="Logout" />
+                <Button Text="Test Refresh All"
+                        HorizontalOptions="Center"
+                        Command="{Binding SQLiteTestCommand}"
+                        CommandParameter="RefreshAll" />
+                <Button Text="Test Exercises"
+                        HorizontalOptions="Center"
+                        Command="{Binding SQLiteTestCommand}"
+                        CommandParameter="Exercises" />
+                <Button Text="Test Routines"
+                        HorizontalOptions="Center"
+                        Command="{Binding SQLiteTestCommand}"
+                        CommandParameter="Routines" />
+                <Button Text="Test Measure Types"
+                        HorizontalOptions="Center"
+                        Command="{Binding SQLiteTestCommand}"
+                        CommandParameter="MeasureTypes" />
+                <Button Text="Test Exercise Types"
+                        HorizontalOptions="Center"
+                        Command="{Binding SQLiteTestCommand}"
+                        CommandParameter="ExerciseTypes" />
+                <Button Text="Test Routine Exercises"
+                        HorizontalOptions="Center"
+                        Command="{Binding SQLiteTestCommand}"
+                        CommandParameter="RoutineExercises" />
+                <Button Text="Test Body Areas"
+                        HorizontalOptions="Center"
+                        Command="{Binding SQLiteTestCommand}"
+                        CommandParameter="BodyAreaTypes" />
+                <Button Text="Test Equipment Types"
+                        HorizontalOptions="Center"
+                        Command="{Binding SQLiteTestCommand}"
+                        CommandParameter="EquipmentTypes" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

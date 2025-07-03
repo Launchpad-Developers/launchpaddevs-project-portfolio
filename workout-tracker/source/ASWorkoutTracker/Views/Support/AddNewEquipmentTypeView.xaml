@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<b:ASContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                       xmlns:add="clr-namespace:ASWorkoutTracker.Views.Support"
+                       xmlns:b="clr-namespace:AS.Forms.Controls.BaseControls;assembly=AS.Forms.Controls"
+                       prism:ViewModelLocator.AutowireViewModel="True" 
+                       BackgroundColor="{StaticResource AppBackgroundColor}"
+                       BackCommand="{Binding BackCommand}"
+                       x:Class="ASWorkoutTracker.Views.Support.AddNewEquipmentTypeView"
+                       x:Name="parentPage"
+                       Title="{Binding Title}">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="save" Icon="{StaticResource SaveIcon}" Command="{Binding Save}" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <add:AddNewTypeContent BindingContext="{Binding BindingContext, Source={x:Reference parentPage}}" />
+    </ContentPage.Content>
+</b:ASContentPage>

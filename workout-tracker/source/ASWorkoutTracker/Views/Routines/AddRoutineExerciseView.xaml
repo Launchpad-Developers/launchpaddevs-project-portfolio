@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:c="clr-namespace:AS.Forms.Controls.BaseControls;assembly=AS.Forms.Controls"
+             xmlns:cc="clr-namespace:AS.Forms.Controls.CompoundControls;assembly=AS.Forms.Controls"
+             xmlns:local="clr-namespace:ASWorkoutTracker.Controls"
+             xmlns:vm="clr-namespace:ASWorkoutTracker.ViewModels.Routines"
+             x:Class="ASWorkoutTracker.Views.Routines.AddRoutineExerciseView" 
+             prism:ViewModelLocator.AutowireViewModel="True" 
+             NavigationPage.BackButtonTitle=""
+             BackgroundColor="{StaticResource AppBackgroundColor}"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <DataTemplate x:Key="ExerciseTemplate">
+            <local:AddRoutineExerciseListViewCell BorderColor="{StaticResource Primary}"
+                                                  OpenCommand="{Binding Source={RelativeSource AncestorType={x:Type vm:AddRoutineExerciseViewModel}}, Path=Select}"
+                                                  FavoriteCommand="{Binding Source={RelativeSource AncestorType={x:Type vm:AddRoutineExerciseViewModel}}, Path=ModelUpdated}"
+                                                  ShowHideDetailsCommand="{Binding Source={RelativeSource AncestorType={x:Type vm:AddRoutineExerciseViewModel}}, Path=ShowHideDetails}"
+                                                  CommandParameter="{Binding .}"
+                                                  IsShowingDetails="{Binding IsShowingDetails}"/>
+        </DataTemplate>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Filter" Icon="{StaticResource FilterIcon}" Clicked="Filter_Clicked" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>        
+        <AbsoluteLayout>
+
+            <RelativeLayout>                
+                <Image Style="{StaticResource ListBackgroundImageStyle}"
+                       Source="dumbbells_round" />
+            </RelativeLayout>
+            
+            <BoxView Style="{StaticResource BottomBannerBackdropStyle}" />
+
+            <Grid AbsoluteLayout.LayoutFlags="All"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <ScrollView x:Name="DetailsContainer"
+                            Grid.Row="0"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="250"
+                            Margin="0,-250,0,0"
+                            Opacity="0.75"
+                            BackgroundColor="White">
+                    <ScrollView.Content>
+                        <WebView x:Name="DetailsContent"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Margin="10,0" />
+                    </ScrollView.Content>
+                </ScrollView>
+
+                <ListView x:Name="RecordList"
+                          Grid.Row="1"
+                          ItemsSource="{Binding ListCollection}"
+                          SelectionMode="None"
+                          BackgroundColor="Transparent"
+                          SeparatorColor="Transparent"
+                          SeparatorVisibility="None"
+                          VerticalOptions="Fill"
+                          RowHeight="-1"
+                          HasUnevenRows="True"
+                          CachingStrategy="RetainElement"
+                          ItemTemplate="{StaticResource ExerciseTemplate}">
+                    <ListView.Margin>
+                        <OnPlatform x:TypeArguments="Thickness" iOS="0,-6,0,-11" Android="0,-6,0,-50" />
+                    </ListView.Margin>
+                </ListView>
+
+                <c:AdMobView Grid.Row="2" Margin="0,0,0,20" />
+            </Grid>
+
+            <c:ASTintedImage Source="{StaticResource NoRecordsIcon}"
+                             Style="{StaticResource EmptyIconStyle}"
+                             IsVisible="{Binding NoRecords}" />
+
+            <Label Text="No Exercises Found" 
+                   Style="{StaticResource EmptyLabelStyle}" 
+                   IsVisible="{Binding NoRecords}" />
+            
+            <cc:ASScreenOverlay IsVisible="{Binding IsLoading}" />
+            <cc:ASActivityIndicator Text="{Binding ActivityText}" 
+                                    IsVisible="{Binding IsLoading}"
+                                    IsEnabled="{Binding IsLoading}"/>
+            
+            <syncfusion:SfPicker x:Name="FilterPicker"
+                                 ItemsSource="{Binding Filters}"
+                                 SelectedItem="{Binding SelectedFilter}" 
+                                 SelectedIndex="{Binding SelectedFilterIndex}"
+                                 Style="{StaticResource FilterPickerStyle}"
+                                 OkButtonClicked="FilterPicker_OkButtonClicked" />
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

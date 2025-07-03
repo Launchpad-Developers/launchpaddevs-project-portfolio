@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:c="clr-namespace:AS.Forms.Controls.FauxViewCells;assembly=AS.Forms.Controls"
+             xmlns:cc="clr-namespace:AS.Forms.Controls.CompoundControls;assembly=AS.Forms.Controls"
+             BackgroundColor="{StaticResource GrayLightest}"
+             x:Class="ASWorkoutTracker.Views.Support.AddNewTypeContent">
+    
+    <ContentView.Content>
+        <AbsoluteLayout>
+            
+            <ScrollView x:Name="Scroll"
+                        AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+                                    
+                    <StackLayout x:Name="AppInfo" Orientation="Vertical" Margin="0" Spacing="0">
+                        
+                        <Grid ColumnSpacing="0" RowSpacing="0" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Details"
+                                    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                    Margin="10,0,0,0" Grid.Column="0" FontSize="22" TextColor="{StaticResource GrayDarkest}"/>
+                        </Grid>
+                        <BoxView HeightRequest="1" BackgroundColor="{StaticResource RedAccent}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="10,-6,0,0" />
+
+                        <c:ASEntryCell x:Name="TypeName"
+                                       HideDivider="True"
+                                       Title="Name"
+                                       Detail="{Binding Name.Value, Mode=TwoWay}"
+                                       Error="{Binding Name.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                       ValidateCommand="{Binding ValidateName}"
+                                       IsRequired="true" />
+                    </StackLayout>                    
+                
+            </ScrollView>
+            
+            <cc:ASScreenOverlay IsVisible="{Binding IsLoading}" />
+            <cc:ASActivityIndicator Text="{Binding ActivityText}" 
+                                    IsVisible="{Binding IsLoading}"
+                                    IsEnabled="{Binding IsLoading}"/>
+
+        </AbsoluteLayout>
+    </ContentView.Content>
+
+</ContentView>

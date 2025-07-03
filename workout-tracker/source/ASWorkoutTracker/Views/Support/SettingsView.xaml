@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:c="clr-namespace:AS.Forms.Controls.FauxViewCells;assembly=AS.Forms.Controls"
+             xmlns:cc="clr-namespace:AS.Forms.Controls.CompoundControls;assembly=AS.Forms.Controls"
+             prism:ViewModelLocator.AutowireViewModel="True" 
+             NavigationPage.BackButtonTitle=""
+             BackgroundColor="{StaticResource GrayLightest}"
+             x:Class="ASWorkoutTracker.Views.Support.SettingsView"
+             Title="{Binding Title}">
+    
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            
+            <ScrollView x:Name="Scroll"
+                        AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+                    
+                    <StackLayout x:Name="AppInfo" Orientation="Vertical" Margin="0" Spacing="0">
+                        
+                        <Grid ColumnSpacing="0" RowSpacing="0" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="App Data"
+                                    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                    Margin="10,0,0,0" Grid.Column="0" FontSize="22" TextColor="{StaticResource GrayDarkest}"/>
+                        </Grid>
+                        <BoxView HeightRequest="1" BackgroundColor="{StaticResource RedAccent}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="10,-6,0,0" />
+
+                        <c:ASSettingInfoCell x:Name="Version"
+                                             SettingInfo="{Binding Path=StringProperties[AppVersion]}"
+                                             SettingTitle="App Version"
+                                             HideDivider="True"
+                                             IsReadOnly="true" />
+                        <!--<c:ASSettingInfoCell x:Name="Username"
+                                             SettingInfo="{Binding Path=StringProperties[Username]}"
+                                             SettingTitle="Username"
+                                             IsVisible="{Binding ShowUserName}"
+                                             IsReadOnly="true" />-->
+                        <c:ASSettingInfoCell x:Name="Database"
+                                             SettingInfo="{Binding Path=StringProperties[DatabaseVersion]}"
+                                             SettingTitle="Database Version"
+                                             IsReadOnly="true" />
+                        <c:ASRadioButtonCell x:Name="SystemOfMeasurement"
+                                             Title="System of Measurement"
+                                             IconSource="{StaticResource MeasurementIcon}"
+                                             IconTintColor="{StaticResource PrimaryLight}"
+                                             SubText="For weight and distance"
+                                             Options="{Binding SystemOfMeasurementOptions}"
+                                             Command="{Binding MeasurementOptionChanged}" />
+
+                        
+                        <Grid ColumnSpacing="0" RowSpacing="0" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Feedback"
+                                    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                    Margin="10,0,0,0" Grid.Column="0" FontSize="22" TextColor="{StaticResource GrayDarkest}"/>
+                        </Grid>
+                        <BoxView HeightRequest="1" BackgroundColor="{StaticResource RedAccent}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="10,-6,0,0" />
+                        <c:ASLabelWithInstructionCell x:Name="Facebook"
+                                                      Title="Facebook"
+                                                      HideDivider="True"                                                      
+                                                      ChevronImage="{StaticResource FacebookIcon}"
+                                                      Command="{Binding OpenUrl}"
+                                                      SubText="{Binding Path=StringProperties[FacebookSubtext]}"
+                                                      CommandParameter="{Binding Path=StringProperties[FacebookLink]}"/>
+                        <c:ASLabelWithInstructionCell x:Name="Feedback"
+                                                      Title="Feedback and Suggestions"
+                                                      SubText="{Binding Path=StringProperties[FeedbackSubtext]}"
+                                                      ChevronImage="{StaticResource FeedbackIcon}"
+                                                      Command="{Binding Feedback}"/>
+                        <c:ASLabelWithInstructionCell x:Name="Rating"
+                                                      Title="Rate This App"
+                                                      SubText="{Binding Path=StringProperties[RateSubtext]}"
+                                                      ChevronImage="{StaticResource RatingIcon}"
+                                                      IsVisible="{Binding ShowRating}"
+                                                      Command="{Binding Rate}"/>
+
+                        
+                        <Grid ColumnSpacing="0" RowSpacing="0" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Data"
+                                    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                    Margin="10,0,0,0" Grid.Column="0" FontSize="22" TextColor="{StaticResource GrayDarkest}"/>
+                        </Grid>
+                        <BoxView HeightRequest="1" BackgroundColor="{StaticResource RedAccent}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="10,-6,0,0" />
+
+                        <c:ASLabelWithInstructionCell x:Name="Refresh"
+                                                      Title="Refresh System Data"
+                                                      SubText="{Binding Path=StringProperties[RefreshSubtext]}"
+                                                      ChevronImage="{StaticResource RefreshIcon}"
+                                                      HideDivider="True"
+                                                      Command="{Binding RefreshDatabase}"/>
+                        <c:ASLabelWithInstructionCell x:Name="Reset"
+                                                      Title="Reset Database"
+                                                      SubText="{Binding Path=StringProperties[ResetSubtext]}"
+                                                      SubTextColor="{StaticResource Important}"
+                                                      ChevronImage="{StaticResource ResetIcon}"
+                                                      Command="{Binding RestoreDatabase}"/>
+                        
+                        <Grid ColumnSpacing="0" RowSpacing="0" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Types"
+                                    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                    Margin="10,0,0,0" Grid.Column="0" FontSize="22" TextColor="{StaticResource GrayDarkest}"/>
+                        </Grid>
+                        <BoxView HeightRequest="1" BackgroundColor="{StaticResource RedAccent}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="10,-6,0,0" />
+
+                        <c:ASLabelWithInstructionCell x:Name="Equipment"
+                                                      Title="New Equipment"
+                                                      HideDivider="True"
+                                                      SubText="{Binding Path=StringProperties[EquipmentRecords]}"
+                                                      SubTextColor="{StaticResource Important}"
+                                                      ChevronImage="{StaticResource AddIcon}"
+                                                      Command="{Binding AddNewType}"
+                                                      LocalizedPickerTitleKey="EquipmentType" />
+
+                        <c:ASLabelWithInstructionCell x:Name="BodyArea"
+                                                      Title="New Body Area"
+                                                      SubText="{Binding Path=StringProperties[BodyAreaRecords]}"
+                                                      SubTextColor="{StaticResource Important}"
+                                                      ChevronImage="{StaticResource AddIcon}"
+                                                      Command="{Binding AddNewType}"
+                                                      LocalizedPickerTitleKey="BodyAreaType" />
+
+                        <c:ASLabelWithInstructionCell x:Name="Exercise"
+                                                      Title="New Exercise Type"
+                                                      SubText="{Binding Path=StringProperties[ExerciseRecords]}"
+                                                      SubTextColor="{StaticResource Important}"
+                                                      ChevronImage="{StaticResource AddIcon}"
+                                                      Command="{Binding AddNewType}"
+                                                      IsVisible="{Binding ShowNewExercise}"
+                                                      LocalizedPickerTitleKey="ExerciseType" />
+
+                        <c:ASLabelWithInstructionCell x:Name="Levels"
+                                                      Title="New Level"
+                                                      SubText="{Binding Path=StringProperties[LevelRecords]}"
+                                                      SubTextColor="{StaticResource Important}"
+                                                      ChevronImage="{StaticResource AddIcon}"
+                                                      Command="{Binding AddNewType}"
+                                                      IsVisible="{Binding ShowNewLevel}"
+                                                      LocalizedPickerTitleKey="Level" />
+
+                    </StackLayout>                    
+
+            </ScrollView>
+            
+            <cc:ASScreenOverlay IsVisible="{Binding IsLoading}" />
+            <cc:ASActivityIndicator Text="{Binding ActivityText}" 
+                                    IsVisible="{Binding IsLoading}"
+                                    IsEnabled="{Binding IsLoading}"/>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

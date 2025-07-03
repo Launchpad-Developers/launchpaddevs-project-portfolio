@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:c="clr-namespace:AS.Forms.Controls.BaseControls;assembly=AS.Forms.Controls"
+             xmlns:cc="clr-namespace:AS.Forms.Controls.CompoundControls;assembly=AS.Forms.Controls"
+             xmlns:local="clr-namespace:ASWorkoutTracker.Controls"
+             xmlns:vm="clr-namespace:ASWorkoutTracker.ViewModels.Routines"
+             x:Class="ASWorkoutTracker.Views.Routines.RoutineExercisesView" 
+             prism:ViewModelLocator.AutowireViewModel="True" 
+             NavigationPage.BackButtonTitle=""
+             BackgroundColor="{StaticResource AppBackgroundColor}"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <DataTemplate x:Key="ExerciseTemplate">
+            <local:RoutineExerciseListViewCell BorderColor="{StaticResource Primary}"
+                                               OpenCommand="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineExercisesViewModel}}, Path=Open}"
+                                               RemoveCommand="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineExercisesViewModel}}, Path=Remove}"
+                                               MoveUpCommand="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineExercisesViewModel}}, Path=Move}"
+                                               MoveDownCommand="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineExercisesViewModel}}, Path=Move}"
+                                               CommandParameter="{Binding .}" />
+        </DataTemplate>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Start" Icon="{StaticResource StartRoutineIcon}" Command="{Binding StartRoutine}" />
+        <ToolbarItem Name="Add" Icon="{StaticResource AddIcon}" Command="{Binding AddEdit}" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>        
+        <AbsoluteLayout>
+
+            <RelativeLayout>                
+                <Image Style="{StaticResource ListBackgroundImageStyle}"
+                       Source="gym" />
+            </RelativeLayout>
+            
+            <BoxView Style="{StaticResource BottomBannerBackdropStyle}" />
+
+            <Grid AbsoluteLayout.LayoutFlags="All"
+                  AbsoluteLayout.LayoutBounds="0,0,1,1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <ListView x:Name="RecordList"
+                          Grid.Row="0"
+                          ItemsSource="{Binding ListCollection}"
+                          SelectionMode="None"
+                          BackgroundColor="Transparent"
+                          SeparatorColor="Transparent"
+                          SeparatorVisibility="None"
+                          VerticalOptions="Fill"
+                          RowHeight="-1"
+                          HasUnevenRows="True"
+                          CachingStrategy="RetainElement"
+                          ItemTemplate="{StaticResource ExerciseTemplate}">
+                    <ListView.Margin>
+                        <OnPlatform x:TypeArguments="Thickness" iOS="0,-6,0,-11" Android="0,-6,0,-50" />
+                    </ListView.Margin>
+                </ListView>
+
+                <c:AdMobView Grid.Row="1" Margin="0,0,0,20" />
+            </Grid>
+
+            <c:ASTintedImage Source="{StaticResource NoRecordsIcon}"
+                             Style="{StaticResource EmptyIconStyle}"
+                             IsVisible="{Binding NoRecords}" />
+
+            <Label Text="No Exercises Found" 
+                   Style="{StaticResource EmptyLabelStyle}" 
+                   IsVisible="{Binding NoRecords}" />            
+            
+            <cc:ASScreenOverlay IsVisible="{Binding IsLoading}" />
+            <cc:ASActivityIndicator Text="{Binding ActivityText}" 
+                                    IsVisible="{Binding IsLoading}"
+                                    IsEnabled="{Binding IsLoading}"/>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

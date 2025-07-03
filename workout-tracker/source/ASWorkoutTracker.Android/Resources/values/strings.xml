@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <string name="ApplicationName">Workout Tracker</string>
+  <string name="channel_name">Local Notifications</string>
+  <string name="channel_description">New Notification</string>
+  <string name="banner_ad_unit_id">ca-app-pub-9921792637906818~9227025004</string>
+</resources>

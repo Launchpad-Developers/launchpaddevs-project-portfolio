@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             x:Class="ASWorkoutTracker.Controls.WeightRepsHistoryHeader">
+    <ContentView.Content>
+        <Grid HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                HeightRequest="100"
+                IsVisible="{Binding HasOneRepMaxData}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="25*" />
+                <ColumnDefinition Width="31*" />
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Label x:Name="OneRepMax"
+                    Text="{Binding OneRepMaxLabel}"
+                    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                    FontSize="20" TextColor="White" BackgroundColor="Transparent"
+                    FontAttributes="Bold"
+                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"/>
+
+            <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5"
+                    BackgroundColor="Transparent">
+                <gradient:SfGradientView>
+                    <gradient:SfGradientView.BackgroundBrush>           
+                        <gradient:SfLinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">                
+                            <gradient:SfLinearGradientBrush.GradientStops>
+                                <gradient:SfGradientStop Color="{StaticResource GreenAccent}" Offset="0.1" />
+                                <gradient:SfGradientStop Color="{StaticResource YellowAccent}" Offset="0.3" />
+                                <gradient:SfGradientStop Color="{StaticResource Important}" Offset="0.7" />
+                                <gradient:SfGradientStop Color="DarkRed" Offset="0.9" />
+                            </gradient:SfLinearGradientBrush.GradientStops>                
+                        </gradient:SfLinearGradientBrush>            
+                    </gradient:SfGradientView.BackgroundBrush>
+                </gradient:SfGradientView>
+            </Grid>
+
+            <Label Text="{Binding FiftyValueLabel}" Grid.Row="1" Grid.Column="1" FontSize="16" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" TextColor="White" Margin="5,0,0,0" />
+            <Label Text="{Binding SeventyValueLabel}" Grid.Row="1" Grid.Column="2" FontSize="16" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" TextColor="White" />
+            <Label Text="{Binding EightyValueLabel}" Grid.Row="1" Grid.Column="3" FontSize="16" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" TextColor="White" />
+            <Label Text="{Binding NinetyValueLabel}" Grid.Row="1" Grid.Column="4" FontSize="16" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" TextColor="White" />
+            <Label Text="{Binding NinetyFiveValueLabel}" Grid.Row="1" Grid.Column="5" FontSize="16" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" TextColor="White" />
+                    
+            <Label Grid.Row="2" Grid.Column="1" Text="50%" FontSize="12" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" TextColor="Black" Margin="5,-6,0,0" />
+            <Label Grid.Row="2" Grid.Column="2" Text="70%" FontSize="12" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" TextColor="Black" Margin="0,-6,0,0" />
+            <Label Grid.Row="2" Grid.Column="3" Text="80%" FontSize="12" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" TextColor="Black" Margin="0,-6,0,0" />
+            <Label Grid.Row="2" Grid.Column="4" Text="90%" FontSize="12" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" TextColor="Black" Margin="0,-6,0,0" />
+            <Label Grid.Row="2" Grid.Column="5" Text="95%" FontSize="12" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" TextColor="Black" Margin="0,-6,0,0" />
+
+            <BoxView HorizontalOptions="Start" WidthRequest="1" BackgroundColor="Black" Grid.Row="3" Grid.Column="3" Margin="0,-10,0,16" />
+            <BoxView HorizontalOptions="Start" WidthRequest="15" HeightRequest="1" VerticalOptions="Center" BackgroundColor="Black" Grid.Row="3" Grid.Column="3" Margin="0,-13,0,13" />
+            <BoxView HorizontalOptions="End" WidthRequest="1" BackgroundColor="Black" Grid.Row="3" Grid.Column="5" Margin="0,-10,0,16" />
+            <BoxView HorizontalOptions="End" WidthRequest="15" HeightRequest="1" VerticalOptions="Center" BackgroundColor="Black" Grid.Row="3" Grid.Column="5" Margin="0,-13,0,13" />
+            <Label Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3" Text="SPOTTER NEEDED" FontSize="16" TextColor="{StaticResource Important}" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="1,-15,1,0" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

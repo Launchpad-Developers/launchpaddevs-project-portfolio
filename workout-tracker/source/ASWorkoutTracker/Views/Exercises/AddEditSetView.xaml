@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<b:ASContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                 xmlns:b="clr-namespace:AS.Forms.Controls.BaseControls;assembly=AS.Forms.Controls"
+                 xmlns:cc="clr-namespace:AS.Forms.Controls.CompoundControls;assembly=AS.Forms.Controls"
+                 prism:ViewModelLocator.AutowireViewModel="True" 
+                 xmlns:enum="clr-namespace:ASWorkoutTracker.Enums"
+                 BackgroundColor="{StaticResource GrayLighter}"
+                 x:Class="ASWorkoutTracker.Views.Exercises.AddEditSetView"
+                 BackCommand="{Binding BackCommand}"
+                 Title="{Binding Title}"
+                 Icon="{StaticResource TabNewIcon}">
+    
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            
+            <StackLayout AbsoluteLayout.LayoutFlags="All"
+                         AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+                <StackLayout x:Name="TitleLabel" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Padding="0" Spacing="0">                    
+                        <Grid ColumnSpacing="0" RowSpacing="0" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="{Binding ExerciseName}"
+                                   HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                   HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                   Margin="10,0,0,0" Grid.Row="0" FontSize="22" TextColor="{StaticResource GrayDarkest}"/>
+                            <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="{StaticResource RedAccent}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="10,-6,0,0" />
+                        </Grid>
+                        
+                </StackLayout>
+
+                <StackLayout x:Name="RoutineControlPanel" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Margin="20,20,20,0" Padding="0" Spacing="0"
+                             IsVisible="{Binding RoutineExerciseType,
+                                                 Converter={StaticResource IntToVisibilityConverter},
+                                                 ConverterParameter={x:Static enum:RoutineExerciseType.Manual}}">
+                    
+                    <Grid IsVisible="{Binding CurrentRoutineExercise.RecordsWeight, FallbackValue=false}" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label Margin="0,0,0,-5" Text="WEIGHT:" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalTextAlignment="End" VerticalOptions="End" />
+                        <Label Margin="0,0,0,-5" Text="{Binding Weight.Errors, Converter={StaticResource FirstValidationErrorConverter}}" TextColor="{StaticResource Important}" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="End" VerticalOptions="End" />
+                        <BoxView Margin="0,-5,0,5" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource RedAccent}" />
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}" Text="-10" Grid.Row="2" Grid.Column="0" Command="{Binding AddWeight}" CommandParameter="-10"/>
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}" Text="-5"  Grid.Row="2" Grid.Column="1" Command="{Binding AddWeight}" CommandParameter="-5"/>
+                        <Entry  Text="{Binding Weight.Value, Mode=TwoWay}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,10,0,10" Grid.Row="2" Grid.Column="2" />
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}" Text="+5"  Grid.Row="2" Grid.Column="3" Command="{Binding AddWeight}" CommandParameter="5"/>
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}" Text="+10" Grid.Row="2" Grid.Column="4" Command="{Binding AddWeight}" CommandParameter="10"/>
+                    </Grid>                        
+                    
+                    <Grid IsVisible="{Binding CurrentRoutineExercise.RecordsReps, FallbackValue=false}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Margin="0,15,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label Margin="0,0,0,-5" Text="REPS:" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalTextAlignment="End" VerticalOptions="End" />
+                        <Label Margin="0,0,0,-5" Text="{Binding Reps.Errors, Converter={StaticResource FirstValidationErrorConverter}}" TextColor="{StaticResource Important}" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="End" VerticalOptions="End" />
+                        <BoxView Margin="0,-5,0,5" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource RedAccent}" />
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}"  Text="-5" Grid.Row="2" Grid.Column="0" Command="{Binding AddReps}" CommandParameter="-5"/>
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}"  Text="-1" Grid.Row="2" Grid.Column="1" Command="{Binding AddReps}" CommandParameter="-1"/>
+                        <Entry Text="{Binding Reps.Value, Mode=TwoWay}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,10,0,10" Grid.Row="2" Grid.Column="2" />
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}"  Text="+1" Grid.Row="2" Grid.Column="3" Command="{Binding AddReps}" CommandParameter="1"/>
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}"  Text="+5" Grid.Row="2" Grid.Column="4" Command="{Binding AddReps}" CommandParameter="5"/>
+                    </Grid>
+
+                    <Grid IsVisible="{Binding CurrentRoutineExercise.RecordsDistance, FallbackValue=false}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Margin="0,15,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Label Margin="0,0,0,-5" Text="{Binding DistanceUnits, StringFormat='DISTANCE ({0}):'}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalTextAlignment="End" VerticalOptions="End" />
+                        <Label Margin="0,0,0,-5" Text="{Binding Distance.Errors, Converter={StaticResource FirstValidationErrorConverter}}" TextColor="{StaticResource Important}" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="End" VerticalOptions="End" />
+                        <BoxView Margin="0,-5,0,5" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource RedAccent}" />
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}"  Text="-1" Grid.Row="2" Grid.Column="0" Command="{Binding AddDistance}" CommandParameter="-1"/>
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}"  Text="-.1" Grid.Row="2" Grid.Column="1" Command="{Binding AddDistance}" CommandParameter="-.1"/>
+                        <Entry Text="{Binding Distance.Value, Mode=TwoWay, StringFormat='{0:0.0}'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,10,0,10" Grid.Row="2" Grid.Column="2" />
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}"  Text="+.1" Grid.Row="2" Grid.Column="3" Command="{Binding AddDistance}" CommandParameter=".1"/>
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}"  Text="+1" Grid.Row="2" Grid.Column="4" Command="{Binding AddDistance}" CommandParameter="1"/>
+                    </Grid>
+
+                    <Grid IsVisible="{Binding CurrentRoutineExercise.RecordsSteps, FallbackValue=false}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Margin="0,15,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Label Margin="0,0,0,-5" Text="STEPS:" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalTextAlignment="End" VerticalOptions="End" />
+                        <Label Margin="0,0,0,-5" Text="{Binding Steps.Errors, Converter={StaticResource FirstValidationErrorConverter}}" TextColor="{StaticResource Important}" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="End" VerticalOptions="End" />
+                        <BoxView Margin="0,-5,0,5" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource RedAccent}" />
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}" Text="+1" Grid.Row="2" Grid.Column="0" Command="{Binding AddSteps}" CommandParameter="1"/>
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}" Text="+10" Grid.Row="2" Grid.Column="1" Command="{Binding AddSteps}" CommandParameter="10"/>
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}" Text="+100" Grid.Row="2" Grid.Column="2" Command="{Binding AddSteps}" CommandParameter="100"/>
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}" Text="+1k" Grid.Row="2" Grid.Column="3" Command="{Binding AddSteps}" CommandParameter="1000"/>
+                        <Entry Text="{Binding Steps.Value, Mode=TwoWay}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,10,0,10" Grid.Row="2" Grid.Column="4" />
+                    </Grid>
+
+                    <Grid IsVisible="{Binding CurrentRoutineExercise.RecordsCalories, FallbackValue=false}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Margin="0,15,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Label Margin="0,0,0,-5" Text="CALORIES:" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalTextAlignment="End" VerticalOptions="End" />
+                        <Label Margin="0,0,0,-5" Text="{Binding Calories.Errors, Converter={StaticResource FirstValidationErrorConverter}}" TextColor="{StaticResource Important}" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="End" VerticalOptions="End" />
+                        <BoxView Margin="0,-5,0,5" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource RedAccent}" />
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}" Text="+1" Grid.Row="2" Grid.Column="0" Command="{Binding AddCalories}" CommandParameter="1"/>
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}" Text="+5" Grid.Row="2" Grid.Column="1" Command="{Binding AddCalories}" CommandParameter="5"/>
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}" Text="+10" Grid.Row="2" Grid.Column="2" Command="{Binding AddCalories}" CommandParameter="10"/>
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}" Text="+50" Grid.Row="2" Grid.Column="3" Command="{Binding AddCalories}" CommandParameter="50"/>
+                        <Entry Text="{Binding Steps.Value, Mode=TwoWay}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,10,0,10" Grid.Row="2" Grid.Column="4" />
+                    </Grid>
+
+                    <Grid IsVisible="{Binding CurrentRoutineExercise.RecordsHeartRate, FallbackValue=false}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Margin="0,15,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Label Margin="0,0,0,-5" Text="HEART RATE:" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalTextAlignment="End" VerticalOptions="End" />
+                        <Label Margin="0,0,0,-5" Text="{Binding Calories.Errors, Converter={StaticResource FirstValidationErrorConverter}}" TextColor="{StaticResource Important}" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="End" VerticalOptions="End" />
+                        <BoxView Margin="0,-5,0,5" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource RedAccent}" />
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}" Text="+1" Grid.Row="2" Grid.Column="0" Command="{Binding AddHeartRate}" CommandParameter="1"/>
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}" Text="+5" Grid.Row="2" Grid.Column="1" Command="{Binding AddHeartRate}" CommandParameter="5"/>
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}" Text="+10" Grid.Row="2" Grid.Column="2" Command="{Binding AddHeartRate}" CommandParameter="10"/>
+                        <cc:ASClassicButton Style="{StaticResource AddSetValueButtonStyle}" Text="+50" Grid.Row="2" Grid.Column="3" Command="{Binding AddHeartRate}" CommandParameter="50"/>
+                        <Entry Text="{Binding Steps.Value, Mode=TwoWay}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,10,0,10" Grid.Row="2" Grid.Column="4" />
+                    </Grid>
+
+                    <Frame IsVisible="{Binding CurrentRoutineExercise.RecordsTime, FallbackValue=false}" BackgroundColor="Black" HasShadow="False" BorderColor="Black" CornerRadius="8" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Margin="-5,10,-5,10" Padding="5">
+                        <Grid BackgroundColor="Transparent">
+                            <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="1" />
+                                <RowDefinition Height="50" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="170" />
+                            </Grid.ColumnDefinitions>
+                        
+                            <Label Margin="0,0,0,-5" Text="STOPWATCH:" TextColor="White" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalTextAlignment="End" VerticalOptions="End" />
+                            <Label Margin="0,0,0,-5" Text="{Binding StopWatch.Errors, Converter={StaticResource FirstValidationErrorConverter}}" TextColor="{StaticResource Important}" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="End" VerticalOptions="End" />
+                            <BoxView Margin="0,-5,0,5" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White" />
+                            <cc:ASTintedImageButton Style="{StaticResource AddSetTimerButtonActiveStyle}" Image="{StaticResource StartIcon_Active}" IsVisible="{Binding TimerRunning, Converter={StaticResource NegatedConverter}}" Grid.Row="2" Grid.Column="0" Command="{Binding TimeCommand}" CommandParameter="{x:Static enum:TimerControlCommands.StartTimer}"/>
+                            <cc:ASTintedImageButton Style="{StaticResource AddSetTimerButtonActiveStyle}" Image="{StaticResource PauseIcon_Active}" IsVisible="{Binding TimerRunning}" Grid.Row="2" Grid.Column="0" Command="{Binding TimeCommand}" CommandParameter="{x:Static enum:TimerControlCommands.PauseTimer}"/>
+                            <cc:ASTintedImageButton Style="{StaticResource AddSetTimerButtonActiveStyle}" Image="{StaticResource StopIcon_Active}" Grid.Row="2" Grid.Column="1" Command="{Binding TimeCommand}" CommandParameter="{x:Static enum:TimerControlCommands.StopTimer}"/>
+                            <cc:ASTintedImageButton Style="{StaticResource AddSetTimerButtonActiveStyle}" Image="{StaticResource ResetIcon_NotActive}" Grid.Row="2" Grid.Column="2" Command="{Binding TimeCommand}" CommandParameter="{x:Static enum:TimerControlCommands.ResetTimer}"/>
+                            <Label Text="{Binding StopWatch.Value.Elapsed, Converter={StaticResource TimeSpanConverter}}" IsEnabled="False" Margin="0,-5,0,0" Grid.Row="2" Grid.Column="4" FontSize="30" FontFamily="{StaticResource LCDRegular}" TextColor="{StaticResource LCDColor}" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                        </Grid>
+                    </Frame>
+
+                    <StackLayout IsVisible="{Binding CurrentListCollection.Count, Converter={StaticResource CountToBoolConverter}}" Margin="0,50,0,0" Spacing="0" Padding="0">
+                        <BoxView HeightRequest="1" 
+                                 VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                 BackgroundColor="{StaticResource RedAccent}" />
+                        <Grid Padding="0" ColumnSpacing="0" RowSpacing="0"
+                              HorizontalOptions="FillAndExpand" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <BoxView HeightRequest="1" 
+                                     VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                     BackgroundColor="{StaticResource GrayLightest}" />
+                            <Label Text="SETS" FontSize="24"
+                                   HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" />
+                        </Grid>
+                        <BoxView HeightRequest="1" 
+                                 VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                 BackgroundColor="{StaticResource RedAccent}" />
+
+                        <ListView x:Name="ManualSetList"
+                                  ItemsSource="{Binding CurrentListCollection}"
+                                  SelectionMode="None"
+                                  BackgroundColor="Transparent"
+                                  SeparatorColor="Transparent"
+                                  HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="StartAndExpand"
+                                  SeparatorVisibility="None"
+                                  CachingStrategy="RetainElement">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Label Text="{Binding ResultDetail}" FontSize="{Binding ResultFontSize}" LineBreakMode="WordWrap" MaxLines="0" />                
+                                        <ViewCell.ContextActions>
+                                            <MenuItem x:Name="EditAction"
+                                                      Command="{Binding EditExerciseLog}"
+                                                      IconImageSource="{StaticResource EditIcon}"
+                                                      Text="Edit" />
+                                        </ViewCell.ContextActions>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>                        
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout x:Name="CountdownTimerPanel"
+                             VerticalOptions="Start" HorizontalOptions="FillAndExpand"
+                             Margin="20" Padding="0" Spacing="0"
+                             IsVisible="{Binding RoutineExerciseType,
+                                                 Converter={StaticResource IntToVisibilityConverter},
+                                                 ConverterParameter={x:Static enum:RoutineExerciseType.Timed}}">                    
+
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+                        <Frame CornerRadius="8" BackgroundColor="Black" Margin="0,0,0,15"
+                               HorizontalOptions="CenterAndExpand">
+                            <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="0" RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*" />
+                                    <ColumnDefinition Width="5*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label x:Name="WorkoutTimerLabel_Off" Text="Workout Time" Grid.Column="0" Grid.Row="0"
+                                        FontSize="20" TextColor="{StaticResource GrayDarker}"
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="Start" VerticalOptions="End"
+                                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                <Label x:Name="WorkoutTimerLabel_On" Text="Workout Time" Grid.Column="0" Grid.Row="0"
+                                        FontSize="20" TextColor="{StaticResource LCDColor}"
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="Start" VerticalOptions="End"
+                                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                        IsVisible="{Binding RoutineState,
+                                                            Converter={StaticResource IntToVisibilityConverter},
+                                                            ConverterParameter='1|2'}" />
+
+                                <Label x:Name="RecoveryTimerLabel_Off" Text="Recovery Time" Grid.Column="1" Grid.Row="0"
+                                        FontSize="20" TextColor="{StaticResource GrayDarker}"
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="End" VerticalOptions="End"
+                                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                <Label x:Name="RecoveryTimerLabel_On" Text="Recovery Time" Grid.Column="1" Grid.Row="0"
+                                        FontSize="20" TextColor="{StaticResource LCDColor}"
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="End" VerticalOptions="End"
+                                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                        IsVisible="{Binding RoutineState,
+                                                            Converter={StaticResource IntToVisibilityConverter},
+                                                            ConverterParameter='3|4'}" />
+
+                                <Label Text="88:88:88" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                        FontSize="55" FontFamily="{StaticResource LCDRegular}" TextColor="{StaticResource GrayDarkest}"
+                                        BackgroundColor="Transparent" Margin="-15,-20,-15,0"
+                                        HorizontalOptions="CenterAndExpand" VerticalOptions="Start"
+                                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                <Label Text="00:00:00" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                        FontSize="55" FontFamily="{StaticResource LCDRegular}" TextColor="{StaticResource GrayDarkest}"
+                                        BackgroundColor="Transparent" Margin="-15,-20,-15,0"
+                                        HorizontalOptions="CenterAndExpand" VerticalOptions="Start"
+                                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                <Label x:Name="RecoveryTimer" Text="{Binding CountdownTime}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                        FontSize="55" FontFamily="{StaticResource LCDRegular}" TextColor="{StaticResource LCDColor}"
+                                        BackgroundColor="Transparent" Margin="-15,-20,-15,0"
+                                        HorizontalOptions="CenterAndExpand" VerticalOptions="Start"
+                                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                            </Grid>
+                        </Frame>
+                            
+                        <cc:ASClassicButton Style="{StaticResource AddSetButtonStyle}"
+                                            x:Name="StartSet" Text="Start Set"
+                                            WidthRequest="200" MinimumHeightRequest="50"
+                                            Command="{Binding StartSetCommand}"
+                                            IsVisible="{Binding RoutineState,
+                                                                Converter={StaticResource IntToVisibilityConverter},
+                                                                ConverterParameter={x:Static enum:RoutineState.Timed_Start}}"/>
+                            
+                        <cc:ASClassicButton Style="{StaticResource AddSetButtonStyle}"
+                                            x:Name="EndSet" Text="End Set"
+                                            WidthRequest="200" MinimumHeightRequest="50"
+                                            Command="{Binding EndSetCommand}"
+                                            IsVisible="{Binding RoutineState,
+                                                                Converter={StaticResource IntToVisibilityConverter},
+                                                                ConverterParameter={x:Static enum:RoutineState.Timed_InProgress}}" />
+
+                        <cc:ASClassicButton Style="{StaticResource AddSetButtonStyle}"
+                                            x:Name="SkipBreak" Text="Skip Break"
+                                            WidthRequest="200" MinimumHeightRequest="50"
+                                            Command="{Binding SkipRecoveryCommand}"
+                                            IsVisible="{Binding RoutineState,
+                                                                Converter={StaticResource IntToVisibilityConverter},
+                                                                ConverterParameter={x:Static enum:RoutineState.Exercise_Recovery}}" />
+
+                        <cc:ASClassicButton Style="{StaticResource AddSetButtonStyle}"
+                                            x:Name="SkipRecovery" Text="Skip Recovery"
+                                            WidthRequest="200" MinimumHeightRequest="50"
+                                            Command="{Binding SkipRecoveryCommand}"
+                                            IsVisible="{Binding RoutineState,
+                                                                Converter={StaticResource IntToVisibilityConverter},
+                                                                ConverterParameter={x:Static enum:RoutineState.Set_Recovery}}" />
+                    </StackLayout>
+
+                    <StackLayout IsVisible="{Binding CurrentListCollection.Count, Converter={StaticResource CountToBoolConverter}}"
+                                 Spacing="0" Padding="0" Margin="0,20,0,0">
+                        <BoxView HeightRequest="1" 
+                                 VerticalOptions="Start" HorizontalOptions="FillAndExpand"
+                                 BackgroundColor="{StaticResource RedAccent}" />
+                        <Grid Padding="0" ColumnSpacing="0" RowSpacing="0"
+                              HorizontalOptions="FillAndExpand" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <BoxView HeightRequest="1" 
+                                     VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                     BackgroundColor="{StaticResource GrayLightest}" />
+                            <Label Text="SETS" FontSize="24"
+                                   HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" />
+                        </Grid>
+                        <BoxView HeightRequest="1" 
+                                 VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                 BackgroundColor="{StaticResource RedAccent}" />
+
+                        <ListView x:Name="TimedSetList"
+                                  ItemsSource="{Binding CurrentListCollection}"
+                                  SelectionMode="None"
+                                  BackgroundColor="Transparent"
+                                  SeparatorColor="Transparent"
+                                  HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="Fill"
+                                  SeparatorVisibility="None"
+                                  CachingStrategy="RetainElement">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Label Text="{Binding ResultDetail}" FontSize="{Binding ResultFontSize}" LineBreakMode="WordWrap" MaxLines="0" />                
+                                        <ViewCell.ContextActions>
+                                            <MenuItem x:Name="EditAction"
+                                                      Command="{Binding EditExerciseLog}"
+                                                      IconImageSource="{StaticResource EditIcon}"
+                                                      Text="Edit" />
+                                        </ViewCell.ContextActions>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>                        
+                    </StackLayout>
+                    
+                </StackLayout>
+
+            </StackLayout>
+
+            <Grid VerticalOptions="Start"
+                  MinimumHeightRequest="40" HorizontalOptions="FillAndExpand" 
+                  AbsoluteLayout.LayoutFlags="XProportional, YProportional, WidthProportional"
+                  AbsoluteLayout.LayoutBounds="0,1,1,80"
+                  IsVisible="{Binding RoutineType,
+                                      Converter={StaticResource IntToVisibilityConverter},
+                                      ConverterParameter={x:Static enum:RoutineType.SingleExercise}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <cc:ASTintedImageButton x:Name="AddSet" Image="{StaticResource AddSetIcon}"
+                                        Style="{StaticResource RoutineSetButtonStyle}"
+                                        Grid.Column="0" Grid.Row="0"
+                                        Command="{Binding AddSet}"
+                                        IsVisible="{Binding RoutineExerciseType,
+                                                            Converter={StaticResource IntToVisibilityConverter},
+                                                            ConverterParameter={x:Static enum:RoutineExerciseType.Manual}}" />
+                <Label Margin="0,0,0,-5" Text="Add Set" Grid.Row="1" Grid.Column="0"
+                       HorizontalTextAlignment="Center" HorizontalOptions="Center"
+                       VerticalTextAlignment="Start" VerticalOptions="Start" 
+                       IsVisible="{Binding RoutineExerciseType,
+                                           Converter={StaticResource IntToVisibilityConverter},
+                                           ConverterParameter={x:Static enum:RoutineExerciseType.Manual}}" />
+
+                <cc:ASTintedImageButton x:Name="ResetSet" Image="{StaticResource ResetSetIcon}"
+                                        Style="{StaticResource RoutineSetButtonStyle}"
+                                        Grid.Column="1" Grid.Row="0"
+                                        Command="{Binding Reset}"
+                                        IsVisible="{Binding RoutineExerciseType,
+                                                            Converter={StaticResource IntToVisibilityConverter},
+                                                            ConverterParameter={x:Static enum:RoutineExerciseType.Manual}}"/>     
+                <Label Margin="0,0,0,-5" Text="Reset" Grid.Row="1" Grid.Column="1"
+                       HorizontalTextAlignment="Center" HorizontalOptions="Center"
+                       VerticalTextAlignment="Start" VerticalOptions="Start"
+                       IsVisible="{Binding RoutineExerciseType,
+                                           Converter={StaticResource IntToVisibilityConverter},
+                                           ConverterParameter={x:Static enum:RoutineExerciseType.Manual}}" />                       
+            </Grid>
+
+            <Grid VerticalOptions="Start"
+                  HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource GrayLighter}"
+                  ColumnSpacing="20"
+                  AbsoluteLayout.LayoutFlags="XProportional, YProportional, WidthProportional"
+                  AbsoluteLayout.LayoutBounds="0,1,1,200"
+                  IsVisible="{Binding RoutineType,
+                                      Converter={StaticResource IntToVisibilityConverter},
+                                      ConverterParameter={x:Static enum:RoutineType.RoutineWorkout}}" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <cc:ASTintedImageButton x:Name="AddSet_Routine" Image="{StaticResource AddSetIcon}"
+                                        Style="{StaticResource RoutineSetButtonStyle}"
+                                        Grid.Column="0" Grid.Row="1"
+                                        Command="{Binding AddSet}"
+                                        IsVisible="{Binding RoutineExerciseType,
+                                                            Converter={StaticResource IntToVisibilityConverter},
+                                                            ConverterParameter={x:Static enum:RoutineExerciseType.Manual}}" />
+                <Label Text="Add Set" Grid.Row="2" Grid.Column="0"
+                       HorizontalTextAlignment="Center" HorizontalOptions="Center"
+                       VerticalTextAlignment="Start" VerticalOptions="Start"
+                       IsVisible="{Binding RoutineExerciseType,
+                                           Converter={StaticResource IntToVisibilityConverter},
+                                           ConverterParameter={x:Static enum:RoutineExerciseType.Manual}}" />
+
+                <cc:ASTintedImageButton x:Name="ResetSet_Routine" Image="{StaticResource ResetSetIcon}"
+                                        Style="{StaticResource RoutineSetButtonStyle}"
+                                        Grid.Column="1" Grid.Row="1"
+                                        Command="{Binding Reset}"
+                                        IsVisible="{Binding RoutineExerciseType,
+                                                            Converter={StaticResource IntToVisibilityConverter},
+                                                            ConverterParameter={x:Static enum:RoutineExerciseType.Manual}}" />     
+                <Label Text="Reset" Grid.Row="2" Grid.Column="1"
+                       HorizontalTextAlignment="Center" HorizontalOptions="Center"
+                       VerticalTextAlignment="Start" VerticalOptions="Start"
+                       IsVisible="{Binding RoutineExerciseType,
+                                           Converter={StaticResource IntToVisibilityConverter},
+                                           ConverterParameter={x:Static enum:RoutineExerciseType.Manual}}" />
+                        
+                <cc:ASTintedImageButton x:Name="NextExercise_Routine" Image="{StaticResource NextExerciseIcon}"
+                                        IsVisible="{Binding CurrentRoutineExercise.IsLast, Converter={StaticResource NegatedConverter}}"
+                                        Style="{StaticResource RoutineSetButtonStyle}"
+                                        Grid.Column="2" Grid.Row="1"
+                                        Command="{Binding NextExerciseCommand}"/>
+                <Label Text="Next Exercise" Grid.Row="2" Grid.Column="2"
+                       IsVisible="{Binding CurrentRoutineExercise.IsLast, Converter={StaticResource NegatedConverter}}"
+                       HorizontalTextAlignment="Center" HorizontalOptions="Center"
+                       VerticalTextAlignment="Start" VerticalOptions="Start" />
+
+                <cc:ASClassicButton x:Name="EndWorkout" Text="End Workout"
+                                    Style="{StaticResource EndWorkoutButtonStyle}"
+                                    Grid.Row="3" Grid.ColumnSpan="3"
+                                    Command="{Binding EndWorkoutCommand}" />
+            </Grid>
+
+            <cc:ASScreenOverlay IsVisible="{Binding IsLoading}" />
+            <cc:ASActivityIndicator Text="{Binding ActivityText}" 
+                                    IsVisible="{Binding IsLoading}"
+                                    IsEnabled="{Binding IsLoading}"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</b:ASContentPage>

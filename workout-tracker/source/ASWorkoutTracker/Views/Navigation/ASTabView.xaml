@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" 
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                 xmlns:local="clr-namespace:ASWorkoutTracker.Views.Exercises"
+                 x:Class="ASWorkoutTracker.Views.Navigation.ASTabbedView"
+                 prism:ViewModelLocator.AutowireViewModel="True"
+                 BackgroundColor="{StaticResource AppBackgroundColor}"
+                 BarBackgroundColor="Black"
+                 BarTextColor="white"
+                 SelectedTabColor="Gray"
+                 UnselectedTabColor="LightGray"
+                 Title="{Binding Title}">
+
+    <TabbedPage.Children>
+        <local:AddEditSetView x:Name="SetTab" />
+        <local:HistoryView x:Name="HistoryTab" />
+        <local:GraphView x:Name="GraphTab" />
+        <local:AddEditExerciseView x:Name="DetailsTab" />
+    </TabbedPage.Children>
+    
+</TabbedPage>

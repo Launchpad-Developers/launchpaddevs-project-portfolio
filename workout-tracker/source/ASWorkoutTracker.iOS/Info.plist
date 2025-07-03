@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FontAwesome5Pro-Light.otf</string>
+		<string>FontAwesome5Pro-Solid.otf</string>
+		<string>LCD14Italic.otf</string>
+		<string>LCD14.otf</string>
+		<string>FontAwesome5Brands-Regular.otf</string>
+	</array>
+	<key>MinimumOSVersion</key>
+	<string>8.0</string>
+	<key>CFBundleDisplayName</key>
+	<string>Workout Tracking</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.appsmithsllc.workouttracker</string>
+	<key>CFBundleName</key>
+	<string>Workout Tracker</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-9921792637906818~2278473273</string>
+	<key>GADIsAdManagerApp</key>
+	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+	</array>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Workout Tracking needs access to the camera to take photos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Workout Tracking needs access to photos.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Workout Tracking needs access to the photo gallery.</string>
+	<key>URL Schemes</key>
+	<array>
+		<string>com.appsmithsllc.workouttracker</string>
+	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb614686139136018</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>614686139136018</string>
+	<key>FacebookDisplayName</key>
+	<string>Workout Tracking</string>
+	<key>CFBundleVersion</key>
+	<string>7</string>
+</dict>
+</plist>

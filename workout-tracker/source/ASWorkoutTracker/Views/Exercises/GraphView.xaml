@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                       xmlns:b="clr-namespace:AS.Forms.Controls.BaseControls;assembly=AS.Forms.Controls"
+                       xmlns:cc="clr-namespace:AS.Forms.Controls.CompoundControls;assembly=AS.Forms.Controls"
+                       xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+                       prism:ViewModelLocator.AutowireViewModel="True" 
+                       BackgroundColor="{StaticResource AppBackgroundColor}"
+                       x:Class="ASWorkoutTracker.Views.Exercises.GraphView"
+                       Title="{Binding Title}"
+                       Icon="{StaticResource TabGraphIcon}">
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1"
+                  AbsoluteLayout.LayoutFlags="All">
+                <chart:SfChart IsVisible="{Binding ShowNotEnoughData, Converter={StaticResource NegatedConverter}}"
+                               Margin="0,0,15,0">
+
+                    <chart:SfChart.Title>
+                        <chart:ChartTitle Text="{Binding ChartData.ChartTitle}" FontSize="30" TextAlignment="Center" FontAttributes="Italic" Margin="20,0,0,0" FontFamily="KohinoorBangla-Regular"/>
+                    </chart:SfChart.Title>
+                    
+                    <chart:SfChart.Legend>
+                        <chart:ChartLegend DockPosition="Top" Orientation="Vertical" ItemMargin="10,0,0,10" Margin="0"/>
+                    </chart:SfChart.Legend>
+
+                    <!--X Axis (Bottom - Horizontal)-->
+                    <chart:SfChart.PrimaryAxis>
+                        <chart:DateTimeAxis IntervalType="Days" Interval="1" RangePadding="Round" LabelRotationAngle="-45">
+                            <chart:DateTimeAxis.Title>
+                                <chart:ChartAxisTitle Text="{Binding ChartData.XAxisLabel}"
+                                                      FontFamily="KohinoorBangla-Regular"
+                                                      FontSize="24" Margin="0,0,50,10" FontAttributes="Bold"/>
+                            </chart:DateTimeAxis.Title>
+                        </chart:DateTimeAxis>
+                    </chart:SfChart.PrimaryAxis>
+                    
+                    <!--Y Axis (Side - Vertical)-->
+                    <chart:SfChart.SecondaryAxis>  
+                        <chart:NumericalAxis Minimum="{Binding ChartData.YMinimum}"
+                                             Maximum="{Binding ChartData.YMaximum}"
+                                             Interval="{Binding ChartData.YInterval}">            
+                            <chart:NumericalAxis.Title>           
+                                <chart:ChartAxisTitle Text="{Binding ChartData.YAxisLabel}"
+                                                      FontFamily="KohinoorBangla-Regular"
+                                                      FontSize="24" FontAttributes="Bold"/>
+                            </chart:NumericalAxis.Title>       
+                        </chart:NumericalAxis>
+                    </chart:SfChart.SecondaryAxis>
+
+                    <chart:SfChart.Series>
+                        
+                        <chart:AreaSeries Label="{Binding ChartData.LineLabel}"
+                                          ItemsSource="{Binding ChartData.DataPoints}"
+                                          EnableTooltip="False"
+                                          XBindingPath="XBindingPath"
+                                          YBindingPath="YBindingPath">
+
+                            <chart:AreaSeries.Trendlines>
+                                <chart:ChartTrendlineCollection>
+                                    <chart:ChartTrendline IsVisible="{Binding ChartData.ShowTrendLine}"
+                                                          IsVisibleOnLegend="{Binding ChartData.ShowTrendLine}"                                                          
+                                                          StrokeWidth="1" StrokeColor="{StaticResource PrimaryDarkest}"
+                                                          Type="{Binding ChartData.TrendlineType}"
+                                                          Label="{Binding ChartData.TrendLineLabel}"
+                                                          ForwardForecast="{Binding ChartData.ForwardForecast}">
+
+                                    </chart:ChartTrendline>
+                                </chart:ChartTrendlineCollection>
+                            </chart:AreaSeries.Trendlines>
+
+                            <chart:AreaSeries.ColorModel> 
+                                <chart:ChartColorModel Palette="Custom"> 
+                                    <chart:ChartColorModel.CustomGradientColors> 
+                                        <chart:ChartGradientColor StartPoint="0.5,1" EndPoint="0.5,0"> 
+                                            <chart:ChartGradientColor.GradientStops> 
+                                                <chart:ChartGradientStop Color="Transparent" Offset= "0"/> 
+                                                <chart:ChartGradientStop Color="#FF0080DF" Offset= "0.5"/> 
+                                            </chart:ChartGradientColor.GradientStops> 
+                                        </chart:ChartGradientColor> 
+                                    </chart:ChartColorModel.CustomGradientColors> 
+                                </chart:ChartColorModel> 
+                            </chart:AreaSeries.ColorModel>
+
+                        </chart:AreaSeries>
+
+                    </chart:SfChart.Series>
+
+                </chart:SfChart>
+            </Grid>
+            
+            <cc:ASScreenOverlay IsVisible="{Binding IsLoading}" />
+            <cc:ASActivityIndicator Text="{Binding ActivityText}" 
+                                    IsVisible="{Binding IsLoading}"
+                                    IsEnabled="{Binding IsLoading}"/>            
+            <b:ASTintedImage Source="{StaticResource NoRecordsIcon}"
+                             Style="{StaticResource EmptyIconStyle}"
+                             IsVisible="{Binding ShowNotEnoughData}" />
+            <Label Text="Not Enough Data" 
+                   Style="{StaticResource EmptyLabelStyle}" 
+                   IsVisible="{Binding ShowNotEnoughData}" />
+            
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

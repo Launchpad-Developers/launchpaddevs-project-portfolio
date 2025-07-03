@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             xmlns:c="clr-namespace:AS.Forms.Controls.FauxViewCells;assembly=AS.Forms.Controls"
+             xmlns:cc="clr-namespace:AS.Forms.Controls.CompoundControls;assembly=AS.Forms.Controls"
+             xmlns:timepicker="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             BackgroundColor="{StaticResource AppBackgroundColor}"
+             x:Class="ASWorkoutTracker.Views.Routines.RoutineExerciseSetupView"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True" 
+             NavigationPage.BackButtonTitle=""
+             Title="{Binding Title}">
+            
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Save" Icon="{StaticResource SaveIcon}" Command="{Binding Save}" IsEnabled="{Binding IsReadOnly, Converter={StaticResource NegatedConverter}}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            
+            <timepicker:SfTimePicker x:Name="TimeToComplete"
+                                     Style="{StaticResource TimePickerStyle}"
+                                     Time="{Binding TimeToComplete}"
+                                     HeaderText="Minimum Time"
+                                     TimeSelected="TimeToComplete_TimeSelected"/>
+
+            <timepicker:SfTimePicker x:Name="BreakAfterSetTime"
+                                     Style="{StaticResource TimePickerStyle}"
+                                     Time="{Binding TimeBetweenSets}"
+                                     HeaderText="Rest Period"
+                                     TimeSelected="BreakAfterSetTime_TimeSelected"/>
+
+            <timepicker:SfTimePicker x:Name="BreakAfterWorkoutTime"
+                                     Style="{StaticResource TimePickerStyle}"
+                                     Time="{Binding TimeAfterExercise}"
+                                     HeaderText="Downtime"
+                                     TimeSelected="BreakAfterWorkoutTime_TimeSelected"/>
+                        
+            <picker:SfPicker x:Name="SetsPicker"
+                             ItemsSource="{Binding SetPickerOptions}"
+                             SelectedItem="{Binding SetsPickerSelectedItem}" 
+                             SelectedIndex="{Binding SetsPickerSelectedIndex}"
+                             DisplayMemberPath="Value"                             
+                             HeaderText="Sets"
+                             Style="{StaticResource FilterPickerStyle}"
+                             OkButtonClicked="SetsPicker_OkButtonClicked" />
+
+            <StackLayout Orientation="Vertical"
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        Spacing="0">
+
+                <Grid x:Name="HeaderContainer"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Start"
+                        HeightRequest="130">
+
+                    <gradient:SfGradientView>
+                        <gradient:SfGradientView.BackgroundBrush>           
+                            <gradient:SfLinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">                
+                                <gradient:SfLinearGradientBrush.GradientStops>
+                                    <gradient:SfGradientStop Color="{StaticResource PrimaryDarkest}" Offset="0.4" />
+                                    <gradient:SfGradientStop Color="{StaticResource GrayLightest}" Offset="1.0" />
+                                </gradient:SfLinearGradientBrush.GradientStops>                
+                            </gradient:SfLinearGradientBrush>            
+                        </gradient:SfGradientView.BackgroundBrush>
+                    </gradient:SfGradientView>                    
+                    
+                    <Label Text="{Binding Title}"
+                            HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                            FontSize="20" TextColor="White" Margin="10,30,0,0"/>
+                    <cc:ASTintedImageButton Style="{StaticResource AddSetTimerButtonActiveStyle}"
+                                            Margin="0,30,10,0"
+                                            Image="{StaticResource SaveIcon}"                                            
+                                            HorizontalOptions="End" VerticalOptions="CenterAndExpand"
+                                            BackgroundColor="Transparent" BorderColor="Transparent"
+                                            ImageTintColor="{StaticResource GrayLightest}"
+                                            IsEnabled="{Binding CanSave}"
+                                            Command="{Binding Save}"/>
+                </Grid>
+            
+                <ScrollView HorizontalOptions="FillAndExpand"
+                            Margin="0,0,0,0"
+                            Padding="0"
+                            BackgroundColor="{StaticResource GrayLightest}">
+                
+                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">  
+
+                        <StackLayout x:Name="AutoSettingsContainer" Orientation="Vertical"
+                                        HorizontalOptions="FillAndExpand" VerticalOptions="Start"
+                                        Margin="0" Spacing="0">
+
+                            <!--Timing-->
+                            <Grid ColumnSpacing="0" RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Path=StringProperties[TimingTitle]}"
+                                        HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                        HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                        Margin="10,0,0,0" Grid.Column="0" FontSize="22" TextColor="{StaticResource GrayDarkest}"/>
+                            </Grid>
+                            <BoxView HeightRequest="1" BackgroundColor="{StaticResource RedAccent}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="10,-6,0,0" />
+
+                            <!--Time-->
+                            <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand" Margin="0,0,20,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="75*" />
+                                    <ColumnDefinition Width="25*" />
+                                </Grid.ColumnDefinitions>
+                                
+
+                                <c:ASRadioButtonCell Title="{Binding Path=StringProperties[TimeTitle]}"
+                                                     SubText="{Binding Path=StringProperties[TimeSubText]}"
+                                                     Margin="15,0"
+                                                     IconSource="{StaticResource Routine_Time}"
+                                                     IconTintColor="{StaticResource PrimaryLight}"
+                                                     SelectedIndex="{Binding TimeSelectedIndex}"
+                                                     Options="{Binding TimeOptions}"
+                                                     Command="{Binding OptionChanged}"
+                                                     Grid.Column="0" />
+
+                                <cc:ASClassicButton x:Name="TimeToCompleteButton"
+                                                    Style="{StaticResource SetupRoutineTimeButtonStyle}"
+                                                    Text="{Binding TimeToComplete}"
+                                                    Tapped="TimeToCompleteButton_Tapped"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Margin="0" Grid.Column="1" />
+                            </Grid>
+
+                            <!--Break-->
+                            <StackLayout x:Name="BreakContainer" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0">
+                                
+                                <Grid ColumnSpacing="0" RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="{Binding Path=StringProperties[BreakTitle]}"
+                                            HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                            HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                            Margin="10,0,0,0" Grid.Column="0" FontSize="22" TextColor="{StaticResource GrayDarkest}"/>
+                                </Grid>
+                                <BoxView HeightRequest="1" BackgroundColor="{StaticResource RedAccent}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="10,-6,0,0" />
+                                                                
+                                <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand" Margin="0,0,20,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="75*" />
+                                        <ColumnDefinition Width="25*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <c:ASRadioButtonCell Title="{Binding Path=StringProperties[BreakCellTitle]}"
+                                                         SubText="{Binding Path=StringProperties[BreakSubText]}"
+                                                         HideDivider="True" Margin="15,0"
+                                                         IconSource="{StaticResource Routine_Break}"
+                                                         IconTintColor="{StaticResource PrimaryLight}"
+                                                         SelectedIndex="{Binding BreakSelectedIndex}"
+                                                         Options="{Binding BreakOptions}"
+                                                         Command="{Binding OptionChanged}"
+                                                         Grid.Column="0" />
+
+                                    <cc:ASClassicButton x:Name="BreakAfterExerciseButton"
+                                                        Style="{StaticResource SetupRoutineTimeButtonStyle}"
+                                                        Text="{Binding TimeAfterExercise}"
+                                                        Tapped="BreakAfterExerciseButton_Tapped"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        Margin="0" Grid.Column="1" />
+                                </Grid>
+
+                                <!--Break after exercise-->
+                                <Label Text="{Binding Path=StringProperties[BreakInstructions]}" 
+                                       LineBreakMode="WordWrap" MaxLines="0"
+                                       HorizontalOptions="EndAndExpand" VerticalOptions="Start"
+                                       HorizontalTextAlignment="End" VerticalTextAlignment="Center"                                       
+                                       Margin="0,0,20,0"
+                                       FontSize="12" TextColor="{StaticResource GrayDarker}"/>
+
+                            </StackLayout>
+
+                            <!--Sets-->
+                            <StackLayout x:Name="SetsContainer" Orientation="Vertical"
+                                            HorizontalOptions="FillAndExpand" VerticalOptions="Start"
+                                            Margin="0" Spacing="0">
+                                
+                                <Grid ColumnSpacing="0" RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="{Binding Path=StringProperties[SetsSectionTitle]}"
+                                            HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                            HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                            Margin="10,0,0,0" Grid.Column="0" FontSize="22" TextColor="{StaticResource GrayDarkest}"/>
+                                </Grid>
+                                <BoxView HeightRequest="1" BackgroundColor="{StaticResource RedAccent}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="10,-6,0,0" />
+                                
+                                <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand" Margin="0,0,20,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="5*" />
+                                        <RowDefinition Height="5*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="75*" />
+                                        <ColumnDefinition Width="25*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <c:ASRadioButtonCell Title="{Binding Path=StringProperties[SetsTitle]}"
+                                                         SubText="{Binding Path=StringProperties[SetsSubText]}"
+                                                         HideDivider="True" Margin="15,0"
+                                                         IconSource="{StaticResource Routine_Sets}"
+                                                         IconTintColor="{StaticResource PrimaryLight}"
+                                                         SelectedIndex="{Binding SetsSelectedIndex}"
+                                                         Options="{Binding SetsOptions}"
+                                                         Command="{Binding OptionChanged}"
+                                                         Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" />
+
+                                    <cc:ASClassicButton Style="{StaticResource SetupRoutineIntButtonStyle}"
+                                                        Text="{Binding NumberOfSets}"
+                                                        Tapped="SetsButton_Clicked"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        Margin="0,10,0,0" Grid.Column="1" Grid.Row="0" />
+
+                                    <cc:ASClassicButton x:Name="BreakAfterSetButton"
+                                                        IsVisible="{Binding ShowSetsBreak}"
+                                                        Style="{StaticResource SetupRoutineTimeButtonStyle}"
+                                                        Text="{Binding TimeBetweenSets}"
+                                                        HorizontalOptions="EndAndExpand" VerticalOptions="End"
+                                                        Tapped="BreakAfterSetButton_Tapped"
+                                                        Margin="0" Grid.Column="1" Grid.Row="1" />
+                                </Grid>
+
+                                <!--Break between Sets-->
+                                <Label Text="{Binding Path=StringProperties[TimeBetweenSetsInstructions]}" 
+                                       IsVisible="{Binding ShowSetsBreak}"
+                                       LineBreakMode="WordWrap" MaxLines="0"
+                                       HorizontalOptions="EndAndExpand" VerticalOptions="Start"
+                                       HorizontalTextAlignment="End" VerticalTextAlignment="Center"                                       
+                                       Margin="0,0,20,0"
+                                       FontSize="12" TextColor="{StaticResource GrayDarker}"/>
+
+                            </StackLayout>
+
+                            <c:ASEditorCell x:Name="SpecialInstructions"
+                                            Title="Special Instructions"
+                                            ValidateCommand="{Binding ValidateSpecialInstructions}"
+                                            Detail="{Binding SpecialInstructions.Value, Mode=TwoWay}"
+                                            SubTitle="Limit 250 characters"
+                                            HideDivider="true"
+                                            Error="{Binding SpecialInstructions.Errors, Converter={StaticResource FirstValidationErrorConverter}}" />
+                    
+                        </StackLayout>                  
+
+                        <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
+                        
+                            <!--Metrics-->
+                            <Grid ColumnSpacing="0" RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Path=StringProperties[MetricsTitle]}"
+                                        HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                        HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                        Margin="10,0,0,0" Grid.Column="0" FontSize="22" TextColor="{StaticResource GrayDarkest}"/>
+                            </Grid>
+                            <BoxView HeightRequest="1" BackgroundColor="{StaticResource RedAccent}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="10,-6,0,0" />
+
+                            <c:ASToggleWithInstructionsCell x:Name="RecordsWeight"
+                                                            Title="Track Resistance"
+                                                            IconSource="{StaticResource WeightIcon}"
+                                                            IconTintColor="{StaticResource PrimaryLight}"  
+                                                            HideDivider="true"                                                          
+                                                            SubText="This exercise includes resistance such as free weights, dumbbells, bands, machines, etc."
+                                                            SwitchValue="{Binding HasWeight, Mode=TwoWay}" />
+                        
+                            <c:ASToggleWithInstructionsCell x:Name="RecordsReps"
+                                                            Title="Track Reps"
+                                                            IconSource="{StaticResource RepsIcon}"
+                                                            IconTintColor="{StaticResource PrimaryLight}"
+                                                            SubText="This exercise includes repetative motions which can be discretely measured."
+                                                            SwitchValue="{Binding HasReps, Mode=TwoWay}" />
+                        
+                            <c:ASToggleWithInstructionsCell x:Name="RecordsTime"
+                                                            Title="Track Time"
+                                                            IconSource="{StaticResource TimeIcon}"
+                                                            IconTintColor="{StaticResource PrimaryLight}"
+                                                            SubText="This is an endurance exercise measured in time spent performing the required motions."
+                                                            SwitchValue="{Binding HasTime, Mode=TwoWay}" />
+                        
+                            <c:ASToggleWithInstructionsCell x:Name="RecordsDistance"
+                                                            Title="Track Distance"
+                                                            IconSource="{StaticResource DistanceIcon}"
+                                                            IconTintColor="{StaticResource PrimaryLight}"
+                                                            SubText="This exercise can be measured in terms of distance traveled."
+                                                            SwitchValue="{Binding HasDistance, Mode=TwoWay}" />
+                        
+                            <c:ASToggleWithInstructionsCell x:Name="RecordsElevation"
+                                                            Title="Track Elevation"
+                                                            IconSource="{StaticResource ElevationIcon}"
+                                                            IconTintColor="{StaticResource PrimaryLight}"
+                                                            SubText="This is an exercise measured in floors or distance climbed."
+                                                            SwitchValue="{Binding HasElevation, Mode=TwoWay}" />
+                        
+                            <c:ASToggleWithInstructionsCell x:Name="RecordsSteps"
+                                                            Title="Track Steps"
+                                                            IconSource="{StaticResource StepsIcon}"
+                                                            IconTintColor="{StaticResource PrimaryLight}"
+                                                            SubText="This exercise is focused on the number of steps taken."
+                                                            SwitchValue="{Binding HasSteps, Mode=TwoWay}" />
+                        
+                            <c:ASToggleWithInstructionsCell x:Name="RecordsHeartRate"
+                                                            Title="Track Heart Rate"
+                                                            IconSource="{StaticResource HeartRateIcon}"
+                                                            IconTintColor="{StaticResource PrimaryLight}"
+                                                            SubText="Track your heart rate while performing this exercise."
+                                                            SwitchValue="{Binding HasHeartRate, Mode=TwoWay}" />
+                        
+                            <c:ASToggleWithInstructionsCell x:Name="RecordsCalories"
+                                                            Title="Track Calories"
+                                                            IconSource="{StaticResource CaloriesIcon}"
+                                                            IconTintColor="{StaticResource PrimaryLight}"
+                                                            SubText="Record the number of calories burned while performing this exercise."
+                                                            SwitchValue="{Binding HasCalories, Mode=TwoWay}" />
+                        </StackLayout>
+
+                    </StackLayout>
+                
+                </ScrollView>
+
+            </StackLayout>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

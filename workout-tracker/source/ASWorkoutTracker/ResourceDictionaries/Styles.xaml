@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:ASWorkoutTracker.ResourceDictionaries"
+             xmlns:v="clr-namespace:AS.Forms.Controls.Views;assembly=AS.Forms.Controls"
+             xmlns:c="clr-namespace:AS.Forms.Controls.BaseControls;assembly=AS.Forms.Controls"
+             xmlns:cc="clr-namespace:AS.Forms.Controls.CompoundControls;assembly=AS.Forms.Controls"
+             xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:pickers="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:control="clr-namespace:ASWorkoutTracker.Controls.SFControls"
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             x:Class="ASWorkoutTracker.ResourceDictionaries.Styles">
+
+    <ResourceDictionary.MergedDictionaries>
+        <res:Colors />
+        <res:IconFonts />
+        <!-- Add more resource dictionaries here -->
+    </ResourceDictionary.MergedDictionaries>
+        
+    <Style TargetType="BoxView" x:Key="DialogViewMaskStyle">
+        <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+        <Setter Property="Opacity" Value="0.5" />
+    </Style>
+
+    <Style TargetType="v:ASNavigationView">
+        <Setter Property="BarBackgroundColor" Value="{DynamicResource PrimaryDarkest}" />
+        <Setter Property="BarTextColor" Value="{DynamicResource GrayLightest}" />
+    </Style>
+
+    <Style TargetType="StackLayout" x:Key="BottomButtonsLayoutStyle">
+        <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,1,1,.08" />
+        <Setter Property="AbsoluteLayout.LayoutFlags" Value="All" />
+        <Setter Property="BackgroundColor" Value="{StaticResource AppBackgroundColor}" />
+        <Setter Property="Orientation" Value="Horizontal" />
+    </Style>
+        
+    <Style TargetType="Label" x:Key="EmptyLabelStyle" >
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="FontAttributes" Value="None" />
+        <Setter Property="TextColor" Value="{StaticResource GrayDarkest}" />
+        <Setter Property="FontSize" Value="32" />
+        <Setter Property="AbsoluteLayout.LayoutFlags" Value="All" />
+        <Setter Property="AbsoluteLayout.LayoutBounds" Value="0.5,0.55,1,0.1" />
+    </Style>
+    <Style TargetType="Label" x:Key="DarkEmptyLabelStyle" BasedOn="{StaticResource EmptyLabelStyle}">        
+        <Setter Property="TextColor" Value="{StaticResource GrayDarkest}" />
+    </Style>
+    <Style TargetType="c:ASTintedImage" x:Key="EmptyIconStyle">
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="AbsoluteLayout.LayoutFlags" Value="All" />
+        <Setter Property="AbsoluteLayout.LayoutBounds" Value="0.5,0.35,1,0.15" />
+        <Setter Property="TintColor" Value="{StaticResource GrayDarkest}" />
+        <Setter Property="WidthRequest" Value="500" />
+        <Setter Property="HeightRequest" Value="500" />
+    </Style>
+
+    <Style TargetType="Button" x:Key="ActionLabelStyle">
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="Margin" Value="0,-5,0,0" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="FontSize">
+            <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="17" />
+                <On Platform="Android" Value="20" />
+            </OnPlatform>
+        </Setter>
+    </Style>
+            
+    <Style TargetType="cc:ASScreenOverlay">
+        <Setter Property="Opacity" Value="0.75" />
+        <Setter Property="BackgroundColor" Value="#222222" />
+    </Style>        
+    <Style TargetType="cc:ASActivityIndicator">
+        <Setter Property="Highlight" Value="Silver" />
+        <Setter Property="AbsoluteLayout.LayoutBounds" Value=".5,.4,.5,.5" />
+        <Setter Property="AbsoluteLayout.LayoutFlags" Value="All" />
+    </Style>
+    
+    <Style x:Key="InfoItemStyle" TargetType="cc:ASMenuItemView">
+        <Setter Property="HorizontalOptions" Value="Fill" />
+        <Setter Property="CellBackgroundColor" Value="Transparent" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="TextColor" Value="{StaticResource GrayLightest}" />
+        <Setter Property="DividerColor" Value="{StaticResource YellowAccent}" />
+        <Setter Property="FontSize">
+            <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="22" />
+                <On Platform="Android" Value="26" />
+            </OnPlatform>
+        </Setter>
+    </Style>
+    <Style x:Key="SettingsItemStyle" TargetType="cc:ASMenuItemView" BasedOn="{StaticResource InfoItemStyle}">        
+        <Setter Property="ImageTintColor" Value="{StaticResource OrangeAccent}" />
+    </Style>
+    <Style x:Key="ActionItemStyle" TargetType="cc:ASMenuItemView" BasedOn="{StaticResource InfoItemStyle}">
+        <Setter Property="ImageTintColor" Value="{StaticResource OrangeAccent}" />
+    </Style>
+    <Style x:Key="AppVersionItemStyle" TargetType="cc:ASMenuItemView" BasedOn="{StaticResource InfoItemStyle}"> 
+        <Setter Property="HideDivider" Value="true" />       
+        <Setter Property="FontSize">
+            <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="14" />
+                <On Platform="Android" Value="18" />
+            </OnPlatform>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ListBackgroundImageStyle" TargetType="{x:Type Image}">
+        <Setter Property="RelativeLayout.HeightConstraint" Value="{ConstraintExpression Type=RelativeToParent, Property=Height, Constant=10}" />
+        <Setter Property="RelativeLayout.WidthConstraint" Value="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=10}" />
+        <Setter Property="Opacity" Value=".45" />
+        <Setter Property="Aspect" Value="AspectFill" />
+    </Style>
+    
+    <Style x:Key="BottomBannerBackdropStyle" TargetType="{x:Type BoxView}">
+        <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,1,1,.08" />
+        <Setter Property="AbsoluteLayout.LayoutFlags" Value="All" />    
+        <Setter Property="BackgroundColor" Value="Black" />
+    </Style>
+
+    <Style x:Key="MenuBoxViewStyle" TargetType="{x:Type BoxView}">
+        <Setter Property="BackgroundColor" Value="{StaticResource YellowAccent}" />
+        <Setter Property="HeightRequest" Value="1" />
+        <Setter Property="HorizontalOptions" Value="Fill" />
+    </Style>
+    <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type ScrollView}">
+        <Setter Property="VerticalOptions" Value="StartAndExpand" />
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+    </Style>
+    <Style TargetType="StackLayout" x:Key="MenuBottomItemsStyle">
+        <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,1,1,.2" />
+        <Setter Property="AbsoluteLayout.LayoutFlags" Value="All" />    
+        <Setter Property="BackgroundColor" Value="Transparent" />
+    </Style>
+    <Style TargetType="cc:ASMenuItemView" >
+        <Setter Property="FontSize">
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="iOS" Value="20" />
+                    <On Platform="Android" Value="24" />
+                </OnPlatform>
+        </Setter>
+    </Style>
+    <Style x:Key="UsernameLabelStyle" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />      
+        <Setter Property="FontSize">
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="iOS" Value="30" />
+                    <On Platform="Android" Value="30" />
+                </OnPlatform>
+        </Setter>
+        <Setter Property="TextColor" Value="{StaticResource GrayLightest}" />
+    </Style>
+    <!--<Style x:Key="UsernameItemStyle" TargetType="cc:ASMenuItemView">
+        <Setter Property="HorizontalOptions" Value="Fill" />
+        <Setter Property="VerticalOptions" Value="Center" />      
+        <Setter Property="ImageTintColor" Value="{StaticResource OrangeAccent}" />
+        <Setter Property="FontSize">
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="iOS" Value="24" />
+                    <On Platform="Android" Value="30" />
+                </OnPlatform>
+        </Setter>
+        <Setter Property="Margin">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="0,5,0,0" />
+                    <On Platform="iOS" Value="0,20,0,0" />        
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+    
+    <Style TargetType="cc:ASCircleButton" x:Key="MenuItemCountBadgeStyle">
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="CircleColor" Value="{StaticResource Important}" />
+        <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="WidthRequest" Value="60" />
+        <Setter Property="HeightRequest" Value="60" />
+    </Style>
+        
+    <Style TargetType="cc:ASClassicButton" x:Key="ClassicActionButtonStyle">
+        <Setter Property="TextColor" Value="{StaticResource PrimaryLight}" />
+        <Setter Property="Margin" Value="0,20,0,0" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource FilterButtonBackgroundColor}" />
+        <Setter Property="BorderColor" Value="{StaticResource PrimaryLight}" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="VerticalOptions" Value="End" />
+        <Setter Property="FontSize">
+            <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="18" />
+                <On Platform="Android" Value="22" />
+            </OnPlatform>
+        </Setter>
+    </Style>
+        
+    <Style TargetType="cc:ASClassicButton" x:Key="AddSetValueButtonStyle">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryDarkest}" />
+        <Setter Property="BorderColor" Value="{StaticResource PrimaryDarkest}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="OuterRadius" Value="25" />
+        <Setter Property="InnerRadius" Value="25" />
+        <Setter Property="WidthRequest" Value="50" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="FontSize">
+            <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="20" />
+                <On Platform="Android" Value="22" />
+            </OnPlatform>
+        </Setter>
+    </Style>
+        
+    <Style TargetType="cc:ASTintedImageButton" x:Key="AddSetTimerButtonActiveStyle">
+        <Setter Property="ImageTintColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="Black" />
+        <Setter Property="BorderColor" Value="Black" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="OuterRadius" Value="0" />
+        <Setter Property="InnerRadius" Value="0" />
+        <Setter Property="WidthRequest" Value="50" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="ImageSize" Value="50" />
+    </Style>
+        
+    <Style TargetType="cc:ASTintedImageButton" x:Key="TakePhotoButtonStyle">
+        <Setter Property="ImageTintColor" Value="Black" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Gray}" />
+        <Setter Property="BorderColor" Value="{StaticResource Gray}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="End" />
+        <Setter Property="OuterRadius" Value="20" />
+        <Setter Property="InnerRadius" Value="10" />
+        <Setter Property="WidthRequest" Value="40" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="ImageSize" Value="20" />
+    </Style>
+        
+    <Style TargetType="cc:ASClassicButton" x:Key="AddSetButtonStyle">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryDarkest}" />
+        <Setter Property="BorderColor" Value="{StaticResource PrimaryDarkest}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HeightRequest" Value="60" />
+        <Setter Property="WidthRequest" Value="150" />
+        <Setter Property="FontSize">
+            <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="20" />
+                <On Platform="Android" Value="22" />
+            </OnPlatform>
+        </Setter>
+    </Style>
+        
+    <Style TargetType="cc:ASClassicButton" x:Key="EndWorkoutButtonStyle" BasedOn="{StaticResource AddSetButtonStyle}">
+        <Setter Property="TextColor" Value="{StaticResource GrayLightest}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource RedAccent}" />
+        <Setter Property="BorderColor" Value="{StaticResource RedAccent}" />
+        <Setter Property="MinimumHeightRequest" Value="40" />
+    </Style>
+        
+    <Style TargetType="cc:ASTintedImageButton" x:Key="RoutineSetButtonStyle">
+        <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryDarkest}" />
+        <Setter Property="BorderColor" Value="{StaticResource PrimaryDarkest}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HeightRequest" Value="60" />
+        <Setter Property="WidthRequest" Value="60" />
+        <Setter Property="ImageSize" Value="50" />
+        <Setter Property="ImageTintColor" Value="White" />
+    </Style>
+
+    <Style TargetType="cc:ASClassicButton" x:Key="DialogSaveButtonStyle" BasedOn="{StaticResource ClassicActionButtonStyle}">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryLight}" />
+    </Style>
+    <Style TargetType="cc:ASClassicButton" x:Key="DialogLoadButtonStyle" BasedOn="{StaticResource ClassicActionButtonStyle}"/>
+        
+    <Style TargetType="cc:ASClassicButton" x:Key="DialogDeleteButtonStyle" BasedOn="{StaticResource ClassicActionButtonStyle}">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Important}" />
+        <Setter Property="BorderColor" Value="{StaticResource Important}" />
+    </Style>
+        
+    <Style TargetType="cc:ASClassicButton" x:Key="DialogCancelButtonStyle" BasedOn="{StaticResource ClassicActionButtonStyle}">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="TextColor" Value="{StaticResource PrimaryLight}" />
+    </Style>
+
+    <Style TargetType="picker:SfPicker" x:Key="OptionPickerStyle">
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="AbsoluteLayout.LayoutFlags" Value="All" />
+        <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,0,1,1.1" />
+        <Setter Property="WidthRequest" Value="300" />
+        <Setter Property="HeightRequest" Value="350" />
+        <Setter Property="PickerWidth" Value="280" />
+        <Setter Property="PickerHeight" Value="250" />
+        <Setter Property="ShowFooter" Value="True" />
+        <Setter Property="PickerMode" Value="Dialog" />
+        <Setter Property="DisplayMemberPath" Value="Name" />        
+        <Setter Property="SelectedItemTextColor" Value="{StaticResource PrimaryDarkest}" />
+        <Setter Property="SelectionBackgroundColor" Value="{StaticResource RedAccent}" />
+        <Setter Property="ColumnHeaderBackgroundColor" Value="{StaticResource Primary}" />
+        <Setter Property="ColumnHeaderTextColor" Value="{StaticResource GrayLightest}" />
+        <Setter Property="UnSelectedItemTextColor" Value="{StaticResource GrayDarkest}" />
+        <Setter Property="CancelButtonBackgroundColor" Value="{StaticResource GrayLightest}" />
+        <Setter Property="CancelButtonTextColor" Value="{StaticResource Gray}" />
+        <Setter Property="OKButtonTextColor" Value="{StaticResource PrimaryDark}" />
+        <Setter Property="OKButtonBackgroundColor" Value="{StaticResource GrayLightest}" />
+        <Setter Property="HeaderBackgroundColor" Value="{StaticResource PrimaryDarkest}" />
+        <Setter Property="HeaderTextColor" Value="{StaticResource GrayLightest}" />
+        <Setter Property="BorderColor" Value="Black" />
+        <Setter Property="HeaderFontSize" Value="34" />
+        <Setter Property="SelectedItemFontSize" Value="24" />
+    </Style>
+        
+    <Style TargetType="picker:SfPicker" x:Key="FilterPickerStyle" BasedOn="{StaticResource OptionPickerStyle}">
+        <Setter Property="DisplayMemberPath" Value="FilterName" />   
+        <Setter Property="HeaderText" Value="Select Filter" />
+    </Style>
+
+    <Style TargetType="pickers:SfTimePicker" x:Key="TimePickerStyle">
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="AbsoluteLayout.LayoutFlags" Value="All" />
+        <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,0,1,1.1" />        
+        <Setter Property="PickerWidth" Value="280" />
+        <Setter Property="PickerMode" Value="Dialog" />
+        <Setter Property="IsOpen" Value="False" />
+        <Setter Property="ShowFooter" Value="True" />
+        <Setter Property="SelectedItemTextColor" Value="{StaticResource PrimaryDarkest}" />
+        <Setter Property="SelectionBackgroundColor" Value="{StaticResource RedAccent}" />
+        <Setter Property="ColumnHeaderBackgroundColor" Value="{StaticResource Primary}" />
+        <Setter Property="ColumnHeaderTextColor" Value="{StaticResource GrayLightest}" />
+        <Setter Property="CancelButtonBackgroundColor" Value="{StaticResource GrayLightest}" />
+        <Setter Property="CancelButtonTextColor" Value="{StaticResource Gray}" />
+        <Setter Property="OKButtonTextColor" Value="{StaticResource PrimaryDark}" />
+        <Setter Property="OKButtonBackgroundColor" Value="{StaticResource GrayLightest}" />
+        <Setter Property="HeaderBackgroundColor" Value="{StaticResource PrimaryDarkest}" />
+        <Setter Property="HeaderTextColor" Value="{StaticResource GrayLightest}" />
+        <Setter Property="BorderColor" Value="Black" />
+        <Setter Property="HeaderFontSize" Value="34" />
+        <Setter Property="SelectedItemFontSize" Value="24" />
+    </Style>
+        
+    <Style TargetType="cc:ASClassicButton" x:Key="SetupRoutineIntButtonStyle" BasedOn="{StaticResource AddSetValueButtonStyle}">
+        <Setter Property="Margin" Value="0,0,40,0" />
+        <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+        <Setter Property="VerticalOptions" Value="StartAndExpand" />
+        <Setter Property="HeightRequest" Value="30" />
+        <Setter Property="OuterRadius" Value="8" />
+        <Setter Property="InnerRadius" Value="8" />
+        <Setter Property="FontSize">
+            <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="14" />
+                <On Platform="Android" Value="16" />
+            </OnPlatform>
+        </Setter>
+    </Style>
+        
+    <Style TargetType="cc:ASClassicButton" x:Key="SetupRoutineTimeButtonStyle" BasedOn="{StaticResource SetupRoutineIntButtonStyle}">        
+        <Setter Property="WidthRequest" Value="80" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="DialogTitleStyle">        
+        <Setter Property="TextColor" Value="{StaticResource GrayLightest}" />
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="32" />
+        <Setter Property="Margin" Value="20,5" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="DialogMessageStyle">
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="HtmlMessageStyle">
+        <Setter Property="TextType" Value="Html" /> 
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="Margin" Value="10,5" />
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+    </Style>
+
+    <!--  Common style for content pages  -->
+    <Style x:Key="ContentPageStyle" TargetType="ContentPage">
+        <Setter Property="BackgroundImageSource">
+            <OnPlatform x:TypeArguments="ImageSource" Android="LoginBackground.png" />
+        </Setter>
+    </Style>
+
+    <!--  Common style for labels  -->
+    <Style x:Key="LabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="LineHeight" Value="1.25" />
+    </Style>
+
+    <!--  Common style for entries  -->
+    <Style x:Key="EntryStyle" TargetType="control:BorderlessEntry">
+        <Setter Property="PlaceholderColor" Value="{StaticResource EntryPlaceholderColor}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Margin" Value="15,0" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="ReturnType" Value="Done" />
+    </Style>
+
+    <!--  Common style for buttons  -->
+    <Style x:Key="SfButtonStyle" TargetType="buttons:SfButton">
+        <Setter Property="BackgroundGradient">
+            <Setter.Value>
+                <gradient:SfLinearGradientBrush StartPoint="0,0.75" EndPoint="1,0">
+                    <gradient:SfLinearGradientBrush.GradientStops>
+                        <gradient:SfGradientStop Offset="0" Color="{StaticResource Primary}" />
+                        <gradient:SfGradientStop Offset="1" Color="{StaticResource PrimaryLight}" />
+                    </gradient:SfLinearGradientBrush.GradientStops>
+                </gradient:SfLinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
+    <!--  Common style for flat buttons  -->
+    <Style x:Key="SfFlatButtonStyle" TargetType="buttons:SfButton">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,5,0,0" />
+    </Style>
+
+    <!--  Common style for gradient view  -->
+    <Style x:Key="SfGradientViewStyle" TargetType="graphics:SfGradientView">
+        <Setter Property="Opacity" Value="0.82" />
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="BackgroundBrush">
+            <Setter.Value>
+                <gradient:SfLinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <gradient:SfLinearGradientBrush.GradientStops>
+                        <gradient:SfGradientStop Offset="0.0" Color="{StaticResource Primary}" />
+                        <gradient:SfGradientStop Offset="1.0" Color="{StaticResource PrimaryDarkest}" />
+                    </gradient:SfLinearGradientBrush.GradientStops>
+                </gradient:SfLinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SfGradientViewStyle_Walkthrough" TargetType="gradient:SfGradientView">
+        <Setter Property="BackgroundBrush">
+            <Setter.Value>
+                <gradient:SfLinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <gradient:SfLinearGradientBrush.GradientStops>
+                        <gradient:SfGradientStop Color="#d54381" Offset="0.0" />
+                        <gradient:SfGradientStop Color="#7644ad" Offset="1.0" />
+                    </gradient:SfLinearGradientBrush.GradientStops>
+                </gradient:SfLinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="HeaderLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="LineHeight" Value="1.5"/>
+        <Setter Property="TextColor" Value="{DynamicResource Gray-900}"/>
+    </Style>
+
+    <Style x:Key="FormBorderStyle" TargetType="border:SfBorder">
+        <Setter Property="BorderColor" Value="{DynamicResource Gray-300}"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Padding" Value="12,8"/>
+        <Setter Property="Margin" Value="0,8"/>
+        <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}"/>
+    </Style>
+
+    <Style x:Key="BusinessFormBorderStyle" TargetType="border:SfBorder">
+        <Setter Property="BorderColor" Value="{DynamicResource Gray-300}"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}"/>
+    </Style>
+
+    <Style x:Key="DatePickerStyle" TargetType="DatePicker">
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="TextColor" Value="{DynamicResource Gray-700}"/>
+    </Style>
+
+    <!--  Common style for buttons  -->
+    <Style x:Key="SfGradientButtonStyle" TargetType="buttons:SfButton">
+        <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="CornerRadius" Value="24" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="WidthRequest" Value="150" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+      
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundGradient">
+                                <Setter.Value>
+                                    <gradient:SfLinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                                        <gradient:SfLinearGradientBrush.GradientStops>
+                                            <gradient:SfGradientStop Offset="0" Color="{DynamicResource PrimaryLight}" />
+                                            <gradient:SfGradientStop Offset="1" Color="{DynamicResource Primary}" />
+                                        </gradient:SfLinearGradientBrush.GradientStops>
+                                    </gradient:SfLinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundGradient">
+                                <Setter.Value>
+                                    <gradient:SfLinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                                        <gradient:SfLinearGradientBrush.GradientStops>
+                                            <gradient:SfGradientStop Offset="0" Color="{DynamicResource PrimaryLight}" />
+                                            <gradient:SfGradientStop Offset="1" Color="{DynamicResource Primary}" />
+                                        </gradient:SfLinearGradientBrush.GradientStops>
+                                    </gradient:SfLinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <!--  Common label style  -->
+    <Style x:Key="SFLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="{DynamicResource Montserrat-Regular}" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-700}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="LineHeight" Value="{OnPlatform Android=1.25,Default=-1}"/>
+        <Setter Property="Margin" Value="0,0,0,6"/>
+    </Style>
+    
+    <!--  Common style for borders  -->
+    <Style x:Key="SfBorderStyle" TargetType="border:SfBorder">
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="BorderColor" Value="{DynamicResource Gray-300}" />
+        <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="Padding" Value="8,0,0,0" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />        
+    </Style>
+
+    <!--  Common style for borders  -->
+    <Style x:Key="SfBorderStyle_Large" TargetType="border:SfBorder">
+        <Setter Property="BackgroundColor" Value="{StaticResource BorderBackgroundColor}" />
+        <Setter Property="BorderColor" Value="Transparent" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderWidth" Value="1" />
+    </Style>
+    
+    <Style x:Key="SFLabelStyle_Large" TargetType="Label">
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="LineHeight" Value="{OnPlatform Android=1.25,Default=-1}"/>
+        <Setter Property="TextColor" Value="{DynamicResource Gray-White}"/>
+    </Style>
+
+    <!--Common button style-->
+    <Style x:Key="SfButtonStyle_Walkthrough" TargetType="buttons:SfButton">
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+        <Setter Property="Margin" Value="0,10,0,24"/>
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="WidthRequest" Value="245"/>
+        <Setter Property="HeightRequest" Value="40"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource Gray-White}"/>
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}"/>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,1097 @@
+<?xml version="1.0" encoding="utf-8"?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
+             xmlns:res="clr-namespace:ASWorkoutTracker.ResourceDictionaries"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                                
+            xmlns:converters="clr-namespace:AS.Forms.Controls.Converters;assembly=AS.Forms.Controls"
+            xmlns:converter="clr-namespace:ASWorkoutTracker.Converters"
+
+             xmlns:v="clr-namespace:AS.Forms.Controls.Views;assembly=AS.Forms.Controls"
+             xmlns:c="clr-namespace:AS.Forms.Controls.BaseControls;assembly=AS.Forms.Controls"
+             xmlns:cc="clr-namespace:AS.Forms.Controls.CompoundControls;assembly=AS.Forms.Controls"
+             xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:pickers="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:control="clr-namespace:ASWorkoutTracker.Controls.SFControls"
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+                    xmlns:fonts="clr-namespace:AS.Forms.Controls.FontAwesome;assembly=AS.Forms.Controls" 
+             mc:Ignorable="d"
+             x:Class="ASWorkoutTracker.App">
+    <Application.Resources>
+
+        <!--<ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <res:Colors />
+                <res:Styles />
+                <res:IconFonts />
+                <res:Converters />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>-->
+
+
+
+        <converters:EnumToStringConverter x:Key="EnumToStringConverter" />
+        <converters:NegatedConverter x:Key="NegatedConverter" />
+        <converters:CountToBoolConverter x:Key="CountToBoolConverter" />
+        <converters:InverseCountToBoolConverter x:Key="InverseCountToBoolConverter" />
+        <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+        <converters:RelativeDateTimeConverter x:Key="RelativeDateTimeConverter" />
+        <converters:TimeSpanConverter x:Key="TimeSpanConverter" />
+        <converters:ContentToVisibilityConverter x:Key="ContentToVisibilityConverter" />
+        <converters:IntToVisibilityConverter x:Key="IntToVisibilityConverter" />
+        <converter:BooleanToColorConverter x:Key="BooleanToColorConverter" />
+        <converter:StringToBooleanConverter x:Key="StringToBooleanConverter" />
+        <converter:ErrorValidationColorConverter x:Key="ErrorValidationColorConverter" PageVariantParameter="0" />
+
+
+        <Color x:Key="Text">#000000</Color>    
+        <Color x:Key="MenuTextColor">#FFFFFF</Color> 
+        <Color x:Key="AndroidUnfocusedMenuTextColor">#66FFFFFF</Color> 
+        <Color x:Key="MenuItemIconTintColor">#000000</Color>
+        <Color x:Key="AppBackgroundColor">#FFFFFF</Color> 
+        <Color x:Key="MenuBackgroundColor">#003F69</Color>
+        <Color x:Key="FilterButtonBackgroundColor">#D9D9D9</Color>
+        <Color x:Key="EntryBackgroundColor">#F0F2F2</Color>
+        <Color x:Key="EditorBackgroundColor">#F0F2F2</Color>
+        <Color x:Key="LCDColor">#39FF14</Color>
+
+        <Color x:Key="Important">#EA1D2D</Color>
+        <Color x:Key="Warning">#F2501B</Color>
+        <Color x:Key="Caution">#F7AB43</Color>
+        <Color x:Key="Progress">#54BD56</Color>
+
+        <Color x:Key="PrimaryLight">#99BDD5</Color>
+        <Color x:Key="Primary">#4C8CB5</Color>
+        <Color x:Key="PrimaryDark">#005B96</Color>
+        <Color x:Key="PrimaryDarker">#003F69</Color>
+        <Color x:Key="PrimaryDarkest">#00243C</Color>
+    
+        <Color x:Key="GrayLightest">#F0F2F2</Color>
+        <Color x:Key="GrayLighter">#BAC2C6</Color>
+        <Color x:Key="Gray">#6E7F80</Color>
+        <Color x:Key="GrayDarker">#3A484F</Color>
+        <Color x:Key="GrayDarkest">#21292D</Color>
+
+        <Color x:Key="RedAccent">#963B00</Color>
+        <Color x:Key="OrangeAccent">#E48D2F</Color>
+        <Color x:Key="YellowAccent">#F1AF29</Color>
+        <Color x:Key="GreenAccent">#1C9065</Color>
+        <Color x:Key="BeigeAccent">#E6D5BB</Color>
+
+        <Color x:Key="EntryPlaceholderColor">#A0FFFFFF</Color>
+        <Color x:Key="BorderBackgroundColor">#20FFFFFF</Color>
+        <Color x:Key="GradientStartColor">#012E8B</Color>
+        <Color x:Key="GradientEndColor">#3F0041</Color>
+        <Color x:Key="FacebookBlue">#4267B2</Color>
+    
+        <Color x:Key="PrimaryColor">#f54e5e</Color>
+        <Color x:Key="PrimaryGradient">#e83f94</Color>
+        <Color x:Key="Secondary">#d54381</Color>
+        <Color x:Key="Green">#7ed321</Color>
+
+        <Color x:Key="Gray-100">#f6f7f8</Color>
+        <Color x:Key="Gray-300">#ced2d9</Color>
+        <Color x:Key="Gray-600">#788396</Color>
+        <Color x:Key="Gray-700">#606a7b</Color>
+        <Color x:Key="Gray-900">#333942</Color>
+        <Color x:Key="Gray-White">#ffffff</Color>
+
+        
+        
+        <OnPlatform x:Key="FA5ProLight"
+                    x:TypeArguments="x:String"
+                    Android="FA5ProLight300.otf#Light"
+                    iOS="FontAwesome5Pro-Light" />
+
+        <OnPlatform x:Key="FA5ProSolid"
+                    x:TypeArguments="x:String"
+                    Android="FA5ProSolid900.otf#Solid"
+                    iOS="FontAwesome5Pro-Solid" />
+
+        <OnPlatform x:Key="Brands"
+                    x:TypeArguments="x:String"
+                    Android="FA5BrandsRegular400.otf#Regular"
+                    iOS="FontAwesome5Brands-Regular" />
+
+        <OnPlatform x:Key="LCDItalic"
+                    x:TypeArguments="x:String"
+                    Android="LCD14Italic.otf#14Italic"
+                    iOS="LCD14Italic" />
+
+        <OnPlatform x:Key="LCDRegular"
+                    x:TypeArguments="x:String"
+                    Android="LCD14.otf#14"
+                    iOS="LCD14" />
+
+        <OnPlatform x:Key="Montserrat-SemiBold"
+                    x:TypeArguments="x:String"
+                    Android="Montserrat-SemiBold.ttf#Montserrat-SemiBold"
+                    iOS="Montserrat-SemiBold" />
+
+        <OnPlatform x:Key="Montserrat-Regular"
+                    x:TypeArguments="x:String"
+                    Android="Montserrat-Regular.ttf#Montserrat-Regular"
+                    iOS="Montserrat-Regular" />
+    
+        <OnPlatform x:Key="Montserrat-Medium"
+                    x:TypeArguments="x:String"
+                    Android="Montserrat-Medium.ttf#Montserrat-Medium"
+                    iOS="Montserrat-Medium" />
+    
+        <OnPlatform x:Key="Montserrat-Bold"
+                    x:TypeArguments="x:String"
+                    Android="Montserrat-Bold.ttf#Montserrat-Bold"
+                    iOS="Montserrat-Bold" />
+        
+        
+        <Style TargetType="Label">       
+            <Setter Property="FontFamily">
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="KohinoorBangla-Regular" />
+                    <On Platform="Android" Value="Montserrat-Light.ttf#Montserrat-Light" />
+                </OnPlatform>
+            </Setter>
+        </Style>
+        <Style TargetType="buttons:SfRadioButton">       
+            <Setter Property="FontFamily">
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="KohinoorBangla-Regular" />
+                    <On Platform="Android" Value="Montserrat-Light.ttf#Montserrat-Light" />
+                </OnPlatform>
+            </Setter>
+        </Style>
+
+        <FontImageSource x:Key="BackArrowIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.ChevronCircleRight}"
+                            Color="Black" />
+        <FontImageSource x:Key="ChevronIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.ChevronCircleRight}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="RefreshIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.SyncAlt}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="ResetIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.PowerOff}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="SelectedIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.CheckSquare}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="FeedbackIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.CommentExclamation}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="RatingIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Smile}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="FacebookIcon" 
+                            FontFamily="{StaticResource Brands}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Facebook}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="GoogleIcon" 
+                            FontFamily="{StaticResource Brands}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Google}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="NoRecordsIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.ExclamationTriangle}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="AddIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.PlusCircle}"
+                            Color="White" />
+
+        <FontImageSource x:Key="FilterIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Filter}"
+                            Color="White" />
+
+        <FontImageSource x:Key="StartRoutineIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Play}"
+                            Color="White" />
+
+        <FontImageSource x:Key="EditIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Edit}"
+                            Color="White" />
+
+        <FontImageSource x:Key="DeleteIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.TrashAlt}"
+                            Color="White" />
+
+        <FontImageSource x:Key="MenuIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Bars}"
+                            Color="White" />
+
+        <FontImageSource x:Key="SaveIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Save}"
+                            Color="White" />
+
+        <FontImageSource x:Key="EmailErrorIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.ExclamationCircle}"
+                            Color="White" />
+    
+
+        <FontImageSource x:Key="ExercisesIcon" 
+                            FontFamily="{StaticResource FA5ProSolid}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Running}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="RoutinesIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.ClipboardList}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="DebugIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Debug}"
+                            Color="Black" />
+    
+        <FontImageSource x:Key="SettingsIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.SlidersH}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="LogoutIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.LogOut}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="ProfileIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.UserCircle}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="GoldMedalIcon" 
+                            FontFamily="{StaticResource FA5ProSolid}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Medal}"
+                            Color="Gold" />
+
+        <FontImageSource x:Key="SilverMedalIcon" 
+                            FontFamily="{StaticResource FA5ProSolid}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Medal}"
+                            Color="Silver" />
+
+        <FontImageSource x:Key="BronzeMedalIcon" 
+                            FontFamily="{StaticResource FA5ProSolid}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Medal}"
+                            Color="Brown" />
+
+        <FontImageSource x:Key="ProfileCameraIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.AltCamera}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="FavoriteIcon_Selected" 
+                            FontFamily="{StaticResource FA5ProSolid}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Star}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="FavoriteIcon_Unselected" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Star}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="InfoIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.InfoCircle}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="DetailsIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.ChevronCircleUp}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="StrengthIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Dumbbell}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="EnduranceIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Endurance}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="FlexibilityIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Flexibility}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="BalanceIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Balance}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="WeightIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.WeightHanging}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="RepsIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Tally}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="DistanceIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Ruler}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="TimeIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Stopwatch}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="StepsIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.ShoePrints}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="ElevationIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Hiking}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="HeartRateIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.HeartRate}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="CaloriesIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Weight}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="MeasurementIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Ruler}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="AddSetIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.PlusHexagon}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="WeightIcon_Solid" 
+                            FontFamily="{StaticResource FA5ProSolid}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.WeightHanging}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="RepsIcon_Solid" 
+                            FontFamily="{StaticResource FA5ProSolid}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Tally}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="DistanceIcon_Solid" 
+                            FontFamily="{StaticResource FA5ProSolid}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Ruler}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="TimeIcon_Solid" 
+                            FontFamily="{StaticResource FA5ProSolid}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Stopwatch}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="StepsIcon_Solid" 
+                            FontFamily="{StaticResource FA5ProSolid}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.ShoePrints}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="DragIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.GripVertical}"
+                            Color="White" />
+
+        <FontImageSource x:Key="MoveExerciseUpIcon_Active" 
+                            FontFamily="{StaticResource FA5ProSolid}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.ChevronUp}"
+                            Color="White" />
+
+        <FontImageSource x:Key="MoveExerciseDownIcon_Active" 
+                            FontFamily="{StaticResource FA5ProSolid}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.ChevronDown}"
+                            Color="White" />
+
+        <FontImageSource x:Key="MoveExerciseUpIcon_Inactive" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.ChevronUp}"
+                            Color="White" />
+
+        <FontImageSource x:Key="MoveExerciseDownIcon_Inactive" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.ChevronDown}"
+                            Color="White" />
+
+        <FontImageSource x:Key="QuestionIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.QuestionCircle}"
+                            Color="White" />
+
+        <FontImageSource x:Key="TabNewIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.ClipboardCheck}"
+                            Color="White" />
+
+        <FontImageSource x:Key="TabHistoryIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Clock}"
+                            Color="White" />
+
+        <FontImageSource x:Key="TabGraphIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.ChartLine}"
+                            Color="White" />
+
+        <FontImageSource x:Key="TabDetailsIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.InfoCircle}"
+                            Color="White" />
+
+        <FontImageSource x:Key="StartIcon_NotActive" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Play}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="PauseIcon_NotActive" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Pause}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="StopIcon_NotActive" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Stop}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="ResetIcon_NotActive" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Undo}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="StartIcon_Active" 
+                            FontFamily="{StaticResource FA5ProSolid}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Play}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="PauseIcon_Active" 
+                            FontFamily="{StaticResource FA5ProSolid}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Pause}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="StopIcon_Active" 
+                            FontFamily="{StaticResource FA5ProSolid}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Stop}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="ResetIcon_Active" 
+                            FontFamily="{StaticResource FA5ProSolid}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Undo}"
+                            Color="Black" />
+
+
+        <FontImageSource x:Key="Routine_Time" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Stopwatch}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="Routine_Sets" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Sets}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="Routine_Break" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.CoffeeToGo}"
+                            Color="Black" />
+
+        <FontImageSource x:Key="ResetSetIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.Undo}"
+                            Color="White" />
+
+        <FontImageSource x:Key="NextExerciseIcon" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.FastForward}"
+                            Color="White" />
+
+
+        <FontImageSource x:Key="Balance" 
+                            FontFamily="{StaticResource FA5ProLight}"
+                            Glyph="{x:Static fonts:IconFontGlyphs.BalanceScale}"
+                            Color="Black" />   
+
+
+        <Style TargetType="BoxView" x:Key="DialogViewMaskStyle">
+            <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+            <Setter Property="Opacity" Value="0.5" />
+        </Style>
+
+        <Style TargetType="v:ASNavigationView">
+            <Setter Property="BarBackgroundColor" Value="{DynamicResource PrimaryDarkest}" />
+            <Setter Property="BarTextColor" Value="{DynamicResource GrayLightest}" />
+        </Style>
+
+        <Style TargetType="StackLayout" x:Key="BottomButtonsLayoutStyle">
+            <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,1,1,.08" />
+            <Setter Property="AbsoluteLayout.LayoutFlags" Value="All" />
+            <Setter Property="BackgroundColor" Value="{StaticResource AppBackgroundColor}" />
+            <Setter Property="Orientation" Value="Horizontal" />
+        </Style>
+        
+        <Style TargetType="Label" x:Key="EmptyLabelStyle" >
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="FontAttributes" Value="None" />
+            <Setter Property="TextColor" Value="{StaticResource GrayDarkest}" />
+            <Setter Property="FontSize" Value="32" />
+            <Setter Property="AbsoluteLayout.LayoutFlags" Value="All" />
+            <Setter Property="AbsoluteLayout.LayoutBounds" Value="0.5,0.55,1,0.1" />
+        </Style>
+        <Style TargetType="Label" x:Key="DarkEmptyLabelStyle" BasedOn="{StaticResource EmptyLabelStyle}">        
+            <Setter Property="TextColor" Value="{StaticResource GrayDarkest}" />
+        </Style>
+        <Style TargetType="c:ASTintedImage" x:Key="EmptyIconStyle">
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="AbsoluteLayout.LayoutFlags" Value="All" />
+            <Setter Property="AbsoluteLayout.LayoutBounds" Value="0.5,0.35,1,0.15" />
+            <Setter Property="TintColor" Value="{StaticResource GrayDarkest}" />
+            <Setter Property="WidthRequest" Value="500" />
+            <Setter Property="HeightRequest" Value="500" />
+        </Style>
+
+        <Style TargetType="Button" x:Key="ActionLabelStyle">
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="Margin" Value="0,-5,0,0" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="FontSize">
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="iOS" Value="17" />
+                    <On Platform="Android" Value="20" />
+                </OnPlatform>
+            </Setter>
+        </Style>
+            
+        <Style TargetType="cc:ASScreenOverlay">
+            <Setter Property="Opacity" Value="0.75" />
+            <Setter Property="BackgroundColor" Value="#222222" />
+        </Style>        
+        <Style TargetType="cc:ASActivityIndicator">
+            <Setter Property="Highlight" Value="Silver" />
+            <Setter Property="AbsoluteLayout.LayoutBounds" Value=".5,.4,.5,.5" />
+            <Setter Property="AbsoluteLayout.LayoutFlags" Value="All" />
+        </Style>
+    
+        <Style x:Key="InfoItemStyle" TargetType="cc:ASMenuItemView">
+            <Setter Property="HorizontalOptions" Value="Fill" />
+            <Setter Property="CellBackgroundColor" Value="Transparent" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="TextColor" Value="{StaticResource GrayLightest}" />
+            <Setter Property="DividerColor" Value="{StaticResource YellowAccent}" />
+            <Setter Property="FontSize">
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="iOS" Value="22" />
+                    <On Platform="Android" Value="26" />
+                </OnPlatform>
+            </Setter>
+        </Style>
+        <Style x:Key="SettingsItemStyle" TargetType="cc:ASMenuItemView" BasedOn="{StaticResource InfoItemStyle}">        
+            <Setter Property="ImageTintColor" Value="{StaticResource OrangeAccent}" />
+        </Style>
+        <Style x:Key="ActionItemStyle" TargetType="cc:ASMenuItemView" BasedOn="{StaticResource InfoItemStyle}">
+            <Setter Property="ImageTintColor" Value="{StaticResource OrangeAccent}" />
+        </Style>
+        <Style x:Key="AppVersionItemStyle" TargetType="cc:ASMenuItemView" BasedOn="{StaticResource InfoItemStyle}"> 
+            <Setter Property="HideDivider" Value="true" />       
+            <Setter Property="FontSize">
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="iOS" Value="14" />
+                    <On Platform="Android" Value="18" />
+                </OnPlatform>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ListBackgroundImageStyle" TargetType="{x:Type Image}">
+            <Setter Property="RelativeLayout.HeightConstraint" Value="{ConstraintExpression Type=RelativeToParent, Property=Height, Constant=10}" />
+            <Setter Property="RelativeLayout.WidthConstraint" Value="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=10}" />
+            <Setter Property="Opacity" Value=".45" />
+            <Setter Property="Aspect" Value="AspectFill" />
+        </Style>
+    
+        <Style x:Key="BottomBannerBackdropStyle" TargetType="{x:Type BoxView}">
+            <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,1,1,.08" />
+            <Setter Property="AbsoluteLayout.LayoutFlags" Value="All" />    
+            <Setter Property="BackgroundColor" Value="Black" />
+        </Style>
+
+        <Style x:Key="MenuBoxViewStyle" TargetType="{x:Type BoxView}">
+            <Setter Property="BackgroundColor" Value="{StaticResource YellowAccent}" />
+            <Setter Property="HeightRequest" Value="1" />
+            <Setter Property="HorizontalOptions" Value="Fill" />
+        </Style>
+        <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type ScrollView}">
+            <Setter Property="VerticalOptions" Value="StartAndExpand" />
+            <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        </Style>
+        <Style TargetType="StackLayout" x:Key="MenuBottomItemsStyle">
+            <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,1,1,.2" />
+            <Setter Property="AbsoluteLayout.LayoutFlags" Value="All" />    
+            <Setter Property="BackgroundColor" Value="Transparent" />
+        </Style>
+        <Style TargetType="cc:ASMenuItemView" >
+            <Setter Property="FontSize">
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="iOS" Value="20" />
+                        <On Platform="Android" Value="24" />
+                    </OnPlatform>
+            </Setter>
+        </Style>
+        <Style x:Key="UsernameLabelStyle" TargetType="Label">
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />      
+            <Setter Property="FontSize">
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="iOS" Value="30" />
+                        <On Platform="Android" Value="30" />
+                    </OnPlatform>
+            </Setter>
+            <Setter Property="TextColor" Value="{StaticResource GrayLightest}" />
+        </Style>
+
+    
+        <Style TargetType="cc:ASCircleButton" x:Key="MenuItemCountBadgeStyle">
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="CircleColor" Value="{StaticResource Important}" />
+            <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="WidthRequest" Value="60" />
+            <Setter Property="HeightRequest" Value="60" />
+        </Style>
+        
+        <Style TargetType="cc:ASClassicButton" x:Key="ClassicActionButtonStyle">
+            <Setter Property="TextColor" Value="{StaticResource PrimaryLight}" />
+            <Setter Property="Margin" Value="0,20,0,0" />
+            <Setter Property="BackgroundColor" Value="{DynamicResource FilterButtonBackgroundColor}" />
+            <Setter Property="BorderColor" Value="{StaticResource PrimaryLight}" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="VerticalOptions" Value="End" />
+            <Setter Property="FontSize">
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="iOS" Value="18" />
+                    <On Platform="Android" Value="22" />
+                </OnPlatform>
+            </Setter>
+        </Style>
+        
+        <Style TargetType="cc:ASClassicButton" x:Key="AddSetValueButtonStyle">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryDarkest}" />
+            <Setter Property="BorderColor" Value="{StaticResource PrimaryDarkest}" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="OuterRadius" Value="25" />
+            <Setter Property="InnerRadius" Value="25" />
+            <Setter Property="WidthRequest" Value="50" />
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="FontSize">
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="iOS" Value="20" />
+                    <On Platform="Android" Value="22" />
+                </OnPlatform>
+            </Setter>
+        </Style>
+        
+        <Style TargetType="cc:ASTintedImageButton" x:Key="AddSetTimerButtonActiveStyle">
+            <Setter Property="ImageTintColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="Black" />
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="OuterRadius" Value="0" />
+            <Setter Property="InnerRadius" Value="0" />
+            <Setter Property="WidthRequest" Value="50" />
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="ImageSize" Value="50" />
+        </Style>
+        
+        <Style TargetType="cc:ASTintedImageButton" x:Key="TakePhotoButtonStyle">
+            <Setter Property="ImageTintColor" Value="Black" />
+            <Setter Property="BackgroundColor" Value="{StaticResource Gray}" />
+            <Setter Property="BorderColor" Value="{StaticResource Gray}" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="End" />
+            <Setter Property="OuterRadius" Value="20" />
+            <Setter Property="InnerRadius" Value="10" />
+            <Setter Property="WidthRequest" Value="40" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="ImageSize" Value="20" />
+        </Style>
+        
+        <Style TargetType="cc:ASClassicButton" x:Key="AddSetButtonStyle">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryDarkest}" />
+            <Setter Property="BorderColor" Value="{StaticResource PrimaryDarkest}" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HeightRequest" Value="60" />
+            <Setter Property="WidthRequest" Value="150" />
+            <Setter Property="FontSize">
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="iOS" Value="20" />
+                    <On Platform="Android" Value="22" />
+                </OnPlatform>
+            </Setter>
+        </Style>
+        
+        <Style TargetType="cc:ASClassicButton" x:Key="EndWorkoutButtonStyle" BasedOn="{StaticResource AddSetButtonStyle}">
+            <Setter Property="TextColor" Value="{StaticResource GrayLightest}" />
+            <Setter Property="BackgroundColor" Value="{DynamicResource RedAccent}" />
+            <Setter Property="BorderColor" Value="{StaticResource RedAccent}" />
+            <Setter Property="MinimumHeightRequest" Value="40" />
+        </Style>
+        
+        <Style TargetType="cc:ASTintedImageButton" x:Key="RoutineSetButtonStyle">
+            <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryDarkest}" />
+            <Setter Property="BorderColor" Value="{StaticResource PrimaryDarkest}" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HeightRequest" Value="60" />
+            <Setter Property="WidthRequest" Value="60" />
+            <Setter Property="ImageSize" Value="50" />
+            <Setter Property="ImageTintColor" Value="White" />
+        </Style>
+
+        <Style TargetType="cc:ASClassicButton" x:Key="DialogSaveButtonStyle" BasedOn="{StaticResource ClassicActionButtonStyle}">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryLight}" />
+        </Style>
+        <Style TargetType="cc:ASClassicButton" x:Key="DialogLoadButtonStyle" BasedOn="{StaticResource ClassicActionButtonStyle}"/>
+        
+        <Style TargetType="cc:ASClassicButton" x:Key="DialogDeleteButtonStyle" BasedOn="{StaticResource ClassicActionButtonStyle}">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="{StaticResource Important}" />
+            <Setter Property="BorderColor" Value="{StaticResource Important}" />
+        </Style>
+        
+        <Style TargetType="cc:ASClassicButton" x:Key="DialogCancelButtonStyle" BasedOn="{StaticResource ClassicActionButtonStyle}">
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="TextColor" Value="{StaticResource PrimaryLight}" />
+        </Style>
+        
+        <Style TargetType="cc:ASClassicButton" x:Key="SetupRoutineIntButtonStyle" BasedOn="{StaticResource AddSetValueButtonStyle}">
+            <Setter Property="Margin" Value="0,0,40,0" />
+            <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+            <Setter Property="VerticalOptions" Value="StartAndExpand" />
+            <Setter Property="HeightRequest" Value="30" />
+            <Setter Property="OuterRadius" Value="8" />
+            <Setter Property="InnerRadius" Value="8" />
+            <Setter Property="FontSize">
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="iOS" Value="14" />
+                    <On Platform="Android" Value="16" />
+                </OnPlatform>
+            </Setter>
+        </Style>
+        
+        <Style TargetType="cc:ASClassicButton" x:Key="SetupRoutineTimeButtonStyle" BasedOn="{StaticResource SetupRoutineIntButtonStyle}">        
+            <Setter Property="WidthRequest" Value="80" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="DialogTitleStyle">        
+            <Setter Property="TextColor" Value="{StaticResource GrayLightest}" />
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="32" />
+            <Setter Property="Margin" Value="20,5" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="DialogMessageStyle">
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="HtmlMessageStyle">
+            <Setter Property="TextType" Value="Html" /> 
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="Margin" Value="10,5" />
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        </Style>
+
+        <Style x:Key="ContentPageStyle" TargetType="ContentPage">
+            <Setter Property="BackgroundImageSource">
+                <OnPlatform x:TypeArguments="ImageSource" Android="LoginBackground.png" />
+            </Setter>
+        </Style>
+
+        
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="LineHeight" Value="1.25" />
+        </Style>
+
+        <Style x:Key="DatePickerStyle" TargetType="DatePicker">
+            <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextColor" Value="{DynamicResource Gray-700}"/>
+        </Style>
+
+        <Style x:Key="HeaderLabelStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="LineHeight" Value="1.5"/>
+            <Setter Property="TextColor" Value="{DynamicResource Gray-900}"/>
+        </Style>
+
+        
+
+        <Style TargetType="picker:SfPicker" x:Key="OptionPickerStyle">
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="AbsoluteLayout.LayoutFlags" Value="All" />
+            <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,0,1,1.1" />
+            <Setter Property="WidthRequest" Value="300" />
+            <Setter Property="HeightRequest" Value="350" />
+            <Setter Property="PickerWidth" Value="280" />
+            <Setter Property="PickerHeight" Value="250" />
+            <Setter Property="ShowFooter" Value="True" />
+            <Setter Property="PickerMode" Value="Dialog" />
+            <Setter Property="DisplayMemberPath" Value="Name" />        
+            <Setter Property="SelectedItemTextColor" Value="{StaticResource PrimaryDarkest}" />
+            <Setter Property="SelectionBackgroundColor" Value="{StaticResource RedAccent}" />
+            <Setter Property="ColumnHeaderBackgroundColor" Value="{StaticResource Primary}" />
+            <Setter Property="ColumnHeaderTextColor" Value="{StaticResource GrayLightest}" />
+            <Setter Property="UnSelectedItemTextColor" Value="{StaticResource GrayDarkest}" />
+            <Setter Property="CancelButtonBackgroundColor" Value="{StaticResource GrayLightest}" />
+            <Setter Property="CancelButtonTextColor" Value="{StaticResource Gray}" />
+            <Setter Property="OKButtonTextColor" Value="{StaticResource PrimaryDark}" />
+            <Setter Property="OKButtonBackgroundColor" Value="{StaticResource GrayLightest}" />
+            <Setter Property="HeaderBackgroundColor" Value="{StaticResource PrimaryDarkest}" />
+            <Setter Property="HeaderTextColor" Value="{StaticResource GrayLightest}" />
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="HeaderFontSize" Value="34" />
+            <Setter Property="SelectedItemFontSize" Value="24" />
+        </Style>
+
+        <Style TargetType="picker:SfPicker" x:Key="FilterPickerStyle" BasedOn="{StaticResource OptionPickerStyle}">
+            <Setter Property="DisplayMemberPath" Value="FilterName" />   
+            <Setter Property="HeaderText" Value="Select Filter" />
+        </Style>
+
+        <Style TargetType="pickers:SfTimePicker" x:Key="TimePickerStyle">
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="AbsoluteLayout.LayoutFlags" Value="All" />
+            <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,0,1,1.1" />        
+            <Setter Property="PickerWidth" Value="280" />
+            <Setter Property="PickerMode" Value="Dialog" />
+            <Setter Property="IsOpen" Value="False" />
+            <Setter Property="ShowFooter" Value="True" />
+            <Setter Property="SelectedItemTextColor" Value="{StaticResource PrimaryDarkest}" />
+            <Setter Property="SelectionBackgroundColor" Value="{StaticResource RedAccent}" />
+            <Setter Property="ColumnHeaderBackgroundColor" Value="{StaticResource Primary}" />
+            <Setter Property="ColumnHeaderTextColor" Value="{StaticResource GrayLightest}" />
+            <Setter Property="CancelButtonBackgroundColor" Value="{StaticResource GrayLightest}" />
+            <Setter Property="CancelButtonTextColor" Value="{StaticResource Gray}" />
+            <Setter Property="OKButtonTextColor" Value="{StaticResource PrimaryDark}" />
+            <Setter Property="OKButtonBackgroundColor" Value="{StaticResource GrayLightest}" />
+            <Setter Property="HeaderBackgroundColor" Value="{StaticResource PrimaryDarkest}" />
+            <Setter Property="HeaderTextColor" Value="{StaticResource GrayLightest}" />
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="HeaderFontSize" Value="34" />
+            <Setter Property="SelectedItemFontSize" Value="24" />
+        </Style>
+        
+        <Style x:Key="EntryStyle" TargetType="control:BorderlessEntry">
+            <Setter Property="PlaceholderColor" Value="{StaticResource EntryPlaceholderColor}" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="15,0" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="ReturnType" Value="Done" />
+        </Style>
+
+        
+        <Style x:Key="SfButtonStyle" TargetType="buttons:SfButton">
+            <Setter Property="BackgroundGradient">
+                <Setter.Value>
+                    <gradient:SfLinearGradientBrush StartPoint="0,0.75" EndPoint="1,0">
+                        <gradient:SfLinearGradientBrush.GradientStops>
+                            <gradient:SfGradientStop Offset="0" Color="{StaticResource Primary}" />
+                            <gradient:SfGradientStop Offset="1" Color="{StaticResource PrimaryLight}" />
+                        </gradient:SfLinearGradientBrush.GradientStops>
+                    </gradient:SfLinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+            <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+
+        
+        <Style x:Key="SfFlatButtonStyle" TargetType="buttons:SfButton">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
+            <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,5,0,0" />
+        </Style>
+
+
+        <Style x:Key="FormBorderStyle" TargetType="border:SfBorder">
+            <Setter Property="BorderColor" Value="{DynamicResource Gray-300}"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="Margin" Value="0,8"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}"/>
+        </Style>
+        
+
+        <Style x:Key="BusinessFormBorderStyle" TargetType="border:SfBorder">
+            <Setter Property="BorderColor" Value="{DynamicResource Gray-300}"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}"/>
+        </Style>
+
+        
+        
+        <Style x:Key="SfGradientViewStyle" TargetType="gradient:SfGradientView">
+            <Setter Property="Opacity" Value="0.82" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="BackgroundBrush">
+                <Setter.Value>
+                    <gradient:SfLinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                        <gradient:SfLinearGradientBrush.GradientStops>
+                            <gradient:SfGradientStop Offset="0.0" Color="{StaticResource Primary}" />
+                            <gradient:SfGradientStop Offset="1.0" Color="{StaticResource PrimaryDarkest}" />
+                        </gradient:SfLinearGradientBrush.GradientStops>
+                    </gradient:SfLinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SfGradientViewStyle_Walkthrough" TargetType="gradient:SfGradientView">
+            <Setter Property="BackgroundBrush">
+                <Setter.Value>
+                    <gradient:SfLinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <gradient:SfLinearGradientBrush.GradientStops>
+                            <gradient:SfGradientStop Color="#d54381" Offset="0.0" />
+                            <gradient:SfGradientStop Color="#7644ad" Offset="1.0" />
+                        </gradient:SfLinearGradientBrush.GradientStops>
+                    </gradient:SfLinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        
+        <Style x:Key="SfGradientButtonStyle" TargetType="buttons:SfButton">
+            <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+            <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="CornerRadius" Value="24" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="WidthRequest" Value="150" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+      
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundGradient">
+                                    <Setter.Value>
+                                        <gradient:SfLinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                                            <gradient:SfLinearGradientBrush.GradientStops>
+                                                <gradient:SfGradientStop Offset="0" Color="{DynamicResource PrimaryLight}" />
+                                                <gradient:SfGradientStop Offset="1" Color="{DynamicResource Primary}" />
+                                            </gradient:SfLinearGradientBrush.GradientStops>
+                                        </gradient:SfLinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundGradient">
+                                    <Setter.Value>
+                                        <gradient:SfLinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                                            <gradient:SfLinearGradientBrush.GradientStops>
+                                                <gradient:SfGradientStop Offset="0" Color="{DynamicResource PrimaryLight}" />
+                                                <gradient:SfGradientStop Offset="1" Color="{DynamicResource Primary}" />
+                                            </gradient:SfLinearGradientBrush.GradientStops>
+                                        </gradient:SfLinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    
+        
+        
+        <Style x:Key="SfBorderStyle" TargetType="border:SfBorder">
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="BorderColor" Value="{DynamicResource Gray-300}" />
+            <Setter Property="CornerRadius" Value="3" />
+            <Setter Property="Padding" Value="8,0,0,0" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />        
+        </Style>
+
+        
+        <Style x:Key="SfBorderStyle_Large" TargetType="border:SfBorder">
+            <Setter Property="BackgroundColor" Value="{StaticResource BorderBackgroundColor}" />
+            <Setter Property="BorderColor" Value="Transparent" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="BorderWidth" Value="1" />
+        </Style>
+
+        
+        <Style x:Key="SfButtonStyle_Walkthrough" TargetType="buttons:SfButton">
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+            <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+            <Setter Property="Margin" Value="0,10,0,24"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="WidthRequest" Value="245"/>
+            <Setter Property="HeightRequest" Value="40"/>
+            <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource Gray-White}"/>
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}"/>
+        </Style>
+    </Application.Resources>
+</prism:PrismApplication>
