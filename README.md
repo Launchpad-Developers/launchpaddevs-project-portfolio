@@ -20,6 +20,7 @@ Each folder contains a detailed case study highlighting architecture, key featur
 
 ## 📂 Featured Projects
 
+- [`chronoforge`](./chronoforge) – Multi-tenant SaaS platform for time tracking, project billing, and team productivity
 - [`em3-admin-mobile`](./em3-admin-mobile) – Mobile admin companion for event management
 - [`jpi-express-mobile`](./jpi-express-mobile) – Utility field ops and compliance
 - [`cufi-mobile`](./cufi-mobile) – Nonprofit advocacy & event engagement
