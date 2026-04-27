@@ -4,7 +4,7 @@
 
 ChronoForge is a **production-grade, multi-tenant SaaS platform** for time tracking, project billing, and team productivity management. Organizations use it to log billable hours, manage project rates, run billing cycles, and generate financial reports — all behind a clean, role-aware web interface.
 
-The platform is live in production and designed to scale with the business: Stripe-backed per-seat subscriptions, GDPR-compliant legal flows, email-based self-service invitations, and a full security hardening pass against a formal threat model.
+The platform is live in production and designed to scale with the business: Stripe-backed per-organization subscriptions, GDPR-compliant legal flows, email-based self-service invitations, and a full security hardening pass against a formal threat model.
 
 Built by **Launchpad Developers Inc.**, ChronoForge demonstrates what a well-architected SaaS product looks like when built from first principles: strict layering, no framework shortcuts, and a security model designed to hold up under scrutiny.
 
@@ -16,11 +16,11 @@ As the **sole designer and developer**, I:
 - Designed the multi-tenant data model with org-scoped access enforced at the Application layer, never the database
 - Built a separate `ApiClient` project — a typed HTTP client layer that keeps Blazor components entirely free of HTTP plumbing
 - Designed and implemented a schema-first SQL migration system with idempotent scripts safe to run on every deploy
-- Implemented a complete Stripe billing integration including per-seat plans, trial periods, webhook handling, and subscription-gated access control
+- Implemented a complete Stripe billing integration including per-organization plans, trial periods, webhook handling, and subscription-gated access control
 - Designed the CI/CD pipeline strategy across five Azure Pipelines, including a production deployment gate requiring both a typed confirmation phrase and independent reviewer approval
 - Authored 922 automated tests across unit, security, ApiClient, and Blazor bUnit suites
-- Designed the "Velvet Monolith" design system — a custom UI language built on Tailwind with a no-border, tonal-layering aesthetic
-- Produced the full documentation suite: architecture spec, feature docs, QA scripts, CI/CD guide, and Postman collection
+- Designed and implemented the UI using a custom design system built on Tailwind CSS with a no-border, tonal-layering aesthetic
+- Produced the full documentation suite: architecture spec, feature docs, QA scripts, CI/CD guide, and a Postman collection with libraries and integration flow tests executed in the pipeline via Newman
 
 ## 🧭 Leadership Principles in Action
 
@@ -42,7 +42,7 @@ As the **sole designer and developer**, I:
 - **Role-Aware Dashboard** — four distinct views for User, OrgAdmin, OrgOwner, and SystemAdmin roles, each loading only the data the role can see
 - **User Management** — invite, activate, deactivate, and change roles per organization
 - **Invitations** — email-based self-service signup with secure token acceptance flow and race-condition protection
-- **Subscriptions & Billing** — Stripe-backed per-seat plans with trial period, cancel-at-period-end handling, and subscription-gated access control
+- **Subscriptions & Billing** — Stripe-backed flat per-organization plans with trial period, cancel-at-period-end handling, and subscription-gated access control
 - **Organization Settings** — org profile, accounting fields, and business info management
 - **In-App Help** — searchable help articles with breadcrumb navigation
 - **Onboarding Tours** — first-run feature walkthroughs per role
@@ -57,13 +57,14 @@ As the **sole designer and developer**, I:
 - **Data Access:** Dapper 2.x — no Entity Framework by design; schema-first SQL migrations
 - **Database:** Azure SQL (SQL Server LocalDB for local development)
 - **Authentication:** Cookie-based session auth — no JWT, no ASP.NET Identity framework; PBKDF2/SHA512 password hashing
-- **Payments:** Stripe — per-seat subscriptions, trial periods, webhook processing with idempotency log
+- **Payments:** Stripe — flat per-organization subscriptions, trial periods, webhook processing with idempotency log
 - **Logging:** Serilog via `Launchpad.Observability` (zero-dependency, reusable internal package)
 - **Secrets:** Azure Key Vault
 - **Hosting:** Azure App Services
-- **CI/CD:** Azure Pipelines — five pipelines (CI on PRs, CD to dev/staging/prod, dedicated prod DB migration)
+- **CI/CD:** Azure Pipelines — five pipelines (CI on PRs, CD to dev/staging/prod, dedicated prod DB migration); Newman runs Postman integration flows in CI with results published to the pipeline
+- **Code Coverage:** ~75% of testable code covered; Coverlet + ReportGenerator produce an HTML coverage report published to Azure DevOps on every PR
 - **Tests:** xUnit + Moq + bUnit — 922 tests across unit, security, ApiClient, and Blazor component suites
-- **Design System:** Tailwind CSS — custom "Velvet Monolith" design language; Manrope typeface; no-border, tonal-layering aesthetic
+- **Design System:** Tailwind CSS — custom design language; Manrope typeface; no-border, tonal-layering aesthetic
 
 ## 📷 Screenshots
 
@@ -104,4 +105,4 @@ ChronoForge is a proprietary SaaS product developed and operated by **Launchpad 
 
 ---
 
-_© 2025 Launchpad Developers Inc. All rights reserved._
+_© 2026 Launchpad Developers Inc. All rights reserved._

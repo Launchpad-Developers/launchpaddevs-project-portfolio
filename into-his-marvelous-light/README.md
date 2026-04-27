@@ -104,4 +104,4 @@ Development and maintenance by **Launchpad Developers Inc.** formerly **Appsmith
 
 ---
 
-_© 2025 Launchpad Developers Inc. All rights reserved._
+_© 2026 Launchpad Developers Inc. All rights reserved._

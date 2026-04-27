@@ -81,4 +81,4 @@ Full source code is included in the [source folder](./source/) for reference or 
 
 ---
 
-_© 2025 Launchpad Developers Inc. All rights reserved._
+_© 2026 Launchpad Developers Inc. All rights reserved._

@@ -106,4 +106,4 @@ Development and maintenance by **Launchpad Developers Inc.**
 
 ---
 
-_© 2025 Launchpad Developers Inc. All rights reserved._
+_© 2026 Launchpad Developers Inc. All rights reserved._

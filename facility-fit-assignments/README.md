@@ -97,4 +97,4 @@ All work was performed by **Launchpad Developers Inc.** under contract with Aram
 
 ---
 
-_© 2025 Launchpad Developers Inc. All rights reserved._
+_© 2026 Launchpad Developers Inc. All rights reserved._

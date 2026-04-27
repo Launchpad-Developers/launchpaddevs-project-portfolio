@@ -102,4 +102,4 @@ All work was performed under contract by **Launchpad Developers Inc.**
 
 ---
 
-_© 2025 Launchpad Developers Inc. All rights reserved._
+_© 2026 Launchpad Developers Inc. All rights reserved._
