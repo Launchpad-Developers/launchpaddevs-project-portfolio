@@ -137,17 +137,39 @@ Delivery practices:
 
 ## 📷 Screenshots
 
-> Architecture diagrams and platform screenshots are in progress. Planned documentation includes:
+<table>
+  <tr>
+    <td align="center">
+      <img src="./screenshots/jpi-express-web-01.png" alt="Solution architecture — 9 projects, 21 domains, dual Angular + Blazor frontend" width="380"/>
+    </td>
+    <td align="center">
+      <img src="./screenshots/jpi-express-web-02.png" alt="Work order lifecycle — 5 work order types across Jobs, Plans, Stages" width="380"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./screenshots/jpi-express-web-03.png" alt="Angular to Blazor migration progress map by domain" width="380"/>
+    </td>
+    <td align="center">
+      <img src="./screenshots/jpi-express-web-04.png" alt="CI/CD pipeline comparison — standard vs hotfix vs database vs Angular" width="380"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./screenshots/jpi-express-web-05.png" alt="DbContext domain map — 18 bounded contexts across business domains" width="380"/>
+    </td>
+    <td align="center">
+      <img src="./screenshots/jpi-express-web-06.png" alt="Security model — JWT claims through SecurityContext to multi-tenant query scoping" width="380"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2">
+      <img src="./screenshots/jpi-express-web-07.png" alt="Data access layer — EF Core + Dapper dual path + legacy CQRS coexistence" width="380"/>
+    </td>
+  </tr>
+</table>
 
-- Solution architecture diagram — 9 projects, 21 domains, dual frontend (Angular + Blazor)
-- Work order lifecycle state diagram — 5 work order types across stage transitions
-- Angular → Blazor migration progress map — domain-level migration state visualization
-- CI/CD pipeline comparison — standard vs. hotfix pipeline structure and artifact strategy
-- DbContext domain map — 18 bounded contexts mapped to business domains
-- Security model diagram — JWT claims → SecurityContext → multi-tenant query scoping
-- Data access layer diagram — EF Core + Dapper dual path + legacy CQRS coexistence
-
-> See the [screenshots folder](./screenshots/) for available examples.
+> See the [screenshots folder](./screenshots/) for full-resolution diagrams.
 
 ---
 
