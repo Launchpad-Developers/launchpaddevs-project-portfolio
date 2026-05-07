@@ -14,7 +14,7 @@ This repository showcases selected client projects delivered by Launchpad Develo
 
 Each folder contains a detailed case study highlighting architecture, key features, and my engineering contributions — spanning industries such as healthcare, logistics, nonprofit, retail, and event management.
 
-> ⚠️ **Note:** This portfolio is under active construction. Additional writeups and screenshots are being added incrementally.
+> ⚠️ **Note:** Selected case studies and additional project writeups are continuously being expanded to reflect ongoing client and platform work.
 
 ---
 
